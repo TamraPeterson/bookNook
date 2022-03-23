@@ -1,7 +1,7 @@
-import { dbContext } from "../db/DbContext"
-import { BadRequest } from "../utils/Errors"
+import { dbContext } from '../db/DbContext'
+import { BadRequest } from '../utils/Errors'
 
-class BooksService {
+class CommentsService {
   async find(query = {}) {
     const values = await dbContext.Values.find(query)
     return values
@@ -14,7 +14,6 @@ class BooksService {
     }
     return value
   }
-
 }
 
-export const booksService = new BooksService()
+export const commentsService = new CommentsService()
