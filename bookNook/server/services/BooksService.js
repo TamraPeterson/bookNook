@@ -2,18 +2,23 @@ import { dbContext } from "../db/DbContext"
 import { BadRequest } from "../utils/Errors"
 
 class BooksService {
-  async find(query = {}) {
-    const values = await dbContext.Values.find(query)
-    return values
+  async remove(id) {
+    const book = await dbContext.Books.findByIdAndRemove(id)
+    return book
+  }
+  async getById(id) {
+    const book = await dbContext.Books.findById(id)
+    return book
+  }
+  async getAll() {
+    const books = await dbContext.Books.find()
+    return books
+  }
+  async createBook(body) {
+    const book = await dbContext.Books.create(body)
+    return book
   }
 
-  async findById(id) {
-    const value = await dbContext.Values.findById(id)
-    if (!value) {
-      throw new BadRequest('Invalid Id')
-    }
-    return value
-  }
 
 }
 
