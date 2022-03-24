@@ -3,16 +3,22 @@ const Schema = mongoose.Schema
 
 export const MembershipSchema = new Schema(
   {
-    title: { type: String, required: true },
-    description: { type: String, required: true },
-    creatorId: { type: Schema.Types.ObjectId, ref: 'Profile', required: true }
+    accountId: { type: String, required: true },
+    clubId: { type: String, required: true }
   },
   { timestamps: true, toJSON: { virtuals: true } }
 )
 
-MembershipSchema.virtual('creator', {
-  localField: 'creatorId',
+MembershipSchema.virtual('account', {
+  localField: 'accountId',
   foreignField: '_id',
   justOne: true,
-  ref: 'Profile'
+  ref: 'Account'
+})
+
+MembershipSchema.virtual('club', {
+  localField: 'clubId',
+  foreignField: '_id',
+  justOne: true,
+  ref: 'Club'
 })

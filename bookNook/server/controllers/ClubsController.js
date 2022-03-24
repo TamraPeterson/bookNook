@@ -1,20 +1,23 @@
 import BaseController from '../utils/BaseController'
 import { Auth0Provider } from '@bcwdev/auth0provider'
 
-export class MembershipController extends BaseController {
+export class ClubsController extends BaseController {
   constructor() {
-    super('api/membership')
+    super('api/clubs')
     this.router
       // NOTE: Beyond this point all routes require Authorization tokens (the user must be logged in)
       .use(Auth0Provider.getAuthorizedUserInfo)
-      .delete('/:id', this.deleteMembership)
-      .post('', this.createMembership)
+      .get('', this.getAll)
+      // .get('/:id', this.getById)
+      .post('', this.create)
   }
-  createMembership(req, res, next) {
-    throw new Error("Method not implemented.")
-  }
-  deleteMembership(req, res, next) {
-    throw new Error("Method not implemented.")
+
+  async getAll(req, res, next) {
+    try {
+      return res.send(['value1', 'value2'])
+    } catch (error) {
+      next(error)
+    }
   }
 
   async create(req, res, next) {
