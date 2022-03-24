@@ -7,7 +7,6 @@
 
 <script>
 import { ref } from '@vue/reactivity'
-import { towerEventService } from '../services/TowerEventService'
 import { logger } from '../utils/Logger'
 import Pop from '../utils/Pop'
 export default {
@@ -17,7 +16,7 @@ export default {
             searchTerm,
             async search() {
                 try {
-                    await towerEventService.getAll({ query: searchTerm.value })
+                    await thingService.getAll({ query: searchTerm.value })
                 } catch (error) {
                     logger.log(error)
                     Pop.toast(error.message, "error")
