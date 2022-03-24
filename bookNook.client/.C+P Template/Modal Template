@@ -1,0 +1,79 @@
+// // NOTE Simple Button To Open Modal
+// <i
+//    data-bs-toggle="modal"
+//    data-bs-target="#open-modal"
+//    class="mdi mdi-pencil selectable"
+// >Open Modal</i>
+
+
+
+// // NOTE Modal Template to C+P into the bottom of any Component
+// <Modal id="open-modal" >
+// <template #title> Modal Title </template>
+// <template #body> <Modal Body /> </template> - (Modal Form Template Is Below)
+// <template #footer> Modal Footer </template>
+// </Modal>
+       
+
+
+// // NOTE HTML within ModalForm Component
+// <template>
+//   <form
+//     class="row bg-grey darken-20 justify-content-center elevation-3 p-2 m-5"
+//     @submit.prevent="doThing"
+//   >
+//     <div class="col-md-8 mb-2">
+//       <label class="form-label"><b>Form Body #1</b></label>
+//       <input
+//         v-model="state.editable.body"
+//         required
+//         type="text"
+//         class="form-control"
+//         aria-describedby="helpId"
+//       />
+//     </div>
+
+//     <div class="col-12 d-flex justify-content-end">
+//       <button class="btn btn-primary">Create</button>
+//     </div>
+//   </form>
+// </template>
+
+
+
+// // NOTE Javascript within ModalForm Component
+// <script>
+// import { AppState } from '../AppState'
+// import { computed, reactive } from '@vue/reactivity'
+// import { logger } from '../utils/Logger'
+// import Pop from '../utils/Pop'
+// import { Modal } from 'bootstrap'
+// export default {
+//     props: {
+//         thingId: {
+//             type: Object,
+//             required: true
+//         }
+//     },
+//     setup(props) {
+//         const state = reactive({
+//             editable: {},
+//         })
+//         return {
+//             state,
+//             async doThing() {
+//                 try {
+//                     state.editable.thingId = props.thingId
+//                     await thingService.doThing(state.editable, state.editable.thingId)
+//                     state.editable = {}
+//                     Modal.getOrCreateInstance(document.getElementById('open-modal')).hide()
+//                 } catch (error) {
+//                     logger.log(error)
+//                     Pop.toast(error.message, 'error')
+//                 }
+//             },
+//             account: computed(() => AppState.account)
+//         }
+//     },
+// }
+// </script>
