@@ -1,30 +1,24 @@
-import { dbContext } from '../db/DbContext'
-import { BadRequest } from '../utils/Errors'
+import { dbContext } from "../db/DbContext"
+import { BadRequest } from "../utils/Errors"
 
 class ShelfBooksService {
-  async getShelfBooksByProfileId(profileId) {
-    const shelfBooks = await dbContext.Books.find(profileId).populate('shelfBook')
-    return shelfBooks.map(mongooseDocument => {
-      const book = mongooseDocument.toJSON()
-      return {
-        accountId: profileId,
-        bookId: book.Id,
-        ...book.shelfBooks
-      }
-    })
+  async remove(id) {
+    await dbContext.ShelfBooks.findOneAndDelete(id)
   }
-  async find(query = {}) {
-    const values = await dbContext.Values.find(query)
-    return values
+  async getById(id) {
+    const book = await dbContext.ShelfBooks.findById(id)
+    return book
+  }
+  async getAll() {
+    const books = await dbContext.ShelfBooks.find()
+    return books
+  }
+  async createBook(body) {
+    const book = await dbContext.ShelfBooks.create(body)
+    return book
   }
 
-  async findById(id) {
-    const value = await dbContext.Values.findById(id)
-    if (!value) {
-      throw new BadRequest('Invalid Id')
-    }
-    return value
-  }
+
 }
 
 export const shelfBooksService = new ShelfBooksService()

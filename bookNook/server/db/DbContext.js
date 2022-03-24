@@ -1,21 +1,22 @@
 import mongoose from 'mongoose'
 import { AccountSchema, ProfileSchema } from '../models/Account'
 import { ValueSchema } from '../models/Value'
-import { BookSchema } from '../models/Book'
+import { ShelfBookSchema } from '../models/ShelfBook'
 import { ClubSchema } from '../models/Club'
 import { MembershipSchema } from '../models/Membership'
-
+import { ClubBookSchema } from "../models/ClubBook"
 
 
 
 class DbContext {
   Values = mongoose.model('Value', ValueSchema);
   Account = mongoose.model('Account', AccountSchema);
-  Profiles = mongoose.model('Profile', ProfileSchema, 'accounts');
-  Books = mongoose.model('Book', BookSchema)
+  Profiles = mongoose.model('Profile', ProfileSchema, 'accounts')
+  ShelfBooks = mongoose.model('ShelfBook', ShelfBookSchema)
   Clubs = mongoose.model('Club', ClubSchema)
   Memberships = mongoose.model('Membership', MembershipSchema)
 
+  ClubBooks = mongoose.model('ClubBook', ClubBookSchema)
 }
 
 export const dbContext = new DbContext()
