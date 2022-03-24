@@ -3,8 +3,7 @@ import { BadRequest } from '../utils/Errors'
 
 class ClubBooksService {
   async getById(id) {
-    const book = await dbContext.ClubBooks.findById(id)
-    return book
+    await dbContext.ClubBooks.findById(id)
   }
   async remove(id) {
     const book = await dbContext.ClubBooks.findByIdAndRemove(id)

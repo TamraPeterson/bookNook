@@ -15,6 +15,7 @@ export class ClubBooksController extends BaseController {
   async remove(req, res, next) {
     try {
       const book = await clubBooksService.remove(req.params.id)
+      return res.send('this club book has been removed yo')
     } catch (error) {
       next(error)
     };
