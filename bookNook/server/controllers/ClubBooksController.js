@@ -1,4 +1,5 @@
 import { Auth0Provider } from "@bcwdev/auth0provider";
+import { clubBooksService } from "../services/ClubBooksService";
 import BaseController from "../utils/BaseController";
 
 export class ClubBooksController extends BaseController {
@@ -6,19 +7,44 @@ export class ClubBooksController extends BaseController {
     super('api/:clubId/clubBooks')
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
-      .get('', this.getAll)
-    // .get('/:id', this.getById)
-    // .post('', this.create)
-    // .delete('/:id', this.remove)
-
+      .get('', this.getAllClubBooks)
+      .post('', this.createClub)
+      .delete('/:id', this.remove)
+      .get('/:id', this.getById)
   }
-
-  async getAll(req, res, next) {
+  async remove(req, res, next) {
     try {
-      return res.send(['value1', 'value2'])
+      const book = await clubBooksService.remove(req.params.id)
+      return res.send('this club book has been removed yo')
+    } catch (error) {
+      next(error)
+    };
+  }
+  async createClub(req, res, next) {
+    try {
+      req.body.accountId = req.userInfo.id
+      const book = await clubBooksService.createClub(req.body)
+      return res.send(book)
     } catch (error) {
       next(error)
     }
   }
+  async getAllClubBooks(req, res, next) {
+    try {
+      const books = await clubBooksService.getAll()
+      res.send(books)
+    } catch (error) {
+      next(error)
+    }
+  }
+  async getById(req, res, next) {
+    try {
+      const book = await clubBooksService.getById(req.params.id)
+      res.send(book)
+    } catch (error) {
+      next(error)
+    }
+  }
+
 
 }
