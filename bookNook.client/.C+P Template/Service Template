@@ -1,0 +1,45 @@
+class ThingService {
+    async getAll() {
+        const res = await api.get('api/things/')
+        logger.log(res.data)
+        AppState.things = res.data
+    }
+
+    async getById(thingId) {
+        const res = await api.get('api/things/' + thingId)
+        logger.log(res.data)
+        AppState.things = res.data
+    }
+
+    async create(stuffData) {
+        const res = await api.post('api/things/', stuffData)
+        logger.log(res.data)
+        AppState.things.push(res.data)
+        return res.data
+    }
+
+    async update(updateBody) {
+        const res = await api.put('api/things/' + updateBody.id, updateBody)
+        logger.log('[ThingService Update]', res.data)
+        AppState.things = res.data
+      }
+
+    async remove(thingId) {
+        const res = await api.delete('api/things/' + thingId)
+        logger.log('[ThingService.js Remove]', res.data)
+        AppState.things = AppState.things.filter(t => t.id != id)
+    }
+
+    async softRemove(thingId){
+        const res = await api.delete('api/things/'+ thingId)
+        logger.log('[ThingService softDelete]', res.data)
+        AppState.things.cancelBool = !AppState.things.cancelBool
+    }
+
+    async filterThings(string) {
+        const res = await api.get('api/things/', string)
+        logger.log('[ThingService filterThings]', res.data)
+    }
+}
+
+export const thingService = new ThingService()
