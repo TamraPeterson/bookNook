@@ -18,4 +18,14 @@ export class AccountController extends BaseController {
       next(error)
     }
   }
+
+
+  async getAccountMembership(req, res, next) {
+    try {
+
+    } catch (error) {
+
+    }
+
+  }
 }

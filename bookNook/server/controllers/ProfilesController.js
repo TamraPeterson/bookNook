@@ -1,4 +1,5 @@
 import { profileService } from '../services/ProfileService.js'
+import { shelfBooksService } from "../services/ShelfBooksService.js"
 import BaseController from '../utils/BaseController'
 
 export class ProfilesController extends BaseController {
@@ -7,6 +8,15 @@ export class ProfilesController extends BaseController {
     this.router
       .get('', this.getProfiles)
       .get('/:id', this.getProfile)
+      .get('/:id/shelfBooks', this.getShelfBooksByProfileId)
+  }
+  async getShelfBooksByProfileId(req, res, next) {
+    try {
+      const books = await shelfBooksService.getShelfBooksByProfileId({ accountId: req.params.id })
+      res.send(books)
+    } catch (error) {
+      next(error)
+    }
   }
 
   async getProfiles(req, res, next) {
