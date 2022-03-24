@@ -15,12 +15,6 @@
                     >Edit Profile</i>
                     </h5>
                     <h1>{{ profile.name }}</h1>
-                    <a href="//thiscatdoesnotexist.com/" target="_blank">
-                        <h5>{{ profile.email }}</h5>
-                    </a>
-                    <a href="//thiscatdoesnotexist.com/" target="_blank">
-                        <h5>{{ profile.github }}</h5>
-                    </a>
                     <h5>
                         Class: {{ profile.class }}
                         <i v-if="profile.graduated == true" class="mdi mdi-school"></i>
@@ -30,11 +24,6 @@
             </div>
             <div class="col-6">
                 <h5>{{ profile.bio }}</h5>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div v-for="p in posts" :key="p.id" class="col-8">
-                <Post :post="p" />
             </div>
         </div>
         <Modal id="edit-profile">
@@ -59,7 +48,7 @@ export default {
             try {
                 if(route.name == "Profile") {
                     await profilesService.getProfile(route.params.id)
-                    // await postsService.getAll({ creatorId: route.params.id})
+                    // await booksService.getAll({ creatorId: route.params.id})
                 }
             } catch (error) {
                 logger.error(error)

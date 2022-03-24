@@ -11,4 +11,4 @@ export const googleApi = Axios.create({
 })
 // may need {?q=}
 
-export const googleKey = '&key=AIzaSyBweUI-e0zHv_rgZwbaR9uxeNZ34POOyeg'
+export const googleKey = 'key=AIzaSyBweUI-e0zHv_rgZwbaR9uxeNZ34POOyeg'
