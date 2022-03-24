@@ -8,6 +8,7 @@
 <script>
 import { ref } from '@vue/reactivity'
 import { logger } from '../utils/Logger'
+import { booksService } from '../services/BooksService'
 import Pop from '../utils/Pop'
 export default {
     setup() {
@@ -16,7 +17,7 @@ export default {
             searchTerm,
             async search() {
                 try {
-                    await thingService.getAll({ query: searchTerm.value })
+                    await booksService.searchBook(searchTerm.value)
                 } catch (error) {
                     logger.log(error)
                     Pop.toast(error.message, "error")
