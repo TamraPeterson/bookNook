@@ -9,7 +9,7 @@
   </div>
 
   <Modal id="book-modal">
-    <template #title> Create New Project </template>
+    <template #title> Add book to library </template>
     <!-- CreateProject cna be replaced with any other Create file -->
     <template #body> </template>
     <template #footer> Footer </template>

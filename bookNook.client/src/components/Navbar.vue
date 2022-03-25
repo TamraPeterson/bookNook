@@ -1,5 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-blue px-3">
+    <!-- LOGO -->
+    <div><img src="" alt="" /></div>
     <!-- Login in button -->
     <button
       class="navbar-toggler"
