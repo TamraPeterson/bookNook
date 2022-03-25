@@ -1,16 +1,17 @@
 <template>
+  <div><h2>Search for A book</h2></div>
   <form
-    class="row form-group justify-content-between p-3"
+    class="row form-group justify-content-between p-3 shadow"
     @submit.prevent="search"
   >
     <input
       type="text"
       v-model="searchTerm"
-      class="col-9 rounded-2"
+      class="col-9 rounded-2 bg-pink"
       placeholder="Search..."
     />
-    <button class="btn btn-outline-primary col-3 bg-light rounded-2 text-dark">
-      Search
+    <button class="btn col-3 bg-red rounded-2 text-dark shadow">
+      <b> Search</b>
     </button>
   </form>
 </template>
