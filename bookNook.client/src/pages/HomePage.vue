@@ -1,78 +1,77 @@
 <template>
   <!-- Slideshow container -->
-<div class="slideshow-container">
+  <div class="slideshow-container">
+    <!-- Full-width images with number and caption text -->
+    <div class="mySlides fade">
+      <div class="numbertext">1 / 3</div>
+      <img src="//thiscatdoesnotexist.com/" style="width: 100%" />
+      <div class="text">Caption Text</div>
+    </div>
 
-  <!-- Full-width images with number and caption text -->
-  <div class="mySlides fade">
-    <div class="numbertext">1 / 3</div>
-    <img src="//thiscatdoesnotexist.com/" style="width:100%">
-    <div class="text">Caption Text</div>
+    <div class="mySlides fade">
+      <div class="numbertext">2 / 3</div>
+      <img src="//thiscatdoesnotexist.com/" style="width: 100%" />
+      <div class="text">Caption Two</div>
+    </div>
+
+    <div class="mySlides fade">
+      <div class="numbertext">3 / 3</div>
+      <img src="//thiscatdoesnotexist.com/" style="width: 100%" />
+      <div class="text">Caption Three</div>
+    </div>
+
+    <!-- Next and previous buttons -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
   </div>
+  <br />
 
-  <div class="mySlides fade">
-    <div class="numbertext">2 / 3</div>
-    <img src="//thiscatdoesnotexist.com/" style="width:100%">
-    <div class="text">Caption Two</div>
+  <!-- The dots/circles -->
+  <div style="text-align: center">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
   </div>
-
-  <div class="mySlides fade">
-    <div class="numbertext">3 / 3</div>
-    <img src="//thiscatdoesnotexist.com/" style="width:100%">
-    <div class="text">Caption Three</div>
-  </div>
-
-  <!-- Next and previous buttons -->
-  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-  <a class="next" onclick="plusSlides(1)">&#10095;</a>
-</div>
-<br>
-
-<!-- The dots/circles -->
-<div style="text-align:center">
-  <span class="dot" onclick="currentSlide(1)"></span>
-  <span class="dot" onclick="currentSlide(2)"></span>
-  <span class="dot" onclick="currentSlide(3)"></span>
-</div>
 </template>
 
 <script>
 import { onMounted } from '@vue/runtime-core';
-import { slideshowService } from '../services/SlideshowService'
+
 export default {
   name: 'Home',
   setup() {
     let slideIndex = 1
-  onMounted(async () => {
-    showSlides()
-  })
+    onMounted(async () => {
+      showSlides()
+    })
     function showSlides() {
-        let i;
-        let slides = document.getElementsByClassName("mySlides");
-        for (i = 0; i < slides.length; i++) {
-          slides[i].style.display = "none";
-        }
-        slideIndex++;
-        if (slideIndex > slides.length) {slideIndex = 1}
-        slides[slideIndex-1].style.display = "block";
-        setTimeout(showSlides, 2000); // Change image every 2 seconds
+      let i;
+      let slides = document.getElementsByClassName("mySlides");
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
       }
+      slideIndex++;
+      if (slideIndex > slides.length) { slideIndex = 1 }
+      slides[slideIndex - 1].style.display = "block";
+      setTimeout(showSlides, 2000); // Change image every 2 seconds
+    }
     return {
-      
+
     }
   }
 }
 </script>
 
 <style scoped lang="scss">
-.home{
+.home {
   display: grid;
   height: 80vh;
   place-content: center;
   text-align: center;
   user-select: none;
-  .home-card{
+  .home-card {
     width: 50vw;
-    > img{
+    > img {
       height: 200px;
       max-width: 200px;
       width: 100%;
