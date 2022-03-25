@@ -4,7 +4,8 @@ export const ClubSchema = new Schema(
   {
     name: { type: String, required: true },
     description: { type: String, required: true },
-    creatorId: { type: Schema.Types.ObjectId, ref: 'Profile', required: true }
+    creatorId: { type: Schema.Types.ObjectId, ref: 'Profile', required: true },
+    activeBookId: { type: Schema.Types.ObjectId, ref: 'ClubBook', required: true }
   },
   { timestamps: true, toJSON: { virtuals: true } }
 )
@@ -14,4 +15,11 @@ ClubSchema.virtual('creator', {
   foreignField: '_id',
   justOne: true,
   ref: 'Profile'
+})
+
+ClubSchema.virtual('clubBook', {
+  localField: 'activeBookId',
+  foreignField: '_id',
+  justOne: true,
+  ref: 'ClubBook'
 })
