@@ -9,8 +9,12 @@ $light: #e9ecef;
 $dark: #111927;
 $grey: #cbcbcb;
 
-$micks-hat: #E09F3E;
 $blue: #335C67;
+$red: #922F2F;
+$green: #8CA960;
+$pink: #F3AFAF;
+$parchment: #FAF8F4;
+$micks-hat: #E09F3E;
 
 $font-sans-serif: Open Sans;
 $font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -27,6 +31,10 @@ $colors: (
   "grey": $grey,
   
   "blue": $blue,
+  "red": $red,
+  "green": $green,
+  "pink": $pink,
+  "parchment": $parchment,
   "micks-hat": $micks-hat,
 
 );
