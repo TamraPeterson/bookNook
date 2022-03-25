@@ -1,33 +1,19 @@
 import { Auth0Provider } from "@bcwdev/auth0provider";
 import { clubBooksService } from "../services/ClubBooksService";
+import { clubsService } from "../services/ClubsService";
 import BaseController from "../utils/BaseController";
+import { Forbidden } from "../utils/Errors";
 
 export class ClubBooksController extends BaseController {
   constructor() {
-    super('api/:clubId/clubBooks')
+    super('api/clubs/:clubId/clubBooks')
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getAllClubBooks)
-      .post('', this.createClub)
-      .delete('/:id', this.remove)
       .get('/:id', this.getById)
-  }
-  async remove(req, res, next) {
-    try {
-      const book = await clubBooksService.remove(req.params.id)
-      return res.send('this club book has been removed yo')
-    } catch (error) {
-      next(error)
-    };
-  }
-  async createClub(req, res, next) {
-    try {
-      req.body.accountId = req.userInfo.id
-      const book = await clubBooksService.createClub(req.body)
-      return res.send(book)
-    } catch (error) {
-      next(error)
-    }
+      .post('', this.createClubBook)
+      .delete('/:id', this.remove)
+      .put('/:id', this.edit)
   }
   async getAllClubBooks(req, res, next) {
     try {
@@ -41,6 +27,35 @@ export class ClubBooksController extends BaseController {
     try {
       const book = await clubBooksService.getById(req.params.id)
       res.send(book)
+    } catch (error) {
+      next(error)
+    }
+  }
+  async remove(req, res, next) {
+    try {
+      const book = await clubBooksService.remove(req.params.id)
+      return res.send('this club book has been removed yo')
+    } catch (error) {
+      next(error)
+    }
+  }
+  async createClubBook(req, res, next) {
+    try {
+      req.body.accountId = req.userInfo.id
+      const book = await clubBooksService.createClubBook(req.body.params)
+      return res.send(book)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async edit(req, res, next) {
+    try {
+      req.body.clubId = req.params.clubId
+      req.body.id = req.params.id
+      req.body.creatorId = req.userInfo.id
+      const updateBook = await clubBooksService.edit(req.body)
+      return res.send(updateBook)
     } catch (error) {
       next(error)
     }

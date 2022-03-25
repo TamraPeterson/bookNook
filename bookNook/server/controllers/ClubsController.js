@@ -1,5 +1,7 @@
 import BaseController from '../utils/BaseController'
 import { Auth0Provider } from '@bcwdev/auth0provider'
+import { clubBooksService } from "../services/ClubBooksService"
+import { clubsService } from "../services/ClubsService"
 
 export class ClubsController extends BaseController {
   constructor() {
@@ -8,13 +10,24 @@ export class ClubsController extends BaseController {
       // NOTE: Beyond this point all routes require Authorization tokens (the user must be logged in)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getAll)
-      // .get('/:id', this.getById)
+      .get('/:id', this.getById)
       .post('', this.create)
+      .delete('/:id', this.remove)
   }
 
   async getAll(req, res, next) {
     try {
-      return res.send(['value1', 'value2'])
+      const clubs = await clubsService.getAll()
+      res.send(clubs)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async getById(req, res, next) {
+    try {
+      const club = await clubsService.getById(req.params.id)
+      res.send(club)
     } catch (error) {
       next(error)
     }
@@ -22,11 +35,22 @@ export class ClubsController extends BaseController {
 
   async create(req, res, next) {
     try {
-      // NOTE NEVER TRUST THE CLIENT TO ADD THE CREATOR ID
       req.body.creatorId = req.userInfo.id
-      res.send(req.body)
+      const club = await clubsService.createClub(req.body)
+      res.send(club)
     } catch (error) {
       next(error)
     }
   }
+
+  async remove(req, res, next) {
+    try {
+      await clubsService.remove(req.params.id, req.userInfo.id)
+      return res.send('delorted')
+    }
+    catch (error) {
+      next(error)
+    }
+  }
+
 }
