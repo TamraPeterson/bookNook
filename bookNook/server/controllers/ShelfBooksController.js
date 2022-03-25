@@ -10,7 +10,7 @@ export class ShelfBooksController extends BaseController {
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getAll)
-      .post('', this.createBook)
+      .post('', this.createShelfBook)
       .get('/:id', this.getById)
       .delete('/:id', this.remove)
 
@@ -42,8 +42,9 @@ export class ShelfBooksController extends BaseController {
     }
   }
 
-  async createBook(req, res, next) {
+  async createShelfBook(req, res, next) {
     try {
+      req.body.accountId = req.userInfo.id
       const book = await shelfBooksService.createBook(req.body)
       return res.send(book)
     } catch (error) {
