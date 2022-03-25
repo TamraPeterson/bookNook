@@ -1,7 +1,11 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-blue px-3">
     <!-- LOGO -->
-    <div><img src="" alt="" /></div>
+    <div class="col-4"></div>
+    <div class="col-4 d-flex justify-content-center">
+      <img src="src/assets/img/BigLogo.png" class="m-0" />
+    </div>
+    <div class="col-4"></div>
     <!-- Login in button -->
     <button
       class="navbar-toggler"
@@ -16,7 +20,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <!-- LOGIN COMPONENT HERE -->
-      <Login />
+      <!-- <Login /> -->
     </div>
   </nav>
 </template>

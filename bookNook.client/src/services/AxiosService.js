@@ -6,7 +6,7 @@ export const api = Axios.create({
 })
 
 export const googleApi = Axios.create({
-  URL: 'https://www.googleapis.com/books/v1/volumes',
+  baseURL: 'https://www.googleapis.com/books/v1/volumes',
   timeout: 8000
 })
 // may need {?q=}

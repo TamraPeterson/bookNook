@@ -10,17 +10,18 @@ class BooksService {
         try {
             const res = await googleApi.get('/:id?' + googleKey)
             logger.log(res.data)
-            AppState.books = res.data.map(b => new Book(b))
+            AppState.activeBook = res.data.map(b => new Book(b))
         } catch (error) {
             logger.error(error)
         }
     }
 
-    async searchBook(query = {}) {
+    async searchBook(query) {
         try {
-            const res = await googleApi.get('?q=' + query + googleKey)
-            logger.log('[BooksService searchBook]', res.data)
-            AppState.activeBook = new Book(res.data)
+            const res = await googleApi.get('?q=' + query + '&' + googleKey)
+
+            AppState.searchBooks = res.data.items.map(i => new Book(i))
+            logger.log('searchbooks', AppState.searchBooks)
         } catch (error) {
             logger.error(error)
         }
