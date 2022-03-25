@@ -185,7 +185,7 @@ export default {
   min-height: 10vh;
   max-height: 88vh;
   border-bottom: 0vh;
-  // max-width: 100vw;
+  min-width: 100vw;
   background-size: cover;
   object-fit: cover;
 }
