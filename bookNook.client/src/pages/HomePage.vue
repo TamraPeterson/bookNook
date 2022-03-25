@@ -63,7 +63,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-<<<<<<< HEAD
 * {box-sizing:border-box}
 
 /* Slideshow container */
@@ -150,23 +149,5 @@ export default {
 @keyframes fade {
   from {opacity: .4}
   to {opacity: 1}
-=======
-.home {
-  display: grid;
-  height: 80vh;
-  place-content: center;
-  text-align: center;
-  user-select: none;
-  .home-card {
-    width: 50vw;
-    > img {
-      height: 200px;
-      max-width: 200px;
-      width: 100%;
-      object-fit: contain;
-      object-position: center;
-    }
-  }
->>>>>>> 68297019b88f8b9e541cec1a617d57bbaa2a62ca
 }
 </style>
