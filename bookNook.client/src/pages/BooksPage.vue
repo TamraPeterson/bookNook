@@ -1,11 +1,8 @@
 <template>
-  <div class="home container-fluid flex-grow-1 d-flex flex-column text-light">
-    <!-- STUB Search Bar -->
-    <div class="row d-flex justify-content-between">
-      <div class="col-4 bg-dark">
-        <Search />
-      </div>
-    </div>
+  <div class="row mt-5">
+    <div class="col-md-4"></div>
+    <div class="col-md-4 mt-5"><Search /></div>
+    <div class="col-md-4"></div>
   </div>
 
   <Modal id="book-modal">
