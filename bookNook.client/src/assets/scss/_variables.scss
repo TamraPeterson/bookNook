@@ -1,4 +1,4 @@
-$body-bg: #e5e5e5;
+$body-bg: #000000;
 $primary: #3ba5dc;
 $secondary: #8392ab;
 $success: #00f867;
@@ -13,6 +13,7 @@ $blue: #335C67;
 $red: #922F2F;
 $green: #8CA960;
 $pink: #F3AFAF;
+$light-pink: #f8dddd;
 $parchment: #FAF8F4;
 $micks-hat: #E09F3E;
 
@@ -34,6 +35,7 @@ $colors: (
   "red": $red,
   "green": $green,
   "pink": $pink,
+  "light-pink": $light-pink,
   "parchment": $parchment,
   "micks-hat": $micks-hat,
 
