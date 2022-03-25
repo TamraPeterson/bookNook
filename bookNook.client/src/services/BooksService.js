@@ -19,8 +19,9 @@ class BooksService {
     async searchBook(query) {
         try {
             const res = await googleApi.get('?q=' + query + '&' + googleKey)
-            logger.log('[BooksService searchBook]', res.data.items)
-            AppState.searchBook = res.data.items.map(i => new Book(i))
+
+            AppState.searchBooks = res.data.items.map(i => new Book(i))
+            logger.log('searchbooks', AppState.searchBooks)
         } catch (error) {
             logger.error(error)
         }
