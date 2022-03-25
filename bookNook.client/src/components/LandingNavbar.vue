@@ -3,7 +3,7 @@
     <!-- LOGO -->
     <div class="col-4"></div>
     <div class="col-4 d-flex justify-content-center">
-      <img src="src/assets/img/BigLogo.png" class="m-0" />
+      <img src="src/assets/img/BigLogo.png" class="m-0 img-height" />
     </div>
     <div class="col-4"></div>
     <!-- Login in button -->
@@ -44,5 +44,9 @@ a:hover {
   border-bottom: 2px solid var(--bs-success);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+}
+
+.img-height {
+  height: 10vh;
 }
 </style>

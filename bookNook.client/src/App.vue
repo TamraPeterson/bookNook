@@ -3,7 +3,7 @@
     <LandingNavbar v-if="route.name == 'Home'" />
     <Navbar v-else />
   </header>
-  <main class="p-0 container-fluid">
+  <main class="p-0 container-fluid" style="background-size: cover;">
     <router-view />
   </main>
 </template>
@@ -29,5 +29,6 @@ export default {
 </script>
 <style lang="scss">
 @import "./assets/scss/main.scss";
+
 
 </style>

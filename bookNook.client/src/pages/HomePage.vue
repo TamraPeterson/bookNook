@@ -1,15 +1,11 @@
 <template>
+<div class="hide-overflow">
 
-<div class="row">
-  <div class="col-12 m-0 p-0">
-
-
-  <!-- Slideshow container -->
   <div class="slideshow-container">
     <!-- Full-width images with number and caption text -->
     <div class="mySlides fade">
       <div class="numbertext">1 / 3</div>
-      <img src="src/assets/img/BookWindow.jpg" style="width: 100%" class="landing-img"/>
+      <img src="src/assets/img/BookCloseup.jpg" style="width: 100%" class="landing-img"/>
       <div class="text">Caption Text</div>
     </div>
 
@@ -42,8 +38,7 @@
     <span class="dot" onclick="currentSlide(2)"></span>
     <span class="dot" onclick="currentSlide(3)"></span>
   </div> -->
-    </div>
-</div>
+  </div>
 </template>
 
 <script>
@@ -52,7 +47,7 @@ import { onMounted } from '@vue/runtime-core';
 export default {
   name: 'Home',
   setup() {
-    let slideIndex = 1
+    let slideIndex = 0
     onMounted(async () => {
       showSlides()
     })
@@ -65,7 +60,7 @@ export default {
       slideIndex++;
       if (slideIndex > slides.length) { slideIndex = 1 }
       slides[slideIndex - 1].style.display = "block";
-      setTimeout(showSlides, 2000); // Change image every 2 seconds
+      setTimeout(showSlides, 2000)
     }
     return {
 
@@ -75,10 +70,17 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.hide-overflow{
+  overflow: hidden;
+  max-height: 87vh;
+}
+
 * {box-sizing:border-box}
 
 /* Slideshow container */
 .slideshow-container {
+  // overflow: hidden;
+  min-height: 87vh;
   max-width: 100vw;
   position: relative;
   // margin: auto;
@@ -87,7 +89,10 @@ export default {
 /* Hide the images by default */
 .mySlides {
   display: none;
-  height: 100%;
+  height: 87vh;
+  img{
+    height: 87vh;
+  }
 }
 
 /* Next & previous buttons */
@@ -119,11 +124,12 @@ export default {
 
 /* Caption text */
 .text {
+  position: fixed;
+  text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.466);
   color: #f2f2f2;
   font-size: 15px;
   padding: 8px 12px;
-  position: absolute;
-  bottom: 8px;
+  bottom: 8px ;
   width: 100%;
   text-align: center;
 }
@@ -177,10 +183,11 @@ export default {
 
 .landing-img {
   min-height: 10vh;
-  max-height: 80vh;
+  max-height: 88vh;
   border-bottom: 0vh;
   // max-width: 100vw;
   background-size: cover;
+  object-fit: cover;
 }
 
 @keyframes fade {
