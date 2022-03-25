@@ -3,7 +3,7 @@
     <LandingNavbar v-if="route.name == 'Home'" />
     <Navbar v-else />
   </header>
-  <main>
+  <main class="p-0 container-fluid">
     <router-view />
   </main>
 </template>

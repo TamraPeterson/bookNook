@@ -1,23 +1,33 @@
 <template>
+
+<div class="row">
+  <div class="col-12 m-0 p-0">
+
+
   <!-- Slideshow container -->
   <div class="slideshow-container">
     <!-- Full-width images with number and caption text -->
     <div class="mySlides fade">
       <div class="numbertext">1 / 3</div>
-      <img src="//thiscatdoesnotexist.com/" style="width: 100%" />
+      <img src="src/assets/img/BookWindow.jpg" style="width: 100%" class="landing-img"/>
       <div class="text">Caption Text</div>
     </div>
 
     <div class="mySlides fade">
       <div class="numbertext">2 / 3</div>
-      <img src="//thiscatdoesnotexist.com/" style="width: 100%" />
+      <img src="src/assets/img/Ladder.jpg" style="width: 100%" class="landing-img"/>
       <div class="text">Caption Two</div>
     </div>
 
     <div class="mySlides fade">
       <div class="numbertext">3 / 3</div>
-      <img src="//thiscatdoesnotexist.com/" style="width: 100%" />
+      <img src="src/assets/img/BookPathway.jpg" style="width: 100%" class="landing-img"/>
       <div class="text">Caption Three</div>
+    </div>
+
+    <div class="quote-text text-light rounded-2">
+      <h1>"Fill your house with stacks of books, all the crannies and all the nooks"</h1>
+      <p>Dr. Seuss</p>
     </div>
 
     <!-- Next and previous buttons -->
@@ -27,11 +37,13 @@
   <br />
 
   <!-- The dots/circles -->
-  <div style="text-align: center">
+  <!-- <div style="text-align: center">
     <span class="dot" onclick="currentSlide(1)"></span>
     <span class="dot" onclick="currentSlide(2)"></span>
     <span class="dot" onclick="currentSlide(3)"></span>
-  </div>
+  </div> -->
+    </div>
+</div>
 </template>
 
 <script>
@@ -67,14 +79,15 @@ export default {
 
 /* Slideshow container */
 .slideshow-container {
-  max-width: 1000px;
+  max-width: 100vw;
   position: relative;
-  margin: auto;
+  // margin: auto;
 }
 
 /* Hide the images by default */
 .mySlides {
   display: none;
+  height: 100%;
 }
 
 /* Next & previous buttons */
@@ -144,6 +157,30 @@ export default {
 .fade {
   animation-name: fade;
   animation-duration: 1.5s;
+}
+
+.quote-text {
+    background-color: #111927;
+    background-color: rgba(17, 25, 39, 0.4);
+    color: #e9ecef;
+    font-weight: bold;
+    border: 3px solid #e9ecef;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 80%;
+    padding: 2rem;
+    text-align: center;
+}
+
+.landing-img {
+  min-height: 10vh;
+  max-height: 80vh;
+  border-bottom: 0vh;
+  // max-width: 100vw;
+  background-size: cover;
 }
 
 @keyframes fade {

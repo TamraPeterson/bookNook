@@ -3,7 +3,7 @@
     <!-- LOGO -->
     <div class="col-4"></div>
     <div class="col-4 d-flex justify-content-center">
-      <img src="src/assets/img/BigLogo.png" class="m-1" />
+      <img src="src/assets/img/BigLogo.png" class="m-0" />
     </div>
     <div class="col-4"></div>
     <!-- Login in button -->
