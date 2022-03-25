@@ -1,14 +1,14 @@
 <template>
   <div class="container-fluid">
-    <div class="row mt-3">
+    <div class="row mt-1">
       <div class="col-md-4"></div>
-      <div class="col-md-4 mt-5"><Search /></div>
+      <div class="col-md-4 mt-2"><Search /></div>
       <div class="col-md-4"></div>
-      <div class="row mt-5 p-2">
+      <div class="row mt-5 p-2 justify-content-center">
         <div
           v-for="b in searchBooks"
           :key="b.id"
-          class="col-md-2 d-flex justify-content-center"
+          class="col-md-2 m-3 d-flex justify-content-center"
         >
           <BookCover :searchBook="b" />
         </div>
