@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid bg-light">
     <div class="row mt-1">
       <div class="col-md-4"></div>
       <div class="col-md-4 mt-2 text-center"><Search /></div>

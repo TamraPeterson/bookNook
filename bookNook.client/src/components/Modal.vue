@@ -7,9 +7,9 @@
     aria-labelledby="modelTitleId"
     aria-hidden="true"
   >
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog bg-parchment" role="document">
       <div class="modal-content">
-        <div class="modal-header bg-secondary">
+        <div class="modal-header bg-parchment">
           <h5 class="modal-title">
             <slot name="modal-title"> <!--title slot --></slot>
           </h5>
@@ -20,7 +20,7 @@
             aria-label="Close"
           ></button>
         </div>
-        <div class="modal-body bg-secondary">
+        <div class="modal-body bg-parchment">
           <slot name="modal-body"><!--body slot --></slot>
         </div>
       </div>

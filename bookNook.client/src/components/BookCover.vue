@@ -1,24 +1,63 @@
 <template>
   <div class="component">
     <img
-      data-bs-toggle="modal"
-      data-bs-target="#bookDetails-modal"
+      @click="getById(searchBook.bookId)"
       class="shadow cover-size rounded selectable"
       :src="searchBook.imageLinks.thumbnail"
       alt=""
     />
   </div>
-  <Modal id="bookDetails-modal">
-    <template #modal-title>{{ searchBook.title }}</template>
-    <template #modal-body
-      >Author: {{ searchBook.authors[0] }}
-      {{ searchBook.description }}
+  <Modal v-if="activeBook.title" id="bookDetails-modal">
+    <template #modal-title>
+      <h3>{{ activeBook.title }}</h3>
+      {{ activeBook.subtitle }}</template
+    >
+
+    <template #modal-body>
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <h5>Written by: {{ activeBook.authors[0] }}</h5>
+          <h6>Published by: {{ activeBook.publisher }}</h6>
+          <h6>{{ activeBook.pageCount }} pages</h6>
+        </div>
+        <div class="col-md-6">
+          <img
+            class="thumbnail img-fluid"
+            :src="activeBook.imageLinks.smallThumbnail"
+            alt=""
+          />
+        </div>
+
+        <p>{{ activeBook.description }}</p>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-4 d-flex">
+          <button class="btn bg-blue mt-3 shadow">
+            <h3>
+              <i class="mdi mdi-heart"> <h6>add to shelf</h6></i>
+            </h3>
+          </button>
+        </div>
+        <div class="col-md-4 d-flex">
+          <button class="btn bg-blue mt-3 shadow ms-5">
+            <h3>
+              <i class="mdi mdi-account-group"> <h6>NookClub</h6></i>
+            </h3>
+          </button>
+        </div>
+      </div>
     </template>
   </Modal>
 </template>
 
 
 <script>
+import { computed } from '@vue/reactivity'
+import { booksService } from '../services/BooksService'
+import { logger } from '../utils/Logger'
+import Pop from '../utils/Pop'
+import { AppState } from '../AppState'
+import { Modal } from 'bootstrap'
 export default {
   props: {
     searchBook: {
@@ -28,7 +67,21 @@ export default {
 
   },
   setup() {
-    return {}
+    return {
+      activeBook: computed(() => AppState.activeBook),
+      async getById(id) {
+        try {
+
+          await booksService.getBookById(id)
+          Modal.getOrCreateInstance(
+            document.getElementById("bookDetails-modal")
+          ).show();
+        } catch (error) {
+          logger.log(error)
+          Pop.toast(error.message, "error")
+        }
+      }
+    }
   }
 }
 </script>
@@ -43,5 +96,10 @@ export default {
 .cover-size:hover {
   transform: scale(1.1);
   transition: 0.3s;
+}
+.thumbnail {
+  height: 300px;
+  width: 200px;
+  object-fit: cover;
 }
 </style>
