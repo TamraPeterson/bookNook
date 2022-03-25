@@ -5,7 +5,7 @@
     <!-- Full-width images with number and caption text -->
     <div class="mySlides fade">
       <div class="numbertext">1 / 3</div>
-      <img src="src/assets/img/BookCloseup.jpg" style="width: 100%" class="landing-img"/>
+      <img src="https://i.redd.it/0yndtkv4wsg51.jpg" style="width: 100%" class="landing-img"/>
       <div class="text">Caption Text</div>
     </div>
 
@@ -22,13 +22,14 @@
     </div>
 
     <div class="quote-text text-light rounded-2">
-      <h1>"Fill your house with stacks of books, all the crannies and all the nooks"</h1>
-      <p>Dr. Seuss</p>
+      <h1>"Fill your house with stacks of books,<br> in all the crannies and in all the nooks"</h1>
+      <p>-Dr. Seuss</p>
     </div>
+    <a class="text-white btn bg-micks-hat rounded-pill fw-bold p-2 px-4 mt-2 button-center" @click="goTo('Books')">Start Your Next Adventure</a>
 
     <!-- Next and previous buttons -->
-    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    <!-- <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a> -->
   </div>
   <br />
 
@@ -43,11 +44,13 @@
 
 <script>
 import { onMounted } from '@vue/runtime-core';
+import { useRouter } from 'vue-router';
 
 export default {
   name: 'Home',
   setup() {
     let slideIndex = 0
+    const router = useRouter()
     onMounted(async () => {
       showSlides()
     })
@@ -60,10 +63,12 @@ export default {
       slideIndex++;
       if (slideIndex > slides.length) { slideIndex = 1 }
       slides[slideIndex - 1].style.display = "block";
-      setTimeout(showSlides, 2000)
+      setTimeout(showSlides, 10000)
     }
     return {
-
+      goTo(page) {
+        router.push({ name: page })
+      }
     }
   }
 }
@@ -162,7 +167,7 @@ export default {
 /* Fading animation */
 .fade {
   animation-name: fade;
-  animation-duration: 1.5s;
+  animation-duration: 5s;
 }
 
 .quote-text {
@@ -176,7 +181,26 @@ export default {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
-    width: 80%;
+    width: 50%;
+    padding-top: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 1rem;
+    text-align: center;
+}
+
+.button-center {
+    // background-color: #111927;
+    // background-color: rgba(17, 25, 39, 0.4);
+    // color: #e9ecef;
+    font-weight: bold;
+    // border: 3px solid #e9ecef;
+    position: absolute;
+    top: 66%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 15%;
     padding: 2rem;
     text-align: center;
 }
@@ -188,6 +212,16 @@ export default {
   min-width: 100vw;
   background-size: cover;
   object-fit: cover;
+}
+
+@media screen and (max-width: 1286px) {
+  .quote-text {
+    width: 65%;
+  }
+  .button-center {
+    width: 25%;
+    top: 70%;
+  }
 }
 
 @keyframes fade {
