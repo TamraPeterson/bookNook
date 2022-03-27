@@ -1,5 +1,6 @@
 <template>
   <div class="component">
+    <div class="pages nook-shadow rounded"></div>
     <img
       @click="getById(searchBook.bookId)"
       class="nook-shadow cover-size rounded selectable"
@@ -94,7 +95,7 @@ export default {
   transition: 0.3s;
 }
 .cover-size:hover {
-  transform: scale(1.1);
+  transform: scale(1.04);
   transition: 0.3s;
 }
 .thumbnail {
@@ -102,4 +103,19 @@ export default {
   width: 200px;
   object-fit: cover;
 }
+.pages {
+  transform: translateX(2%);
+  position: absolute;
+  height: 300px;
+  width: 200px;
+  transition: 0.3s;
+  background-color: red;
+  transition: 0.3s;
+}
+.cover-size:hover .pages{
+  transform: scale(1.04);
+  transition: 0.3s;
+  background-color: blue;
+}
+
 </style>
