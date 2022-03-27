@@ -14,7 +14,7 @@ class BooksService {
     }
 
     async searchBook(query) {
-        AppState.searchBooks = [s]
+        AppState.searchBooks = []
         const res = await googleApi.get('?q=' + query + '&' + googleKey)
         AppState.searchBooks = res.data.items.map(i => new Book(i))
         logger.log('searchbooks', AppState.searchBooks)
