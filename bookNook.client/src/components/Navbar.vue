@@ -1,22 +1,26 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-blue px-3">
     <!-- LOGO -->
-    <div><img src="" alt="" /></div>
+    <div class="col-6">
+      <img src="src/assets/img/BLogo.png" class="img-height" />
+    </div>
     <!-- Login in button -->
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarText"
-      aria-controls="navbarText"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon" />
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-      <!-- LOGIN COMPONENT HERE -->
-      <Login />
+    <div class="col-6 justify-content-end">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarText"
+        aria-controls="navbarText"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon" />
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <!-- LOGIN COMPONENT HERE -->
+        <Login />
+      </div>
     </div>
   </nav>
 </template>
@@ -40,5 +44,9 @@ a:hover {
   border-bottom: 2px solid var(--bs-success);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+}
+
+.img-height {
+  height: 8vh;
 }
 </style>
