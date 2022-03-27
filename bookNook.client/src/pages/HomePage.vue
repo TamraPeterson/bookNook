@@ -13,7 +13,7 @@
     <a
       data-bs-toggle="modal"
       data-bs-target="#login-modal"
-      class="text-white btn bg-micks-hat rounded-pill fw-bold p-2 px-4 mt-2 button-center"
+      class="text-white btn bg-micks-hat rounded-pill fw-bold p-2 px-4 mt-2 button-center nook-shadow"
       >Start Your Next Adventure
     </a>
     

@@ -2,7 +2,7 @@
   <div class="component">
     <img
       @click="getById(searchBook.bookId)"
-      class="shadow cover-size rounded selectable"
+      class="nook-shadow cover-size rounded selectable"
       :src="searchBook.imageLinks.thumbnail"
       alt=""
     />
