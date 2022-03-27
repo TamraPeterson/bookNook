@@ -10,9 +10,21 @@
       <h1>"Fill your house with stacks of books,<br> in all the crannies and in all the nooks"</h1>
       <p>-Dr. Seuss</p>
     </div>
-    <a class="text-white btn bg-micks-hat rounded-pill fw-bold p-2 px-4 mt-2 button-center" @click="goTo('Books')">Start Your Next Adventure</a>
+    <a
+      data-bs-toggle="modal"
+      data-bs-target="#login-modal"
+      class="text-white btn bg-micks-hat rounded-pill fw-bold p-2 px-4 mt-2 button-center"
+      >Start Your Next Adventure
+    </a>
+    
   </div>
 </div>
+
+<Modal id="login-modal" >
+  <template #title> Modal Title </template>
+  <template #body> <LoginModal /> </template>
+  <template #footer> Modal Footer </template>
+</Modal>
 </template>
 
 <script>
