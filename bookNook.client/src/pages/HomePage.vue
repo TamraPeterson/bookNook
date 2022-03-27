@@ -1,5 +1,5 @@
 <template>
-<div class="">
+<div class="hide-overflow">
 
   <div class="slideshow-container">
     <div class="">
@@ -17,11 +17,6 @@
       >Start Your Next Adventure
     </a>
   </div>
-
-
-  <!-- <div class="row text-dark">
-    <h1>Hello</h1>
-  </div> -->
 </div>
 
 <Modal id="login-modal" >
