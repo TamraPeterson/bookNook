@@ -2,36 +2,35 @@
   <div class="component">
     <div class="pages nook-shadow rounded"></div>
     <img
-      @click="getById(searchBook.bookId)"
+      @click="getById(myShelfBook.bookId)"
       class="nook-shadow cover-size rounded selectable"
       :src="
-        searchBook.imageLinks?.thumbnail || 'src/assets/img/BookCoverTest2.jpg'
+        myShelfBook.imageLinks?.thumbnail || 'src/assets/img/BookCoverTest2.jpg'
       "
       alt=""
     />
-    <p class="text-center mt-2">
-      <small>{{ searchBook.title }}</small>
+    <p class="text-center mt-2 text-blue">
+      <small>{{ myShelfBook.title }}</small>
     </p>
   </div>
   <Modal v-if="activeBook.title" id="bookDetails-modal">
     <template #modal-title>
-      <h3>{{ activeBook.title }}</h3>
-      {{ activeBook.subtitle }}</template
-    >
+      <h3>{{}}</h3>
+      {{
+    }}</template>
 
     <template #modal-body>
       <div class="row align-items-center">
         <div class="col-md-6">
-          <h5>Written by: {{ activeBook.authors[0] }}</h5>
-          <h6>Published by: {{ activeBook.publisher }}</h6>
-          <h6>{{ activeBook.pageCount }} pages</h6>
+          <h5>Written by: {{}}</h5>
+
+          <h6>{{}} pages</h6>
         </div>
         <div class="col-md-6">
           <img
             class="thumbnail img-fluid"
-            :src="
-              activeBook.imageLinks?.smallThumbnail ||
-              'src/assets/img/BookCoverTest2.jpg'
+            src="
+             
             "
             alt=""
           />
@@ -71,7 +70,7 @@ import { AppState } from '../AppState'
 import { Modal } from 'bootstrap'
 export default {
   props: {
-    searchBook: {
+    myShelfBook: {
       type: Object,
       required: true
     }
@@ -80,6 +79,7 @@ export default {
   setup() {
     return {
       activeBook: computed(() => AppState.activeBook),
+      myShelfBooks: computed(() => AppState.myShelfBooks),
 
       async addToShelf() {
         try {

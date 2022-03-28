@@ -26,7 +26,16 @@ class BooksService {
     async addToShelf() {
         const bookToAdd = AppState.activeBook
         const res = await api.post('api/shelfBooks', bookToAdd)
-        logger.log('added book to shelf', res.data)
+        logger.log('added to shelf', res.data)
+        AppState.myShelfBooks.push(res.data)
+        logger.log(AppState.myShelfBooks)
+        return res.data
+    }
+
+    async getAll(id) {
+        const res = await api.get('api/shelfBooks/', id)
+        AppState.myShelfBooks = res.data
+
     }
 }
 
