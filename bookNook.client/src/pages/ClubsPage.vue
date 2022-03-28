@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid bg-light">
-    <div class="col-6">
+    <div class="col-16">
       <i
         v-if="account.id"
         data-bs-toggle="modal"
@@ -13,7 +13,29 @@
 
   <Modal id="club-modal">
     <template #modal-title>
-      <h1>Create Club Form</h1>
+      <div class="row">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label"
+            >Club Name:</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="name your new book club"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">
+            Club description:</label
+          >
+          <textarea
+            class="form-control"
+            id="exampleFormControlTextarea1"
+            rows="3"
+          ></textarea>
+        </div>
+      </div>
     </template>
 
     <template #modal-body>
