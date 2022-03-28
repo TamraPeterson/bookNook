@@ -3,8 +3,8 @@ import { BadRequest, Forbidden } from '../utils/Errors'
 import { clubsService } from "./ClubsService"
 
 class ClubBooksService {
-  async getAll() {
-    const books = await dbContext.ClubBooks.find()
+  async getAll(query = {}) {
+    const books = await dbContext.ClubBooks.find(query)
     return books
   }
   async getById(id) {

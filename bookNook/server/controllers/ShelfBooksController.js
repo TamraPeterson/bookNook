@@ -26,7 +26,7 @@ export class ShelfBooksController extends BaseController {
 
   async getAll(req, res, next) {
     try {
-      const books = await shelfBooksService.getAll()
+      const books = await shelfBooksService.getAll(req.query)
       res.send(books)
     } catch (error) {
       next(error)

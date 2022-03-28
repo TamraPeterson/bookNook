@@ -19,7 +19,7 @@ export class ClubBooksController extends BaseController {
   }
   async getAllClubBooks(req, res, next) {
     try {
-      const books = await clubBooksService.getAll()
+      const books = await clubBooksService.getAll(req.query)
       res.send(books)
     } catch (error) {
       next(error)

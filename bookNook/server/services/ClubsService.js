@@ -2,8 +2,8 @@ import { dbContext } from "../db/DbContext"
 import { BadRequest, Forbidden } from "../utils/Errors"
 
 class ClubsService {
-  async getAll() {
-    const clubs = await dbContext.Clubs.find()
+  async getAll(query = {}) {
+    const clubs = await dbContext.Clubs.find(query)
     return clubs
   }
   async getById(id) {

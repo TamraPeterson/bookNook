@@ -9,8 +9,8 @@ class ShelfBooksService {
     const book = await dbContext.ShelfBooks.findById(id)
     return book
   }
-  async getAll() {
-    const books = await dbContext.ShelfBooks.find()
+  async getAll(query = {}) {
+    const books = await dbContext.ShelfBooks.find(query)
     return books
   }
   async createBook(body) {
