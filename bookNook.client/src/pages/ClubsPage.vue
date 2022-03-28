@@ -2,7 +2,7 @@
   <div class="container-fluid bg-light">
     <div class="row mt-1">
       <div class="col-md-4"></div>
-      <div class="col-md-4 mt-2 text-center"></div>
+      <div class="col-md-4 mt-2 text-center"><ClubSearch /></div>
       <div class="col-md-4"></div>
       <div class="row mt-5 p-2 justify-content-center">
         <div
