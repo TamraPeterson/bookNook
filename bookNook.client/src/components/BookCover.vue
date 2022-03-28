@@ -8,6 +8,7 @@
         searchBook.imageLinks?.thumbnail || 'src/assets/img/BookCoverTest2.jpg'"
       alt=""
     />
+    <p class="text-center mt-2"><small>{{searchBook.title}}</small></p>
   </div>
   <Modal v-if="activeBook.title" id="bookDetails-modal">
     <template #modal-title>
