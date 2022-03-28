@@ -10,41 +10,58 @@
                     <i
                             v-if="account.id == profile.id"
                             data-bs-toggle="modal"
-                            data-bs-target="#edit-profile"
+                            data-bs-target="#profile-modal"
                             class="mdi mdi-pencil selectable"
                     >Edit Profile</i>
                     </h5>
                     <h1>{{ profile.name }}</h1>
-                    <h5>
-                        Class: {{ profile.class }}
-                        <i v-if="profile.graduated == true" class="mdi mdi-school"></i>
-                        <div v-else></div>
-                    </h5>
                 </div>
             </div>
             <div class="col-6">
-                <h5>{{ profile.bio }}</h5>
+                <!-- <h5>{{ profile.bio }}</h5> -->
             </div>
         </div>
-        <Modal id="edit-profile">
-            <template #title> Edit Profile </template>
-            <template #body> <ProfileForm /> </template>
-        </Modal>
+
+<Modal id="profile-modal">
+    <template #modal-title>
+        <h1>Edit Profile Form</h1>
+    </template>
+
+    <template #modal-body>
+    <form class="row d-flex flex-column bg-dark p-3">
+      
+        <h5 class="p-1 pt-3">Username:</h5>
+        <input v-model="editable.name" type="text">
+      
+        <h5 class="p-1 pt-3">Profile Photo:</h5>
+        <input v-model="editable.picture" type="text">
+<!--       
+        <h5 class="p-1 pt-3">Background Image:</h5>
+        <input v-model="editable.coverImg" type="text"> -->
+
+      <button type="button" class="btn btn-info" @click="update">Submit</button>
+    </form>
+    </template>
+  </Modal>
+
     </div>
 </template>
 
 <script>
-import { computed, watchEffect } from '@vue/runtime-core'
+import { computed, ref, watchEffect } from '@vue/runtime-core'
 import { useRoute } from 'vue-router'
 import { logger } from '../utils/Logger'
 import { profilesService } from '../services/ProfilesService'
 import Pop from '../utils/Pop'
 import { AppState } from '../AppState'
+import { accountService } from '../services/AccountService'
 export default {
     name: 'Profile',
     setup() {
         const route = useRoute()
+        const editable = ref({})
         watchEffect(async () => {
+            // editable.value = AppState.account
             try {
                 if(route.name == "Profile") {
                     await profilesService.getProfile(route.params.id)
@@ -56,9 +73,18 @@ export default {
             }
         })
         return {
+            editable,
+            async update() {
+                try {
+                    await accountService.update(editable.value)
+                } catch (error) {
+                    logger.error(error);
+                    Pop.toast(error.message, "error");
+                }
+            },
             profile: computed(() => AppState.profile),
             account: computed(() => AppState.account),
-            coverImg: computed(() => `url('${AppState.profile.coverImg}')`)
+            coverImg: computed(() => `url('${AppState.profile.coverImg}')`),
         }
     }
 }
