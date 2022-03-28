@@ -12,6 +12,7 @@ export class ClubsController extends BaseController {
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getAll)
       .get('/:id', this.getById)
+      .get('/:clubBookId/comments', this.getClubComments)
       .post('', this.create)
       .delete('/:id', this.remove)
   }
