@@ -5,9 +5,7 @@
       @click="getById(searchBook.bookId)"
       class="nook-shadow cover-size rounded selectable"
       :src="
-        searchBook.imageLinks?.thumbnail ||
-        'https://images.unsplash.com/photo-1621944190310-e3cca1564bd7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8Ym9vayUyMGNvdmVyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60'
-      "
+        searchBook.imageLinks?.thumbnail || 'src/assets/img/BookCoverTest2.jpg'"
       alt=""
     />
   </div>
@@ -28,9 +26,7 @@
           <img
             class="thumbnail img-fluid"
             :src="
-              activeBook.imageLinks?.smallThumbnail ||
-              'https://images.unsplash.com/photo-1621944190310-e3cca1564bd7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8Ym9vayUyMGNvdmVyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60'
-            "
+              activeBook.imageLinks?.smallThumbnail || 'src/assets/img/BookCoverTest2.jpg'"
             alt=""
           />
         </div>
