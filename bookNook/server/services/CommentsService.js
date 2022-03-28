@@ -4,6 +4,7 @@ import { BadRequest } from '../utils/Errors'
 class CommentsService {
   async create(newComment) {
     const comment = await dbContext.Comments.create(newComment)
+    await comment.populate('creator', 'name picture')
     return comment
   }
 
@@ -15,20 +16,20 @@ class CommentsService {
   async getById(id) {
     const comment = await dbContext.Comments.findById(id).populate('creator', 'name picture')
     if (!comment) {
-        throw new BadRequest('Invalid Comment Id')
+      throw new BadRequest('Invalid Comment Id')
     }
     return comment
   }
 
   async remove(id, userId) {
     const original = await this.getById(id)
-    if(original.creatorId.toString() !== userId) {
-        throw new BadRequest('You cannot remove this project')
+    if (original.creatorId.toString() !== userId) {
+      throw new BadRequest('You cannot remove this project')
     }
-    await dbContext.Comments.findOneAndDelete({ _id: id})
+    await dbContext.Comments.findOneAndDelete({ _id: id })
   }
 
-  async getClubComments(id) {
+  async getClubBookComments(id) {
     const comments = await dbContext.Comments.find({ clubId: id }).populate('creator', 'name picture')
     return comments
   }

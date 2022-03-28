@@ -4,7 +4,7 @@ import { commentsService } from '../services/CommentsService'
 
 export class CommentsController extends BaseController {
   constructor() {
-    super('api/:clubId/:clubBookId/comments')
+    super('api/comments')
     this.router
       // NOTE: Beyond this point all routes require Authorization tokens (the user must be logged in)
       .get('', this.getAll)
@@ -27,7 +27,6 @@ export class CommentsController extends BaseController {
       // NOTE NEVER TRUST THE CLIENT TO ADD THE CREATOR ID
       req.body.creatorId = req.userInfo.id
       const comment = await commentsService.create(req.body)
-      await comment.populate('creator', 'name picture')
       res.send(comment)
     } catch (error) {
       next(error)
@@ -42,12 +41,12 @@ export class CommentsController extends BaseController {
       next(error)
     }
   }
-  async getClubComments(req, res, next) {
-    try {
-        const club = await commentsService.getClubComments(req.params.id)
-        return res.send(club)
-    } catch (error) {
-        next(error)
-    }
-  }
+  // async getClubComments(req, res, next) {
+  //   try {
+  //     const club = await commentsService.getClubComments(req.params.id)
+  //     return res.send(club)
+  //   } catch (error) {
+  //     next(error)
+  //   }
+  // }
 }

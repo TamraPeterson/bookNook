@@ -12,7 +12,6 @@ export class ClubsController extends BaseController {
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getAll)
       .get('/:id', this.getById)
-      .get('/:clubBookId/comments', this.getClubComments)
       .post('', this.create)
       .delete('/:id', this.remove)
   }
@@ -55,13 +54,6 @@ export class ClubsController extends BaseController {
     }
   }
 
-  async getClubComments(req, res, next) {
-    try {
-        const comments = await commentsService.getClubComments(req.params.id)
-        return res.send(comments)
-    } catch (error) {
-        next(error)
-    }
-}
+
 
 }

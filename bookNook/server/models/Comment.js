@@ -6,7 +6,7 @@ export const CommentSchema = new Schema(
     creatorId: { type: Schema.Types.ObjectId, ref: 'Profile', required: true },
     body: { type: String, required: true },
     spoiler: { type: Boolean, required: true, default: false },
-    clubId: { type: String, required: true }
+    clubBookId: { type: Schema.Types.ObjectId, required: true }
   },
   { timestamps: true, toJSON: { virtuals: true } }
 )

@@ -20,6 +20,7 @@ class ClubBooksService {
   }
   async createClubBook(body) {
     const book = await dbContext.ClubBooks.create(body)
+
     return book
   }
 
