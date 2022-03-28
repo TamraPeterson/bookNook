@@ -19,7 +19,7 @@ export class BooksController extends BaseController {
       const book = await booksService.remove(req.params.id)
     } catch (error) {
       next(error)
-    };
+    }
   }
 
   async getAll(req, res, next) {
