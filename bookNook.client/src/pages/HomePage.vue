@@ -17,8 +17,7 @@
         <p>-Dr. Seuss</p>
       </div>
       <a
-        data-bs-toggle="modal"
-        data-bs-target="#login-modal"
+        @click="login"
         class="
           text-white
           btn
@@ -35,18 +34,32 @@
       </a>
     </div>
   </div>
-
-  <Modal id="login-modal">
-    <template #modal-title> Modal Title </template>
-    <template #modal-body> <LoginModal /> </template>
-  </Modal>
 </template>
 
 <script>
+import { computed } from "@vue/reactivity";
+import { AppState } from "../AppState";
+import { AuthService } from "../services/AuthService";
+import { router } from "../router";
 export default {
-  name: 'Home'
-}
+  name: 'Home',
+  setup() {
+    return {
+      user: computed(() => AppState.user),
+      account: computed(() => AppState.account),
+      async login() {
+        await AuthService.loginWithPopup();
+
+        router.push({ name: "Books" })
+      },
+      async logout() {
+        AuthService.logout({ returnTo: window.location.origin });
+      },
+    };
+  },
+};
 </script>
+
 
 <style scoped lang="scss">
 .hide-overflow {

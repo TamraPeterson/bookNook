@@ -4,14 +4,17 @@
     <img
       @click="getById(searchBook.bookId)"
       class="nook-shadow cover-size rounded selectable"
-      :src="searchBook.imageLinks.thumbnail"
+      :src="
+        searchBook.imageLinks?.thumbnail ||
+        'https://images.unsplash.com/photo-1621944190310-e3cca1564bd7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8Ym9vayUyMGNvdmVyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60'
+      "
       alt=""
     />
   </div>
   <Modal v-if="activeBook.title" id="bookDetails-modal">
     <template #modal-title>
       <h3>{{ activeBook.title }}</h3>
-      {{ activeBook.subtitle }}</template
+      s {{ activeBook.subtitle }}</template
     >
 
     <template #modal-body>
@@ -24,7 +27,10 @@
         <div class="col-md-6">
           <img
             class="thumbnail img-fluid"
-            :src="activeBook.imageLinks.smallThumbnail"
+            :src="
+              activeBook.imageLinks?.smallThumbnail ||
+              'https://images.unsplash.com/photo-1621944190310-e3cca1564bd7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8Ym9vayUyMGNvdmVyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60'
+            "
             alt=""
           />
         </div>
@@ -35,7 +41,9 @@
         <div class="col-md-4 d-flex">
           <button class="btn bg-blue mt-3 shadow">
             <h3>
-              <i class="mdi mdi-heart"> <h6>add to shelf</h6></i>
+              <i @click="addToShelf()" class="mdi mdi-heart">
+                <h6>add to shelf</h6></i
+              >
             </h3>
           </button>
         </div>
@@ -70,9 +78,19 @@ export default {
   setup() {
     return {
       activeBook: computed(() => AppState.activeBook),
+
+      async addToShelf() {
+        try {
+          await booksService.addToShelf()
+        } catch (error) {
+          logger.error(error)
+          Pop.toast(error.message, 'error')
+        }
+      },
+
       async getById(id) {
         try {
-
+          logger.log('the shelf book id', id)
           await booksService.getBookById(id)
           Modal.getOrCreateInstance(
             document.getElementById("bookDetails-modal")
@@ -112,10 +130,9 @@ export default {
   background-color: red;
   transition: 0.3s;
 }
-.cover-size:hover .pages{
+.cover-size:hover .pages {
   transform: scale(1.04);
   transition: 0.3s;
   background-color: blue;
 }
-
 </style>
