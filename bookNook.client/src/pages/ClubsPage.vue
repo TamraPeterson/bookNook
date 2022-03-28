@@ -14,7 +14,32 @@
         </div>
       </div>
     </div>
+    <div class="col-6">
+      <i
+        v-if="account.id"
+        data-bs-toggle="modal"
+        data-bs-target="#club-modal"
+        class="mdi mdi-pencil selectable"
+      >Create Club</i>
+    </div>
   </div>
+
+
+  <Modal id="club-modal">
+    <template #modal-title>
+        <h1>Create Club Form</h1>
+    </template>
+
+    <template #modal-body>
+    <form class="row d-flex flex-column bg-dark p-3">
+      
+        <!-- <h5 class="p-1 pt-3">Name:</h5>
+        <input v-model="editable.name" type="text"> -->
+
+      <button type="button" class="btn btn-info" @click="update">Submit</button>
+    </form>
+    </template>
+  </Modal>
 </template>
 
 <script>
@@ -24,7 +49,8 @@ export default {
   name: 'ClubsPage',
   setup() {
     return {
-      searchClubs: computed(() => AppState.searchClubs)
+      searchClubs: computed(() => AppState.searchClubs),
+      account: computed(() => AppState.account),
     }
   }
 }
