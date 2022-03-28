@@ -54,7 +54,7 @@ export class ClubsController extends BaseController {
     }
   }
 
-  async getEventComments(req, res, next) {
+  async getClubComments(req, res, next) {
     try {
         const comments = await commentsService.getClubComments(req.params.id)
         return res.send(comments)
