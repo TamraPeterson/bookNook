@@ -2,17 +2,35 @@ import { dbContext } from '../db/DbContext'
 import { BadRequest } from '../utils/Errors'
 
 class CommentsService {
-  async find(query = {}) {
-    const values = await dbContext.Values.find(query)
-    return values
+  async create(newComment) {
+    const comment = await dbContext.Comments.create(newComment)
+    return comment
   }
 
-  async findById(id) {
-    const value = await dbContext.Values.findById(id)
-    if (!value) {
-      throw new BadRequest('Invalid Id')
+  async getAll(query = {}) {
+    const comment = await dbContext.Comments.findById(query).populate('creator', 'name picture')
+    return comment
+  }
+
+  async getById(id) {
+    const comment = await dbContext.Comments.findById(id).populate('creator', 'name picture')
+    if (!comment) {
+        throw new BadRequest('Invalid Comment Id')
     }
-    return value
+    return comment
+  }
+
+  async remove(id, userId) {
+    const original = await this.getById(id)
+    if(original.creatorId.toString() !== userId) {
+        throw new BadRequest('You cannot remove this project')
+    }
+    await dbContext.Comments.findOneAndDelete({ _id: id})
+  }
+
+  async getClubComments(id) {
+    const comments = await dbContext.Comments.find({ clubId: id }).populate('creator', 'name picture')
+    return comments
   }
 }
 

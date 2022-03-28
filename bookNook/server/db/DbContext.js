@@ -5,6 +5,7 @@ import { ShelfBookSchema } from '../models/ShelfBook'
 import { ClubSchema } from '../models/Club'
 import { MembershipSchema } from '../models/Membership'
 import { ClubBookSchema } from "../models/ClubBook"
+import { CommentSchema } from '../models/Comment'
 
 
 
@@ -17,6 +18,8 @@ class DbContext {
   Memberships = mongoose.model('Membership', MembershipSchema)
 
   ClubBooks = mongoose.model('ClubBook', ClubBookSchema)
+  Comments = mongoose.model('Comment', CommentSchema);
+
 }
 
 export const dbContext = new DbContext()
