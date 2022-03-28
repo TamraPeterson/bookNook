@@ -15,10 +15,8 @@
                     >Edit Profile</i>
                     </h5>
                     <h1>{{ profile.name }}</h1>
+                    <h1>{{ profile.email }}</h1>
                 </div>
-            </div>
-            <div class="col-6">
-                <!-- <h5>{{ profile.bio }}</h5> -->
             </div>
         </div>
 
@@ -35,9 +33,6 @@
       
         <h5 class="p-1 pt-3">Profile Photo:</h5>
         <input v-model="editable.picture" type="text">
-<!--       
-        <h5 class="p-1 pt-3">Background Image:</h5>
-        <input v-model="editable.coverImg" type="text"> -->
 
       <button type="button" class="btn btn-info" @click="update">Submit</button>
     </form>
