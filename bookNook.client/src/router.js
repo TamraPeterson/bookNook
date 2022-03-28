@@ -33,6 +33,11 @@ const routes = [
     name: 'Books',
     component: loadPage('BooksPage')
   },
+  {
+    path: '/clubs',
+    name: 'Clubs',
+    component: loadPage('ClubsPage')
+  },
 ]
 
 export const router = createRouter({
