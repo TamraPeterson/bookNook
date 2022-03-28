@@ -2,6 +2,7 @@ import BaseController from '../utils/BaseController'
 import { Auth0Provider } from '@bcwdev/auth0provider'
 import { clubBooksService } from "../services/ClubBooksService"
 import { clubsService } from "../services/ClubsService"
+import { commentsService } from '../services/CommentsService'
 
 export class ClubsController extends BaseController {
   constructor() {
@@ -52,5 +53,14 @@ export class ClubsController extends BaseController {
       next(error)
     }
   }
+
+  async getEventComments(req, res, next) {
+    try {
+        const comments = await commentsService.getClubComments(req.params.id)
+        return res.send(comments)
+    } catch (error) {
+        next(error)
+    }
+}
 
 }
