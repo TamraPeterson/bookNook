@@ -1,11 +1,11 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-blue px-3">
     <!-- LOGO -->
-    <div class="col-6">
+    <div class="col-md-10 ms-md-2">
       <img src="src/assets/img/BLogo.png" class="img-height" />
     </div>
     <!-- Login in button -->
-    <div class="col-6 justify-content-end">
+    <div class="col-md-2">
       <button
         class="navbar-toggler"
         type="button"
