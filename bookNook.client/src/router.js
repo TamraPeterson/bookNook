@@ -39,6 +39,12 @@ const routes = [
     component: loadPage('ClubsPage'),
     beforeEnter: authSettled
   },
+  {
+    path: '/clubs/:id',
+    name: 'BookClub',
+    component: loadPage('BookClub')
+  },
+
 ]
 
 export const router = createRouter({
