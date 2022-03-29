@@ -51,6 +51,53 @@
         </form>
       </template>
     </Modal>
+    <!-- TODO make component for modal -->
+    <Modal v-if="activeBook.title" id="bookDetails-modal">
+      <template #modal-title>
+        <h3>{{ activeBook.title }}</h3>
+        {{ activeBook.subtitle }}</template
+      >
+
+      <template #modal-body>
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <h5>Written by: {{ activeBook.authors }}</h5>
+
+            <h6>{{ activeBook.pageCount }} pages</h6>
+          </div>
+          <div class="col-md-6">
+            <img
+              class="thumbnail img-fluid"
+              :src="activeBook.imageLinks.thumbnail"
+              alt=""
+            />
+          </div>
+
+          <p v-html="activeBook.description"></p>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-md-4 d-flex">
+            <button class="btn bg-blue mt-3 shadow">
+              <h3>
+                <i
+                  @click="removeFromShelf(activeBook.id)"
+                  class="mdi mdi-delete"
+                >
+                  <h6>Remove</h6></i
+                >
+              </h3>
+            </button>
+          </div>
+          <div class="col-md-4 d-flex">
+            <button class="btn bg-blue mt-3 shadow ms-5">
+              <h3>
+                <i class="mdi mdi-account-group"> <h6>NookClub</h6></i>
+              </h3>
+            </button>
+          </div>
+        </div>
+      </template>
+    </Modal>
   </div>
 </template>
 
@@ -90,10 +137,20 @@ export default {
           Pop.toast(error.message, "error");
         }
       },
+      async removeFromShelf(id) {
+        try {
+          await booksService.removeFromShelf(id)
+        } catch (error) {
+          logger.error(error)
+          Pop.toast(error.message, 'error')
+        }
+      },
+
       profile: computed(() => AppState.profile),
       account: computed(() => AppState.account),
       myShelfBooks: computed(() => AppState.myShelfBooks),
       coverImg: computed(() => `url('${AppState.profile.coverImg}')`),
+      activeBook: computed(() => AppState.activeBook)
     }
   }
 }

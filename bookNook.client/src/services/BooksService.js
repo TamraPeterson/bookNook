@@ -12,6 +12,7 @@ class BooksService {
         const res = await googleApi.get('/' + id + '?' + googleKey)
         logger.log(res.data)
         res.data.volumeInfo.bookId = res.data.id
+        res.data.volumeInfo.id = id
         AppState.activeBook = res.data.volumeInfo
         logger.log('active book', AppState.activeBook)
     }
@@ -39,7 +40,8 @@ class BooksService {
     }
 
     async removeFromShelf(id) {
-        const res = await api.delete('api/shelfBooks/' + id)
+        const bookToRemove = AppState.myShelfBooks.find(b => b.bookId == id)
+        const res = await api.delete('api/shelfBooks/' + bookToRemove.id)
         logger.log('delorting book', res.data)
     }
 }
