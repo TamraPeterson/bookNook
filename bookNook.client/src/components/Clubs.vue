@@ -12,6 +12,7 @@
 <script>
 import { computed } from '@vue/reactivity'
 import { AppState } from '../AppState'
+import { router } from "../router"
 export default {
   props: {
     club: {
@@ -21,6 +22,9 @@ export default {
   },
   setup(props) {
     return {
+      goTo() {
+        router.push({ name: 'BookClubPage', params: { id: props.club.id } })
+      },
       account: computed(() => AppState.account),
       activeBook: computed(() => AppState.activeBook),
 

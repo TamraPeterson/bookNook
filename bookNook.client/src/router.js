@@ -41,8 +41,8 @@ const routes = [
   },
   {
     path: '/clubs/:id',
-    name: 'BookClub',
-    component: loadPage('BookClub')
+    name: 'BookClubPage',
+    component: loadPage('BookClubPage')
   },
 
 ]
