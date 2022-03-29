@@ -5,9 +5,9 @@
       <div class="col-md-4 mt-2 text-center"><BookSearch /></div>
       <div class="col-md-4"></div>
     </div>
-      <div class="row mt-5 p-2 justify-content-between">
+      <div class="row mt-5 p-2 justify-content-around">
           <div
-            class="col-2 m-3 d-flex justify-content-center"
+            class="col-12 col-sm-5 col-md-2 m-3 d-flex justify-content-center"
             v-for="b in searchBooks"
             :key="b.id"
           >
@@ -15,6 +15,7 @@
         </div>
       </div>
   </div>
+  <!-- 792 - 768 -->
 </template>
 
 <script>
