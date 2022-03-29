@@ -1,5 +1,7 @@
 <template>
-  <div class="component"></div>
+  <div class="container-fluid">
+    <div class="row">Errbody in the club gettin tipsy</div>
+  </div>
 </template>
 
 

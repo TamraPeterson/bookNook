@@ -100,20 +100,7 @@ export default {
           Pop.toast(error.message, "error");
         }
       },
-      async removeFromShelf(id) {
-        if (await Pop.confirm('Are you sure you want to removethis book from your library?')) {
-          try {
-            await booksService.removeFromShelf(id)
-            Modal.getOrCreateInstance(
-              document.getElementById("bookDetails-modal")
-            ).hide();
-          } catch (error) {
-            logger.error(error)
-            Pop.toast(error.message, 'error')
-          }
-        }
-
-      },
+      
 
       profile: computed(() => AppState.profile),
       account: computed(() => AppState.account),

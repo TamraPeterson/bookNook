@@ -20,6 +20,10 @@ class ShelfBooksService {
     return books
   }
   async createBook(body) {
+    const foundBook = await dbContext.ShelfBooks.findOne({ accountId: body.accountId, bookId: body.bookId })
+    if (foundBook) {
+      throw new BadRequest('Book is already in library nerd')
+    }
     const book = await dbContext.ShelfBooks.create(body)
     return book
   }

@@ -42,12 +42,29 @@
 <script>
 import { computed } from "@vue/reactivity"
 import { AppState } from "../AppState"
+import { booksService } from "../services/BooksService"
+import { Modal } from "bootstrap"
+import { logger } from "../utils/Logger"
+import Pop from "../utils/Pop"
 export default {
   setup() {
     return {
       myShelfBooks: computed(() => AppState.myShelfBooks),
-      activeBook: computed(() => AppState.activeBook)
+      activeBook: computed(() => AppState.activeBook),
+      async removeFromShelf(id) {
+        if (await Pop.confirm('Are you sure you want to removethis book from your library?')) {
+          try {
+            await booksService.removeFromShelf(id)
+            Modal.getOrCreateInstance(
+              document.getElementById("bookDetails-modal")
+            ).hide();
+          } catch (error) {
+            logger.error(error)
+            Pop.toast(error.message, 'error')
+          }
+        }
 
+      },
 
     }
   }

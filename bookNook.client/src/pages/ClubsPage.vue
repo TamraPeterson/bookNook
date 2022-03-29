@@ -1,13 +1,15 @@
 <template>
   <div class="container-fluid bg-light">
     <div class="col-6">
-      <i
-        v-if="account.id"
-        data-bs-toggle="modal"
-        data-bs-target="#club-modal"
-        class="mdi mdi-pencil selectable"
-        >Create Club</i
-      >
+      <button class="btn btn-primary m-3">
+        <i
+          v-if="account.id"
+          data-bs-toggle="modal"
+          data-bs-target="#club-modal"
+          class="mdi mdi-pencil"
+          >Create Club</i
+        >
+      </button>
     </div>
   </div>
   <div class="container-fluid">
