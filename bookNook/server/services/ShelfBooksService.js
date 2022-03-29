@@ -1,9 +1,15 @@
 import { dbContext } from "../db/DbContext"
-import { BadRequest } from "../utils/Errors"
+import { AccountSchema } from "../models/Account"
+import { BadRequest, Forbidden } from "../utils/Errors"
 
 class ShelfBooksService {
-  async remove(id) {
-    await dbContext.ShelfBooks.findOneAndDelete(id)
+  async remove(id, userId) {
+    const book = await dbContext.ShelfBooks.findById(id)
+    if (book.accountId.toString() !== userId) {
+      throw new Forbidden('Not your book to delete')
+    }
+    await book.delete()
+
   }
   async getById(id) {
     const book = await dbContext.ShelfBooks.findById(id)
