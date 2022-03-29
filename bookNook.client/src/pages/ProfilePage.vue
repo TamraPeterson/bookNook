@@ -40,7 +40,7 @@
       <template #modal-body>
         <form class="row d-flex flex-column bg-dark p-3">
           <h5 class="p-1 pt-3">Username:</h5>
-          <input v-model="editable.name" type="text" />
+          <input v-model="editable.name" type="text" maxlength="25" />
 
           <h5 class="p-1 pt-3">Profile Photo:</h5>
           <input v-model="editable.picture" type="text" />
