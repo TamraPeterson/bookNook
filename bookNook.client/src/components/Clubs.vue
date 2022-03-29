@@ -3,7 +3,7 @@
     <div class="col-4">{{ club.name }}</div>
     <div class="col-4">{{ club.description }}</div>
     <div class="col-4">
-      <button class="btn btn-primary">Join</button>
+      <button class="btn btn-primary" @click="goTo">Join</button>
     </div>
   </div>
 </template>
@@ -22,7 +22,8 @@ export default {
   setup(props) {
     return {
       account: computed(() => AppState.account),
-      activeBook: computed(() => AppState.activeBook)
+      activeBook: computed(() => AppState.activeBook),
+
     }
   }
 }
