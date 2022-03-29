@@ -2,8 +2,11 @@ import { initialize } from '@bcwdev/auth0provider-client'
 import { AppState } from '../AppState'
 import { audience, clientId, domain } from '../env'
 import { router } from '../router'
+import { logger } from '../utils/Logger'
+import Pop from '../utils/Pop'
 import { accountService } from './AccountService'
 import { api } from './AxiosService'
+import { booksService } from './BooksService'
 import { socketService } from './SocketService'
 
 export const AuthService = initialize({
@@ -27,6 +30,8 @@ AuthService.on(AuthService.AUTH_EVENTS.AUTHENTICATED, async function() {
   await accountService.getAccount()
   socketService.authenticate(AuthService.bearer)
   // NOTE if there is something you want to do once the user is authenticated, place that here
+  // function here to go get MY shelf boooks await bookService...getMyShelfBook(appState.account.id)
+  await booksService.getAll(AppState.account.id)
 })
 
 async function refreshAuthToken(config) {

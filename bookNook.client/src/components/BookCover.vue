@@ -1,6 +1,9 @@
 <template>
   <div class="component d-flex flex-column align-items-center">
     <div class="pages nook-shadow rounded-1"></div>
+
+    <div v-if="onMyShelf" class="text-dark book-mark mdi mdi-book"></div>
+
     <img
       @click="getById(searchBook.bookId)"
       class="nook-shadow cover-size rounded-1 selectable"
@@ -13,6 +16,8 @@
       <small>{{ searchBook.title }}</small>
     </p>
   </div>
+ 
+  
 
   <Modal v-if="activeBook.title" id="bookDetails-modal">
     <template #modal-title>
@@ -75,11 +80,13 @@ export default {
       type: Object,
       required: true
     }
-
   },
-  setup() {
+  setup(props) {
     return {
       activeBook: computed(() => AppState.activeBook),
+      searchBooks: computed(() => AppState.searchBooks),
+      myShelfBooks: computed(() => AppState.myShelfBooks),
+      onMyShelf: computed(() => AppState.myShelfBooks.find(b => b.bookId === props.searchBook.bookId)),
 
       async addToShelf() {
         try {
@@ -133,9 +140,9 @@ export default {
   transition: 0.3s;
   background-color: #dbd9d4;
 }
-// .component:hover .pages {
-//   transform: scale(1.04);
-//   transition: 0.3s;
-//   background-color: blue;
-// }
+.book-mark {
+  position: absolute;
+  z-index: 1;
+  transform: scale(3);
+}
 </style>
