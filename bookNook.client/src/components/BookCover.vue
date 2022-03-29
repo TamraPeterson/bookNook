@@ -1,8 +1,9 @@
 <template>
   <div class="component d-flex flex-column align-items-center">
     <div class="pages nook-shadow rounded-1"></div>
-
-    <div v-if="onMyShelf" class="text-dark book-mark mdi mdi-bookmark-outline"></div>
+    <div v-if="onMyShelf">
+      <img src="src/assets/img/BookMarkLogo.png" class="book-mark">
+    </div>
 
     <img
       @click="getById(searchBook.bookId)"
@@ -152,6 +153,6 @@ export default {
 .book-mark {
   position: absolute;
   z-index: 1;
-  transform: scale(3) translateX(180%) translateY(8%);
+  transform: translateX(-320%) translateY(-5%);
 }
 </style>

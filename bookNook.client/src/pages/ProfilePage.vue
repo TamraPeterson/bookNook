@@ -21,11 +21,11 @@
           <!-- <h1>{{ profile.email }}</h1> -->
         </div>
       </div>
-      <div class="row mt-5 p-2 justify-content-center">
+      <div class="row mt-5 p-2 justify-content-around">
         <div
+          class="col-12 col-sm-5 col-md-2 m-3 d-flex justify-content-center"
           v-for="b in myShelfBooks"
           :key="b.id"
-          class="col-md-2 m-3 d-flex justify-content-center"
         >
           <MyShelfBook :myShelfBook="b" />
         </div>

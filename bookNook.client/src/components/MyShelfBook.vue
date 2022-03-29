@@ -1,16 +1,17 @@
 <template>
-  <div class="component">
-    <div class="pages nook-shadow rounded"></div>
+  <div class="component d-flex flex-column align-items-center">
+    <div class="pages nook-shadow rounded-1"></div>
+
     <img
       @click="getById(myShelfBook.bookId)"
-      class="nook-shadow cover-size rounded selectable"
+      class="nook-shadow cover-size rounded-1 selectable"
       :src="
         myShelfBook.imageLinks[0]?.thumbnail ||
         'src/assets/img/BookCoverTest2.jpg'
       "
       alt=""
     />
-    <p class="text-center mt-2 text-blue">
+    <p class="text-center mt-2 text-dark">
       <small>{{ myShelfBook.title }}</small>
     </p>
   </div>
@@ -74,13 +75,12 @@ export default {
   object-fit: cover;
 }
 .pages {
-  transform: translateX(2%);
+  transform: translateX(1.7%);
   position: absolute;
-  height: 300px;
+  height: 302px;
   width: 200px;
   transition: 0.3s;
-  background-color: red;
-  transition: 0.3s;
+  background-color: #dbd9d4;
 }
 // .component:hover .pages {
 //   transform: scale(1.04);
