@@ -17,7 +17,7 @@ export class ShelfBooksController extends BaseController {
   }
   async remove(req, res, next) {
     try {
-      const book = await shelfBooksService.remove(req.params.id)
+      const book = await shelfBooksService.remove(req.params.id, req.userInfo.id)
       return res.send('removed')
     } catch (error) {
       next(error)

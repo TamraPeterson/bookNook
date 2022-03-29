@@ -33,9 +33,14 @@ class BooksService {
     }
 
     async getAll(id) {
-        const res = await api.get('api/shelfBooks/', id)
+        const res = await api.get('api/shelfBooks/?accountId=' + id)
+        logger.log('getting books', res.data)
         AppState.myShelfBooks = res.data
+    }
 
+    async removeFromShelf(id) {
+        const res = await api.delete('api/shelfBooks/' + id)
+        logger.log('delorting book', res.data)
     }
 }
 
