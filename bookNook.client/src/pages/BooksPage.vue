@@ -4,16 +4,16 @@
       <div class="col-md-4"></div>
       <div class="col-md-4 mt-2 text-center"><BookSearch /></div>
       <div class="col-md-4"></div>
-      <div class="row mt-5 p-2 justify-content-center">
-        <div
-          v-for="b in searchBooks"
-          :key="b.id"
-          class="col-md-2 m-3 d-flex justify-content-center"
-        >
-          <BookCover :searchBook="b" />
+    </div>
+      <div class="row mt-5 p-2 justify-content-between">
+          <div
+            class="col-2 m-3 d-flex justify-content-center"
+            v-for="b in searchBooks"
+            :key="b.id"
+          >
+            <BookCover :searchBook="b" />
         </div>
       </div>
-    </div>
   </div>
 </template>
 

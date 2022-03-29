@@ -1,5 +1,5 @@
 <template>
-  <div class="component">
+  <div class="component d-flex flex-column align-items-center">
     <div class="pages nook-shadow rounded-1"></div>
     <img
       @click="getById(searchBook.bookId)"
@@ -13,12 +13,12 @@
       <small>{{ searchBook.title }}</small>
     </p>
   </div>
+
   <Modal v-if="activeBook.title" id="bookDetails-modal">
     <template #modal-title>
       <h3>{{ activeBook.title }}</h3>
       {{ activeBook.subtitle }}</template
     >
-
     <template #modal-body>
       <div class="row align-items-center">
         <div class="col-md-6">
