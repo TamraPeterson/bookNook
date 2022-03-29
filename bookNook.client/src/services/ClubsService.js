@@ -6,13 +6,13 @@ import { logger } from "../utils/Logger"
 import { api, googleApi, googleKey } from "./AxiosService"
 
 class ClubsService {
-    async getClubById(id) {
-        // const res = await googleApi.get('/' + id + '?' + googleKey)
-        const res = await api.get('/clubs', id)
-        logger.log(res.data)
-        res.data.volumeInfo.bookId = res.data.id
-        AppState.activeBook = res.data.volumeInfo
-        logger.log('active book', AppState.activeBook)
+
+
+    async getClubsByBookId(query = {}) {
+        const res = await api.get('api/clubs', { params: query })
+        logger.log('get clubs', res.data)
+        AppState.clubs = res.data
+        return res.data
     }
 
     async searchClub(query) {
@@ -28,6 +28,13 @@ class ClubsService {
         const bookToAdd = AppState.activeBook
         const res = await api.post('api/shelfBooks', bookToAdd)
         logger.log('added book to shelf', res.data)
+    }
+
+    async createClub(clubData) {
+        const res = await api.post('api/clubs', clubData)
+        logger.log('service create club', res.data)
+        AppState.clubs.push(res.data)
+        return res.data
     }
 }
 

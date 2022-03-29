@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid bg-light">
-    <div class="col-16">
+    <div class="col-6">
       <i
         v-if="account.id"
         data-bs-toggle="modal"
@@ -8,6 +8,15 @@
         class="mdi mdi-pencil selectable"
         >Create Club</i
       >
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-10 shadow rounded">
+        <div v-for="c in clubs" :key="c.id">
+          <Clubs :club="c" />
+        </div>
+      </div>
     </div>
   </div>
 
@@ -19,6 +28,7 @@
             >Club Name:</label
           >
           <input
+            v-model="editable.name"
             type="text"
             class="form-control"
             id="exampleFormControlInput1"
@@ -30,6 +40,7 @@
             Club description:</label
           >
           <textarea
+            v-model="editable.description"
             class="form-control"
             id="exampleFormControlTextarea1"
             rows="3"
@@ -40,7 +51,7 @@
 
     <template #modal-body>
       <form class="row d-flex flex-column bg-dark p-3">
-        <button type="button" class="btn btn-info" @click="update">
+        <button type="button" class="btn btn-info" @click="createClub">
           Submit
         </button>
       </form>
@@ -49,12 +60,45 @@
 </template>
 
 <script>
-import { computed } from '@vue/reactivity'
+import { computed, reactive, ref } from '@vue/reactivity'
 import { AppState } from '../AppState'
+import Pop from '../utils/Pop'
+import { logger } from '../utils/Logger'
+import { clubsService } from '../services/ClubsService'
+import { Modal } from 'bootstrap'
+import { useRoute, useRouter } from 'vue-router'
+import { watchEffect } from '@vue/runtime-core'
 export default {
   name: 'ClubsPage',
   setup() {
+    const route = useRoute()
+    const editable = ref({})
+    watchEffect(async () => {
+      try {
+        if (route.name == "Clubs") {
+          await clubsService.getClubsByBookId(route.query)
+        }
+      } catch (error) {
+        logger.log(error)
+        Pop.toast(error.message, 'error')
+      }
+    })
+
     return {
+      editable,
+      async createClub() {
+        try {
+          editable.value.activeBookId = route.query.activeBookId
+          await clubsService.createClub(editable.value)
+          Modal.getOrCreateInstance(
+            document.getElementById("club-modal")
+          ).hide();
+        } catch (error) {
+          logger.log(error)
+          Pop.toast(error.message, 'error')
+        }
+      },
+      clubs: computed(() => AppState.clubs),
       searchClubs: computed(() => AppState.searchClubs),
       account: computed(() => AppState.account),
     }

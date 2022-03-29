@@ -55,7 +55,7 @@
           </button>
         </div>
         <div class="col-md-4 d-flex">
-          <button class="btn bg-blue mt-3 shadow ms-5">
+          <button @click="goToClubs()" class="btn bg-blue mt-3 shadow ms-5">
             <h3>
               <i class="mdi mdi-account-group"> <h6>NookClub</h6></i>
             </h3>
@@ -74,6 +74,7 @@ import { logger } from '../utils/Logger'
 import Pop from '../utils/Pop'
 import { AppState } from '../AppState'
 import { Modal } from 'bootstrap'
+import { router } from '../router'
 export default {
   props: {
     searchBook: {
@@ -107,6 +108,14 @@ export default {
         } catch (error) {
           logger.log(error)
           Pop.toast(error.message, "error")
+        }
+      },
+
+      async goToClubs() {
+        try {
+          router.push({ name: "Clubs", query: { activeBookId: props.searchBook.bookId } })
+        } catch (error) {
+          logger.log(error)
         }
       }
     }
