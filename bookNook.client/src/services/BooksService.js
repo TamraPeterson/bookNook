@@ -43,6 +43,7 @@ class BooksService {
         const bookToRemove = AppState.myShelfBooks.find(b => b.bookId == id)
         const res = await api.delete('api/shelfBooks/' + bookToRemove.id)
         logger.log('delorting book', res.data)
+        AppState.myShelfBooks = AppState.myShelfBooks.filter(b => b != bookToRemove)
     }
 }
 

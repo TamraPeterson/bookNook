@@ -43,12 +43,15 @@ export class ShelfBooksController extends BaseController {
   }
 
   async createShelfBook(req, res, next) {
-    try {
-      req.body.accountId = req.userInfo.id
-      const book = await shelfBooksService.createBook(req.body)
-      return res.send(book)
-    } catch (error) {
-      next(error)
+    if (!req.body.accountId) {
+      try {
+        req.body.accountId = req.userInfo.id
+        const book = await shelfBooksService.createBook(req.body)
+        return res.send(book)
+      } catch (error) {
+        next(error)
+      }
+
     }
   }
 
