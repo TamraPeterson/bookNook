@@ -1,7 +1,7 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-blue p-0">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-blue p-0 d-flex justify-content-around">
     <!-- LOGO -->
-    <div class="col-10">
+    <div class="col-9">
       <button
         class="navbar-toggler"
         type="button"
