@@ -9,7 +9,7 @@
         />
       </div>
 
-      <div class="quote-text text-light rounded-2">
+      <div class="quote-text text-light rounded-2 font-home">
         <h1>
           "Fill your house with stacks of books,<br />
           in all the crannies and in all the nooks"
@@ -19,21 +19,31 @@
       <a
         @click="login"
         class="
-          text-white
+          text-dark
           btn
           bg-micks-hat
           rounded-pill
           fw-bold
           p-2
+          pt-3
           px-4
           mt-2
           button-center
           nook-shadow
+          font-start
         "
         >Start Your Next Adventure
       </a>
     </div>
   </div>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap" rel="stylesheet">
 </template>
 
 <script>
@@ -103,7 +113,7 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
-  width: 15%;
+  width: 20%;
   padding: 2rem;
   text-align: center;
 }
@@ -115,6 +125,16 @@ export default {
   min-width: 100vw;
   background-size: cover;
   object-fit: cover;
+}
+
+.font-home {
+  font-family: 'Acme', sans-serif;
+  font-size: 25px;
+}
+
+.font-start {
+  font-family: 'Gochi Hand', cursive;
+  font-size: 25px;
 }
 
 @media screen and (max-width: 1286px) {
