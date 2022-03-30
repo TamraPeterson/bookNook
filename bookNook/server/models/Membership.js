@@ -4,7 +4,8 @@ const Schema = mongoose.Schema
 export const MembershipSchema = new Schema(
   {
     accountId: { type: String, required: true },
-    clubId: { type: String, required: true }
+    clubId: { type: String, required: true },
+    isMemeber: { type: Boolean, default: false }
   },
   { timestamps: true, toJSON: { virtuals: true } }
 )
