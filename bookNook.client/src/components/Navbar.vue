@@ -1,7 +1,7 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-blue p-0 d-flex justify-content-around">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-blue p-0 d-flex justify-content-start">
     <!-- LOGO -->
-    <div class="col-9">
+    <div class="col-4 mx-2">
       <button
         class="navbar-toggler"
         type="button"
@@ -15,26 +15,6 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarText">
         <Logo />
-      </div>
-    </div>
-
-
-    <!-- Login in button -->
-    <div class="col-2">
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarText"
-        aria-controls="navbarText"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon" />
-      </button>
-      <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarText">
-        <!-- LOGIN COMPONENT HERE -->
-        <Login />
       </div>
     </div>
   </nav>

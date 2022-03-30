@@ -24,6 +24,19 @@
             Clubs
           </div>
         </router-link>
+
+        <router-link :to="{ name: 'Profile', params: { id: account.id } }">
+          <div class="list-group-item list-group-item-action hoverable">
+            <i class="mdi mdi-owl"></i>
+            My Profile
+          </div>
+        </router-link>
+
+        <div class="list-group-item list-group-item-action hoverable text-danger" @click="logout">
+          <i class="mdi mdi-logout"></i>
+          Logout
+        </div>
+
       </div>
     </div>
   </span>
@@ -31,8 +44,14 @@
 
 
 <script>
+import { computed } from '@vue/reactivity';
+import { AppState } from '../AppState';
     export default {
-
+      setup() {
+        return {
+          account: computed(() => AppState.account)
+        }
+      }
     };
 </script>
 
