@@ -1,9 +1,20 @@
 <template>
-  <div class="clubs">
-    <div class="col-4">{{ club.name }}</div>
-    <div class="col-4">{{ club.description }}</div>
-    <div class="col-4">
-      <button class="btn btn-primary" @click="goTo">View Club</button>
+  <div class="bg-parchment rounded shadow p-3 m-4">
+    <div class="clubs">
+      <div class="row">
+        <div class="col-4 text-truncate">
+          Club Name: <br />
+          {{ club.name }}
+        </div>
+        <div class="col-4 text-truncate">
+          Description: <br />
+          {{ club.description }}
+        </div>
+        <div class="col-4 d-flex justify-content-between">
+          <button class="btn btn-primary" @click="goTo">View Club</button>
+          <i v-if="account.id == club.creatorId" class="mdi mdi-close"></i>
+        </div>
+      </div>
     </div>
   </div>
 </template>
