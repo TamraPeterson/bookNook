@@ -145,10 +145,10 @@ export default {
   object-fit: cover;
 }
 .pages {
-  transform: translateX(1.7%);
-  position: absolute;
   height: 302px;
   width: 200px;
+  transform: translateX(1.7%);
+  position: absolute;
   transition: 0.3s;
   background-color: #dbd9d4;
 }

@@ -1,5 +1,5 @@
 <template>
-  <div><h2>Search for a book</h2></div>
+  <div><h2>Look for a Book</h2></div>
   <form
     class="row form-group justify-content-between p-3"
     @submit.prevent="search"
@@ -7,10 +7,10 @@
     <input
       type="text"
       v-model="searchTerm"
-      class="col-9 rounded-2 bg-pink shadow"
+      class="col-9 rounded-2 bg-parchment darken-10 search-shadow"
       placeholder="Search..."
     />
-    <button class="btn col-3 bg-red rounded-2 text-light shadow">Search</button>
+    <button class="btn col-3 bg-red rounded-2 text-light search-shadow">Search</button>
   </form>
 </template>
 
@@ -37,5 +37,13 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+.search-shadow {
+  filter: drop-shadow(2px 2px 3px rgba(71, 63, 63, 0.6));
+  transition: all .2s ease;
+}
+
+.search-shadow:hover {
+  filter: drop-shadow(3px 3px 5px rgba(71, 63, 63, 0.6));
+}
 </style>
