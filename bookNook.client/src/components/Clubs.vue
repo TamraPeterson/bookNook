@@ -12,7 +12,11 @@
         </div>
         <div class="col-4 d-flex justify-content-between">
           <button class="btn btn-primary" @click="goTo">View Club</button>
-          <i v-if="account.id == club.creatorId" class="mdi mdi-close"></i>
+          <i
+            @click="deleteClub"
+            v-if="account.id == club.creatorId"
+            class="mdi mdi-close"
+          ></i>
         </div>
       </div>
     </div>
@@ -24,6 +28,7 @@
 import { computed } from '@vue/reactivity'
 import { AppState } from '../AppState'
 import { router } from "../router"
+import { clubsService } from "../services/ClubsService"
 export default {
   props: {
     club: {
@@ -33,6 +38,11 @@ export default {
   },
   setup(props) {
     return {
+
+      async deleteClub() {
+        await clubsService.deleteClub(props.club)
+      },
+
       goTo() {
         router.push({ name: 'BookClubPage', params: { id: props.club.id } })
       },

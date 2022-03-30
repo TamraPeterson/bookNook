@@ -3,6 +3,7 @@ import { Modal } from "bootstrap"
 import { AppState } from "../AppState"
 import Book from "../Models/Book"
 import { logger } from "../utils/Logger"
+import Pop from "../utils/Pop"
 import { api, googleApi, googleKey } from "./AxiosService"
 
 class ClubsService {
@@ -44,6 +45,21 @@ class ClubsService {
         AppState.clubs.push(res.data)
         return res.data
     }
+
+    async deleteClub(id) {
+        try {
+            if (await Pop.confirm("Are you sure?"))
+                await api.delete('api/clubs' + id)
+            AppState.clubs = AppState.clubs.filter(c => club.id === id)
+            this.getClubsByBookId()
+        } catch (error) {
+            logger.log('delete club from service')
+        }
+
+    }
+
+
 }
+
 
 export const clubsService = new ClubsService()
