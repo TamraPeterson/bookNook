@@ -1,16 +1,17 @@
 <template>
   <div class="container-fluid text-center">
-    <div class="row justify-content-center bg-blue cover-img mb-3">
-      <img :src="profile.coverImg" id="coverImg">
+    <div class="row justify-content-center bg-blue cover-img mb-3 nook-shadow">
       <div class="col-12 mb-0">
-        <div class="mt-5">
-          <h1 class="text-light">{{profile.coverImg}}</h1>
+        <div class="mt-5 backdrop
+          {this.color == 'White' ? 'prof-white text-dark' : ''}
+        ">
           <img
             :src="profile.picture"
             class="profile-img rounded-circle elevation-4"
           />
           <h1>{{ profile.name }}</h1>
           <p>{{ profile.email }}</p>
+          <p>{{ profile.color }}</p>
           <h6>
             <i
               v-if="account.id == profile.id"
@@ -49,9 +50,20 @@
           <h5 class="p-1 pt-3">Background Photo:</h5>
           <input v-model="editable.coverImg" type="text" />
 
+          <select v-model="editable.color" name="color" id="list-color">
+            <option disabled selected>Pick a color...</option>
+            <option>White</option>
+            <option>Blue</option>
+            <option>Green</option>
+            <option>Purple</option>
+            <option>Orange</option>
+          </select>
+
           <button type="button" class="btn btn-info" @click="update">
             Submit
           </button>
+
+
         </form>
       </template>
     </Modal>
@@ -105,8 +117,6 @@ export default {
           Pop.toast(error.message, "error");
         }
       },
-
-
       profile: computed(() => AppState.profile),
       account: computed(() => AppState.account),
       myShelfBooks: computed(() => AppState.myShelfBooks),
@@ -119,14 +129,33 @@ export default {
 
 <style lang="scss" scoped>
 .profile-img {
-  min-width: 5em;
-  max-width: 7em;
+  height: 5rem;
+  width: 5rem;
+  object-fit: cover;
 }
 
 .cover-img {
   width: 100vw;
   height: 30rem;
   background-image: v-bind(coverImg);
-  object-fit: cover;
+  background-size: cover;
+  background-position: center;
+}
+
+.backdrop {
+  // background-color: rgba(33, 61, 68, 0.8);
+  color: #e9ecef;
+  font-weight: bold;
+  border: 3px solid #e9ecef;
+  top: 50%;
+  left: 50%;
+  transform: translate(50%);
+  z-index: 2;
+  width: 50%;
+  padding-top: 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-bottom: 1rem;
+  text-align: center;
 }
 </style>

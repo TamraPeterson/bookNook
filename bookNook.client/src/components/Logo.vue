@@ -46,10 +46,14 @@
 <script>
 import { computed } from '@vue/reactivity';
 import { AppState } from '../AppState';
+import { AuthService } from '../services/AuthService';
     export default {
       setup() {
         return {
-          account: computed(() => AppState.account)
+          account: computed(() => AppState.account),
+          async logout() {
+            AuthService.logout({ returnTo: window.location.origin });
+          },
         }
       }
     };
