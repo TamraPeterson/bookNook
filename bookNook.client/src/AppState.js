@@ -13,5 +13,6 @@ export const AppState = reactive({
   searchClubs: [],
   clubs: [],
   memberships: [],
-  myMemberships: []
+  myMemberships: [],
+  clubBooks: []
 })
