@@ -15,7 +15,7 @@
   <div class="container-fluid">
     <div class="row justify-content-center align-items-center">
       <div v-for="c in clubs" :key="c.id">
-        <Clubs :club="c" />
+        <Club :club="c" />
       </div>
     </div>
   </div>

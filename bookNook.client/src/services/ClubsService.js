@@ -48,10 +48,12 @@ class ClubsService {
 
     async deleteClub(id) {
         try {
+            const clubToRemove = AppState.clubs.find(c => c.id == id)
             if (await Pop.confirm("Are you sure?"))
-                await api.delete('api/clubs' + id)
-            AppState.clubs = AppState.clubs.filter(c => club.id === id)
-            this.getClubsByBookId()
+                logger.log(id, 'this should be an id')
+            await api.delete('api/clubs/' + clubToRemove.id)
+            AppState.clubs = AppState.clubs.filter(c => c != clubToRemove)
+
         } catch (error) {
             logger.log('delete club from service')
         }
