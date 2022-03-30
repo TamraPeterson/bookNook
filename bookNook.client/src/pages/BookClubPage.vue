@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid">
     <b
-      title="View Other Projects"
+      title="View Books"
       class="
         projects-btn
         btn btn-primary
@@ -14,8 +14,23 @@
       "
       data-bs-toggle="offcanvas"
       data-bs-target="#offcanvas"
-      ><!-- TODO fix this stupid thing -->
+    >
       <i class="mdi mdi-book"></i>
+    </b>
+    <b
+      title="Join Club"
+      class="
+        join-btn
+        btn btn-primary
+        text-white
+        rounded-pill
+        shadow
+        d-flex
+        align-items-center
+        justify-content-center
+      "
+    >
+      <i class="mdi mdi-plus"></i>
     </b>
     <div class="row justify-content-around">
       <!-- banner -->
@@ -89,7 +104,7 @@
     </div>
     <OffCanvas>
       <template #offcanvas-header></template>
-      <template #offcanvas-body>Booooooks</template>
+      <template #offcanvas-body></template>
     </OffCanvas>
   </div>
 </template>
@@ -146,5 +161,14 @@ export default {
   position: fixed;
   top: 12vh;
   left: 5vh;
+}
+.join-btn {
+  font-size: 20px;
+  height: 60px;
+  width: 60px;
+  z-index: 100;
+  position: fixed;
+  top: 12vh;
+  right: 5vh;
 }
 </style> 764321``

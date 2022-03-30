@@ -42,7 +42,8 @@ const routes = [
   {
     path: '/clubs/:id',
     name: 'BookClubPage',
-    component: loadPage('BookClubPage')
+    component: loadPage('BookClubPage'),
+    beforeEnter: authSettled
   },
 
 ]
