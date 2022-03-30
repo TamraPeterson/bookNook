@@ -14,10 +14,8 @@
   </div>
   <div class="container-fluid">
     <div class="row justify-content-center align-items-center">
-      <div class="col-10 shadow rounded">
-        <div v-for="c in clubs" :key="c.id">
-          <Clubs :club="c" />
-        </div>
+      <div v-for="c in clubs" :key="c.id">
+        <Clubs :club="c" />
       </div>
     </div>
   </div>
