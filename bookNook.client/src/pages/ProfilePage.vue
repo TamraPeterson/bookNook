@@ -1,24 +1,25 @@
 <template>
   <div class="container-fluid text-center">
     <div class="row justify-content-center bg-blue cover-img mb-3">
-      <!-- <img :src="profile.coverImg" id="coverImg"> -->
+      <img :src="profile.coverImg" id="coverImg">
       <div class="col-12 mb-0">
         <div class="mt-5">
+          <h1 class="text-light">{{profile.coverImg}}</h1>
           <img
             :src="profile.picture"
             class="profile-img rounded-circle elevation-4"
           />
-          <h5>
+          <h1>{{ profile.name }}</h1>
+          <p>{{ profile.email }}</p>
+          <h6>
             <i
               v-if="account.id == profile.id"
               data-bs-toggle="modal"
               data-bs-target="#profile-modal"
               class="mdi mdi-pencil selectable"
-              >Edit Profile</i
-            >
-          </h5>
-          <h1>{{ profile.name }}</h1>
-          <!-- <h1>{{ profile.email }}</h1> -->
+              >Edit Profile</i>
+          </h6>
+
         </div>
       </div>
       <div class="row mt-5 p-2 justify-content-center">
@@ -44,6 +45,9 @@
 
           <h5 class="p-1 pt-3">Profile Photo:</h5>
           <input v-model="editable.picture" type="text" />
+
+          <h5 class="p-1 pt-3">Background Photo:</h5>
+          <input v-model="editable.coverImg" type="text" />
 
           <button type="button" class="btn btn-info" @click="update">
             Submit
@@ -95,6 +99,7 @@ export default {
       async update() {
         try {
           await accountService.update(editable.value)
+          Modal.getOrCreateInstance(document.getElementById("profile-modal")).hide();
         } catch (error) {
           logger.error(error);
           Pop.toast(error.message, "error");
