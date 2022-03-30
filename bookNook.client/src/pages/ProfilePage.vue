@@ -2,9 +2,13 @@
   <div class="container-fluid text-center">
     <div class="row justify-content-center bg-blue cover-img mb-3 nook-shadow">
       <div class="col-12 mb-0">
-        <div class="mt-5 backdrop
-          {this.color == 'White' ? 'prof-white text-dark' : ''}
-        ">
+        <div :class="`mt-5 backdrop
+          ${profile.color == 'White' ? 'profile-white text-dark' : ''}
+          ${profile.color == 'Blue' ? 'profile-blue text-light' : ''}
+          ${profile.color == 'Red' ? 'profile-red text-light' : ''}
+          ${profile.color == 'Pink' ? 'profile-pink text-dark' : ''}
+        `">
+          
           <img
             :src="profile.picture"
             class="profile-img rounded-circle elevation-4"
@@ -54,9 +58,8 @@
             <option disabled selected>Pick a color...</option>
             <option>White</option>
             <option>Blue</option>
-            <option>Green</option>
-            <option>Purple</option>
-            <option>Orange</option>
+            <option>Red</option>
+            <option>Pink</option>
           </select>
 
           <button type="button" class="btn btn-info" @click="update">
@@ -157,5 +160,18 @@ export default {
   padding-right: 2rem;
   padding-bottom: 1rem;
   text-align: center;
+}
+
+.profile-white {
+  background-color: rgba(250, 248, 244, 0.8);
+}
+.profile-blue {
+  background-color: rgba(33, 61, 68, 0.8);
+}
+.profile-red {
+  background-color: rgba(146, 47, 47, 0.8);
+}
+.profile-pink {
+  background-color: rgba(248, 221, 221, 0.8);
 }
 </style>
