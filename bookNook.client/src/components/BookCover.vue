@@ -93,6 +93,7 @@ export default {
       async addToShelf() {
         try {
           await booksService.addToShelf()
+          Modal.getOrCreateInstance(document.getElementById("bookDetails-modal")).hide();
         } catch (error) {
           logger.error(error)
           Pop.toast(error.message, 'error')
@@ -115,6 +116,7 @@ export default {
       async goToClubs() {
         try {
           router.push({ name: "Clubs", query: { activeBookId: props.searchBook.bookId } })
+          Modal.getOrCreateInstance(document.getElementById("bookDetails-modal")).hide();
         } catch (error) {
           logger.log(error)
         }
