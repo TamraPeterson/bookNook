@@ -15,6 +15,14 @@ class ClubsService {
         return res.data
     }
 
+    async getClubById(id) {
+        logger.log(id)
+        const res = await api.get('api/clubs/' + id)
+        logger.log('the club', res.data)
+        AppState.activeClub = res.data
+
+    }
+
     async searchClub(query) {
         logger.log('query', query)
         AppState.searchClubs = []
