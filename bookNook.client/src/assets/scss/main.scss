@@ -42,9 +42,9 @@ form:invalid button[type="submit"] {
 
 .nook-shadow {
   filter: drop-shadow(2px 2px 3px rgba(71, 63, 63, 0.6));
+  transition: all .2s ease;
 }
 
 .nook-shadow:hover {
-  transition: all .2s ease;
-  filter: drop-shadow(3px 3px 7px rgba(71, 63, 63, 0.6));
+  filter: drop-shadow(3px 3px 5px rgba(71, 63, 63, 0.6));
 }
