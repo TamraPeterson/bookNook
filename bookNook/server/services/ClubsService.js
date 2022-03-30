@@ -7,7 +7,7 @@ class ClubsService {
     return clubs
   }
   async getById(id) {
-    const club = await dbContext.Clubs.findById(id)
+    const club = await dbContext.Clubs.findById(id).populate('clubBook')
     if (!club) {
       throw new BadRequest('No club dog')
     }

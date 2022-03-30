@@ -4,7 +4,8 @@
       title="View Books"
       class="
         projects-btn
-        btn btn-primary
+        btn
+        bg-micks-other-hat
         text-white
         rounded-pill
         shadow
@@ -21,7 +22,8 @@
       title="Add Book"
       class="
         join-btn
-        btn btn-primary
+        btn
+        bg-micks-other-hat
         text-white
         rounded-pill
         shadow

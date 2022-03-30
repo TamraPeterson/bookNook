@@ -19,7 +19,10 @@
       </div>
       <div class="offcanvas-body">
         <div v-for="b in clubBooks" :key="b.id">
-          <h5 class="p-2 m-2 d-flex justify-content-start selectable">
+          <h5
+            @click="setAsActive(b.id)"
+            class="p-2 m-2 d-flex justify-content-start selectable"
+          >
             {{ b.title }}
           </h5>
         </div>
@@ -52,7 +55,19 @@ export default {
       }
     })
     return {
-      clubBooks: computed(() => AppState.clubBooks)
+      clubBooks: computed(() => AppState.clubBooks),
+      activeBook: computed(() => AppState.activeBook),
+      async setAsActive(id) {
+        try {
+          if (await Pop.confirm("Are you sure you would like to look back at this book?", '', 'confirm', 'Yes')) {
+            await clubBooksService.setAsActive(id)
+          }
+        } catch (error) {
+          logger.error(error)
+          Pop.toast(error.message, 'error')
+        }
+
+      }
 
 
     }

@@ -10,6 +10,12 @@ class ClubBooksService {
         logger.log('book for this club', res.data)
 
     }
+    async setAsActive(id) {
+
+        const bookToActive = AppState.clubBooks.find(b => b.id == id)
+        AppState.activeBook = bookToActive
+        logger.log(bookToActive)
+    }
 
 }
 
