@@ -7,11 +7,15 @@
     <input
       type="text"
       v-model="searchTerm"
-      class="col-9 rounded-2 bg-parchment darken-10 search-shadow"
+      class="col-9 rounded-2 bg-parchment darken-10 search-shadow font-search"
       placeholder="Search..."
     />
     <button class="btn col-3 bg-red rounded-2 text-light search-shadow">Search</button>
   </form>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 </template>
 
 <script>
@@ -45,5 +49,11 @@ export default {
 
 .search-shadow:hover {
   filter: drop-shadow(3px 3px 5px rgba(71, 63, 63, 0.6));
+}
+
+.font-search {
+  font-family: 'Nanum Pen Script', cursive;
+  font-size: 25px;
+  color: black;
 }
 </style>

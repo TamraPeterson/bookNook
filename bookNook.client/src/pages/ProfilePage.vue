@@ -15,7 +15,6 @@
           />
           <h1>{{ profile.name }}</h1>
           <p>{{ profile.email }}</p>
-          <p>{{ profile.color }}</p>
           <h6>
             <i
               v-if="account.id == profile.id"
@@ -139,7 +138,7 @@ export default {
 
 .cover-img {
   width: 100vw;
-  height: 30rem;
+  height: 34rem;
   background-image: v-bind(coverImg);
   background-size: cover;
   background-position: center;
