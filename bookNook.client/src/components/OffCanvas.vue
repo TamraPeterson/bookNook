@@ -16,9 +16,7 @@
         ></button>
       </div>
       <div class="offcanvas-body">
-        <!-- <h6 v-for="p in projects" :key="p.id">
-          <Project :project="p" />
-        </h6> -->
+        {{ clubBooks }}
       </div>
     </div>
   </div>
@@ -32,10 +30,9 @@ import { router } from "../router"
 export default {
   setup() {
     return {
-      clubBooks: computed(() => AppState.clubBooks),
-      goTo() {
-        router.push({ name: "Project", params: { id: props.project.id } })
-      }
+      clubBooks: computed(() => AppState.clubBooks)
+
+
     }
   }
 }
