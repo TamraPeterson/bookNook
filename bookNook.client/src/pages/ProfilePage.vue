@@ -39,29 +39,29 @@
 
     <Modal id="profile-modal">
       <template #modal-title>
-        <h1>Edit Profile Form</h1>
+        <h5>Edit Profile Form</h5>
       </template>
 
       <template #modal-body>
-        <form class="row d-flex flex-column bg-dark p-3">
+        <form class="row d-flex flex-column bg-micks-other-hat p-3">
           <h5 class="p-1 pt-3">Username:</h5>
-          <input v-model="editable.name" type="text" maxlength="25" />
+          <input v-model="editable.name" type="text" maxlength="25" placeholder="Name..."/>
 
           <h5 class="p-1 pt-3">Profile Photo:</h5>
-          <input v-model="editable.picture" type="text" />
+          <input v-model="editable.picture" type="text" placeholder="Url..."/>
 
           <h5 class="p-1 pt-3">Background Photo:</h5>
-          <input v-model="editable.coverImg" type="text" />
+          <input v-model="editable.coverImg" type="text" placeholder="Url..." />
 
-          <select v-model="editable.color" name="color" id="list-color">
-            <option disabled selected>Pick a color...</option>
+          <h5 class="p-1 pt-3">Backdrop Color:</h5>
+          <select class="mb-2 py-1" v-model="editable.color" name="color" id="list-color">
             <option>White</option>
             <option>Blue</option>
             <option>Red</option>
             <option>Pink</option>
           </select>
 
-          <button type="button" class="btn btn-info" @click="update">
+          <button type="button" class="btn bg-micks-hat mt-4" @click="update">
             Submit
           </button>
 

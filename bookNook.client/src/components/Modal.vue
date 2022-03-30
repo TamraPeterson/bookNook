@@ -7,7 +7,7 @@
     aria-labelledby="modelTitleId"
     aria-hidden="true"
   >
-    <div class="modal-dialog bg-parchment" role="document">
+    <div class="modal-dialog bg-parchment d-flex flex-column align-items-end p-2 rounded-2" role="document">
       <button
         type="button"
         class="btn-close"
