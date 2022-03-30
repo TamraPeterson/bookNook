@@ -52,7 +52,7 @@ export default {
       myShelfBooks: computed(() => AppState.myShelfBooks),
       activeBook: computed(() => AppState.activeBook),
       async removeFromShelf(id) {
-        if (await Pop.confirm('Are you sure you want to removethis book from your library?')) {
+        if (await Pop.confirm('Are you sure you want to remove this book from your library?')) {
           try {
             await booksService.removeFromShelf(id)
             Modal.getOrCreateInstance(

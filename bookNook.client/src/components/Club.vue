@@ -15,7 +15,7 @@
           <i
             @click="deleteClub"
             v-if="account.id == club.creatorId"
-            class="mdi mdi-close"
+            class="mdi mdi-close selectable"
           ></i>
         </div>
       </div>
@@ -29,6 +29,7 @@ import { computed } from '@vue/reactivity'
 import { AppState } from '../AppState'
 import { router } from "../router"
 import { clubsService } from "../services/ClubsService"
+import { watchEffect } from "@vue/runtime-core"
 export default {
   props: {
     club: {
@@ -37,11 +38,14 @@ export default {
     },
   },
   setup(props) {
-    return {
+    watchEffect(async () => {
 
+    })
+    return {
       async deleteClub() {
-        await clubsService.deleteClub(props.club)
+        await clubsService.deleteClub(props.club.id)
       },
+
 
       goTo() {
         router.push({ name: 'BookClubPage', params: { id: props.club.id } })
