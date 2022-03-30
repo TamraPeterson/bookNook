@@ -18,7 +18,7 @@
       <i class="mdi mdi-book"></i>
     </b>
     <b
-      title="Join Club"
+      title="Add Book"
       class="
         join-btn
         btn btn-primary
@@ -29,9 +29,13 @@
         align-items-center
         justify-content-center
       "
+      data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasRight"
+      aria-controls="offcanvasRight"
     >
       <i class="mdi mdi-plus"></i>
     </b>
+
     <div class="row justify-content-around">
       <!-- banner -->
       <div
@@ -49,13 +53,29 @@
           text-light
         "
       >
-        <h1 class="title-text text-light">
-          {{ activeClub.name }}
-        </h1>
-        <h5>{{ activeClub.description }}</h5>
+        <div class="row">
+          <div class="col-md-8">
+            <h1 class="title-text text-light">
+              {{ activeClub.name }}
+            </h1>
+            <h5>{{ activeClub.description }}</h5>
+          </div>
+
+          <div class="col-md-4 mt-4">
+            <button
+              @click="joinClub()"
+              class="btn bg-blue shadow rounded text-light"
+            >
+              Join this Club
+            </button>
+          </div>
+        </div>
       </div>
+
       <!-- Member Banner -->
-      <div class="col-md-8 m-3 rounded shadow bg-pink banner d-flex p-3">
+      <div
+        class="col-md-8 m-3 rounded shadow bg-micks-other-hat banner d-flex p-3"
+      >
         <h5>Club Members</h5>
         <img
           class="img-fluid comment-photo m-2"
@@ -75,7 +95,7 @@
           class="
             row
             container-fluid
-            bg-pink
+            bg-blue
             shadow
             justify-content-around
             rounded
@@ -85,7 +105,7 @@
           <div
             class="
               col-md-8
-              bg-light-pink
+              bg-micks-other-hat
               d-flex
               justify-content-between
               rounded
@@ -107,6 +127,7 @@
       <template #offcanvas-body></template>
     </OffCanvas>
   </div>
+  <RightOffCanvas />
 </template>
 
 
@@ -172,4 +193,4 @@ export default {
   top: 12vh;
   right: 5vh;
 }
-</style> 764321``
+</style> 
