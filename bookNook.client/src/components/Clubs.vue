@@ -3,7 +3,7 @@
     <div class="col-4">{{ club.name }}</div>
     <div class="col-4">{{ club.description }}</div>
     <div class="col-4">
-      <button class="btn btn-primary" @click="goTo">Join</button>
+      <button class="btn btn-primary" @click="goTo">View Club</button>
     </div>
   </div>
 </template>

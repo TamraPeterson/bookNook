@@ -5,7 +5,7 @@ export const MembershipSchema = new Schema(
   {
     accountId: { type: String, required: true },
     clubId: { type: String, required: true },
-    isMember: { type: Boolean, default: false }
+
   },
   { timestamps: true, toJSON: { virtuals: true } }
 )
