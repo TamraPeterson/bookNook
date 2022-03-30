@@ -1,16 +1,17 @@
-
-  {
+{
     "name": "booknook",
     "version": "1.0.0",
     "scripts": {
-      "build": "npm run setup:server",
-      "setup:app": "npm run setup:server && npm run setup:client",
-      "setup:client": "cd bookNook.client && npm i",
-      "setup:server": "cd bookNook && npm i",
-      "start": "node bookNook/index.js"
+        "build": "npm run setup:server",
+        "setup:app": "npm run setup:server && npm run setup:client",
+        "setup:client": "cd bookNook.client && npm i",
+        "setup:server": "cd bookNook && npm i",
+        "start": "node bookNook/index.js"
     },
     "engines": {
-      "node": "^14.17.0"
+        "node": "^14.17.0"
+    },
+    "dependencies": {
+        "@popperjs/core": "^2.11.4"
     }
-  }
-  
+}
