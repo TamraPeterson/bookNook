@@ -11,7 +11,9 @@
           {{ club.description }}
         </div>
         <div class="col-4 d-flex justify-content-between">
-          <button class="btn btn-primary" @click="goTo">View Club</button>
+          <button class="btn bg-micks-other-hat shadow" @click="goTo">
+            View Club
+          </button>
           <i
             @click="deleteClub"
             v-if="account.id == club.creatorId"
