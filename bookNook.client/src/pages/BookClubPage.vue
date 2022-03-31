@@ -42,13 +42,13 @@
       <!-- banner -->
       <div
         class="
+          p-4
+          flex-grow
           col-md-9
           rounded
           shadow
           bg-micks-hat
           m-3
-          banner
-          text-center
           justify-content-around
           align-items-center
           pt-3
@@ -57,7 +57,7 @@
       >
         <div class="row">
           <div class="col-md-8">
-            <h1 class="title-text text-light">
+            <h1 class="title-text text-center text-light">
               {{ activeClub.name }}
             </h1>
             <h5>{{ activeClub.description }}</h5>
