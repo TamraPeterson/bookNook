@@ -1,7 +1,7 @@
 <template>
-  <div class="container-fluid bg-light">
+  <div class="container-fluid">
     <div class="col-6">
-      <button class="btn btn-primary m-3">
+      <button class="btn bg-red m-3">
         <i
           v-if="account.id"
           data-bs-toggle="modal"
@@ -13,10 +13,14 @@
     </div>
     <ClubSearch />
   </div>
-  <div class="container-fluid">
-    <div class="row justify-content-center align-items-center">
-      <div v-for="c in clubs" :key="c.id">
-        <Club :club="c" />
+  <div class="container-fluid bg-light">
+    <div class="row justify-content-center">
+      <div class="col-10 texture1 elevation-1 p-4 rounded bg-micks-hat">
+        <div class="row">
+          <div v-for="c in clubs" :key="c.id" class="col-12">
+            <Club :club="c" />
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -128,5 +132,15 @@ export default {
 .cover-size {
   height: 300px;
   width: 200px;
+}
+.texture1 {
+  background-color: #ffffff;
+  background-image: url("https://www.transparenttextures.com/patterns/french-stucco.png");
+}
+.bg-image1 {
+  background-image: url("https://c.neh.tw/thumb/f/720/ad643eb27d3a4db9b059.jpg");
+  background-size: cover;
+  background-position: bottom;
+  min-height: 91vh;
 }
 </style>
