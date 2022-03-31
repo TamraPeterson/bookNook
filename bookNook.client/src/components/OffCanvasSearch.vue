@@ -1,5 +1,5 @@
 <template>
-  <div><h2>Book for your Nook</h2></div>
+  <div><h2>Add book to your club!</h2></div>
   <form
     class="row form-group justify-content-between p-3"
     @submit.prevent="search"
@@ -10,12 +10,17 @@
       class="col-9 rounded-2 bg-parchment darken-10 search-shadow font-search"
       placeholder="Search..."
     />
-    <button class="btn col-3 bg-red rounded-2 text-light search-shadow">Search</button>
+    <button class="btn col-3 bg-red rounded-2 text-light search-shadow">
+      Search
+    </button>
   </form>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap"
+    rel="stylesheet"
+  />
 </template>
 
 <script>
@@ -44,7 +49,7 @@ export default {
 <style lang="scss" scoped>
 .search-shadow {
   filter: drop-shadow(2px 2px 3px rgba(71, 63, 63, 0.6));
-  transition: all .2s ease;
+  transition: all 0.2s ease;
 }
 
 .search-shadow:hover {
@@ -52,7 +57,7 @@ export default {
 }
 
 .font-search {
-  font-family: 'Nanum Pen Script', cursive;
+  font-family: "Nanum Pen Script", cursive;
   font-size: 25px;
   color: black;
 }
