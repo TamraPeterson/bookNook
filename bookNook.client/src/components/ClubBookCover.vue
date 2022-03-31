@@ -9,6 +9,10 @@
     </h5>
   </div>
   <!-- @click="getById(searchBook.bookId)" -->
+
+<div>
+  
+</div>
 </template>
 
 
@@ -18,12 +22,12 @@ import { booksService } from '../services/BooksService'
 import { logger } from '../utils/Logger'
 import Pop from '../utils/Pop'
 import { AppState } from '../AppState'
-import { Modal } from 'bootstrap'
+import { Modal, Popover } from 'bootstrap'
 import { createPopper } from '@popperjs/core'
 import { clubBooksService } from '../services/ClubBooksService'
 import { useRoute } from 'vue-router'
+import { onMounted } from '@vue/runtime-core'
 export default {
-
   props: {
     searchBook: {
       type: Object,
@@ -32,6 +36,14 @@ export default {
   },
   setup(props) {
     const route = useRoute()
+    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+    var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+      return new Popover(popoverTriggerEl)
+    })
+    onMounted(() => {
+      logger.log('popoverList', popoverList)
+      popoverList
+    })
     return {
       activeBook: computed(() => AppState.activeBook),
       searchBooks: computed(() => AppState.searchBooks),
