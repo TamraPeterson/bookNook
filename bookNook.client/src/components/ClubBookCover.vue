@@ -62,8 +62,12 @@ export default {
       },
       async addBookToClub(searchBook) {
         try {
-
-          await clubBooksService.addBookToClub(searchBook, route.params.id)
+          let date = await Pop.getDate('When do you want to start reading this book?')
+          if (date) {
+            searchBook.clubId = route.params.id
+            searchBook.startDate = date
+            await clubBooksService.addBookToClub(searchBook, route.params.id)
+          }
         } catch (error) {
           logger.error(error)
           Pop.toast(error.message, 'error')

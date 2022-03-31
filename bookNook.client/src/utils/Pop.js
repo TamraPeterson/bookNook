@@ -1,5 +1,6 @@
 import Swal from 'sweetalert2'
 import 'sweetalert2/dist/sweetalert2.min.css'
+import { logger } from './Logger'
 
 export default class Pop {
   /**
@@ -51,5 +52,25 @@ export default class Pop {
       toast: true,
       showConfirmButton: false
     })
+  }
+
+  static async getDate(title = "when?") {
+    let date = null
+    await Swal.fire({
+      title: title,
+      html: '<input class="swal2-input" type="date" id="new-book-date">',
+      stopKeydownPropagation: false,
+      showCancelButton: true,
+      preConfirm: async (result) => {
+        if (result) {
+          let elm = await Swal.getPopup().querySelector('#new-book-date')
+          // logger.log('input value', elm.value)
+          date = new Date(elm.value)
+        }
+
+      }
+    })
+    // logger.log('swal date', date)
+    return date
   }
 }
