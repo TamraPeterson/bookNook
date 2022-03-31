@@ -24,13 +24,14 @@ class ClubsService {
 
     }
 
-    async searchClub(query) {
-        logger.log('query', query)
-        AppState.searchClubs = []
-        const res = await api.get('/clubs?query=', query)
-        logger.log('searchClub', res.data)
-        // AppState.searchClubs = res.data.items.map(i => new Club(i))
-        logger.log('Search Clubs', AppState.searchClubs)
+    async searchClub(query = '') {
+        const res = await api.get('api/clubs')
+        AppState.clubs = res.data
+        query = query.toLowerCase()
+        const reg = new RegExp(query, 'ig')
+        AppState.clubs = AppState.clubs.filter(c => reg.exec(c.name))
+        logger.log('new array who dis?', AppState.clubs)
+
     }
 
     async addToShelf() {

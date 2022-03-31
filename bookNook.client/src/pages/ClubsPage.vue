@@ -11,6 +11,7 @@
         >
       </button>
     </div>
+    <ClubSearch />
   </div>
   <div class="container-fluid">
     <div class="row justify-content-center align-items-center">

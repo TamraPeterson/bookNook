@@ -1,17 +1,22 @@
 <template>
-  <div><h2>Search for a club</h2></div>
-  <form
-    class="row form-group justify-content-between p-3"
-    @submit.prevent="search"
-  >
-    <input
-      type="text"
-      v-model="searchTerm"
-      class="col-9 rounded-2 bg-pink shadow"
-      placeholder="Search..."
-    />
-    <button class="btn col-3 bg-red rounded-2 text-light shadow">Search</button>
-  </form>
+  <div class="row justify-content-center">
+    <div class="col-5">
+      <form
+        class="row form-group justify-content-between p-3"
+        @submit.prevent="search"
+      >
+        <input
+          type="text"
+          v-model="searchTerm"
+          class="col-9 rounded-2 bg-pink shadow"
+          placeholder="Search Clubs..."
+        />
+        <button class="btn col-3 bg-red rounded-2 text-light shadow">
+          Search
+        </button>
+      </form>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -26,6 +31,7 @@ export default {
       searchTerm,
       async search() {
         try {
+          logger.log(searchTerm.value, 'is dis it?')
           await clubsService.searchClub(searchTerm.value)
         } catch (error) {
           logger.log(error)
