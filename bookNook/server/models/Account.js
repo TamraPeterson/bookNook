@@ -7,6 +7,8 @@ export const AccountSchema = new Schema(
     email: { type: String, lowercase: true, unique: true },
     name: { type: String, required: true },
     picture: { type: String },
+    coverImg: { type: String, default: '//thiscatdoesnotexist.com/' },
+    color: { type: String, default: 'Blue' },
     // NOTE If you wish to add additional properties do so here
   },
   { timestamps: true, toJSON: { virtuals: true } }

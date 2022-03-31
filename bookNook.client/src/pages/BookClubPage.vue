@@ -4,7 +4,8 @@
       title="View Club Books"
       class="
         projects-btn
-        btn btn-primary
+        btn
+        bg-micks-other-hat
         text-white
         rounded-pill
         shadow
@@ -14,9 +15,29 @@
       "
       data-bs-toggle="offcanvas"
       data-bs-target="#offcanvas"
-      ><!-- TODO fix this stupid thing -->
+    >
       <i class="mdi mdi-book"></i>
     </b>
+    <b
+      title="Add Book"
+      class="
+        join-btn
+        btn
+        bg-micks-other-hat
+        text-white
+        rounded-pill
+        shadow
+        d-flex
+        align-items-center
+        justify-content-center
+      "
+      data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasRight"
+      aria-controls="offcanvasRight"
+    >
+      <i class="mdi mdi-plus"></i>
+    </b>
+
     <div class="row justify-content-around">
       <!-- banner -->
       <div
@@ -34,13 +55,29 @@
           text-light
         "
       >
-        <h1 class="title-text text-light">
-          {{ activeClub.name }}
-        </h1>
-        <h5>{{ activeClub.description }}</h5>
+        <div class="row">
+          <div class="col-md-8">
+            <h1 class="title-text text-light">
+              {{ activeClub.name }}
+            </h1>
+            <h5>{{ activeClub.description }}</h5>
+          </div>
+
+          <div class="col-md-4 mt-4">
+            <button
+              @click="joinClub()"
+              class="btn bg-blue shadow rounded text-light"
+            >
+              Join this Club
+            </button>
+          </div>
+        </div>
       </div>
+
       <!-- Member Banner -->
-      <div class="col-md-8 m-3 rounded shadow bg-pink banner d-flex p-3">
+      <div
+        class="col-md-8 m-3 rounded shadow bg-micks-other-hat banner d-flex p-3"
+      >
         <h5>Club Members</h5>
         <img
           class="img-fluid comment-photo m-2"
@@ -60,7 +97,7 @@
           class="
             row
             container-fluid
-            bg-pink
+            bg-blue
             shadow
             justify-content-around
             rounded
@@ -70,7 +107,7 @@
           <div
             class="
               col-md-8
-              bg-light-pink
+              bg-micks-other-hat
               d-flex
               justify-content-between
               rounded
@@ -89,9 +126,10 @@
     </div>
     <OffCanvas>
       <template #offcanvas-header></template>
-      <template #offcanvas-body>Booooooks</template>
+      <template #offcanvas-body></template>
     </OffCanvas>
   </div>
+  <RightOffCanvas />
 </template>
 
 
@@ -102,6 +140,7 @@ import Pop from "../utils/Pop";
 import { logger } from "../utils/Logger";
 import { AppState } from "../AppState";
 import { useRoute } from "vue-router"
+
 export default {
   setup() {
     const route = useRoute();
@@ -147,4 +186,13 @@ export default {
   top: 12vh;
   left: 5vh;
 }
-</style> 764321``
+.join-btn {
+  font-size: 20px;
+  height: 60px;
+  width: 60px;
+  z-index: 100;
+  position: fixed;
+  top: 12vh;
+  right: 5vh;
+}
+</style> 

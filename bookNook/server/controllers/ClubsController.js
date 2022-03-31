@@ -13,7 +13,11 @@ export class ClubsController extends BaseController {
       .get('', this.getAll)
       .get('/:id', this.getById)
       .post('', this.create)
+      .put('/:id', this.edit)
       .delete('/:id', this.remove)
+  }
+  async edit(req, res, next) {
+
   }
 
   async getAll(req, res, next) {
