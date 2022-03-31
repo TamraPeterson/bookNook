@@ -13,7 +13,7 @@
       "
       alt=""
     />
-    <p class="text-center mt-2">
+    <p class="text-center mt-2 rounded-1 frosted-bg">
       <small>{{ searchBook.title }}</small>
     </p>
   </div>
@@ -156,5 +156,20 @@ export default {
   position: absolute;
   z-index: 1;
   transform: translateX(-320%) translateY(-5%);
+}
+
+.frosted-bg {
+  background-color: #111927;
+  background-color: rgba(17, 25, 39, 0.75);
+  color: #e9ecef;
+  font-weight: bold;
+  // border: 2px solid #e9ecef;
+  z-index: 2;
+  width: 90%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 2px;
+  padding-right: 2px;
+  text-align: center;
 }
 </style>
