@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid">
     <b
-      title="View Other Projects"
+      title="View Club Books"
       class="
         projects-btn
         btn btn-primary
