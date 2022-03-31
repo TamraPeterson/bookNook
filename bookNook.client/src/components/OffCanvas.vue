@@ -20,7 +20,7 @@
       <div class="offcanvas-body">
         <div v-for="b in clubBooks" :key="b.id">
           <h5
-            @click="setAsActive(b.id)"
+            @click="setAsActive(b.bookId)"
             class="p-2 m-2 d-flex justify-content-start selectable"
           >
             {{ b.title }}
@@ -41,6 +41,7 @@ import { onMounted } from '@vue/runtime-core'
 import { logger } from '../utils/Logger'
 import Pop from '../utils/Pop'
 import { clubBooksService } from '../services/ClubBooksService'
+import { clubsService } from '../services/ClubsService'
 
 export default {
 
@@ -60,7 +61,8 @@ export default {
       async setAsActive(id) {
         try {
           if (await Pop.confirm("Are you sure you would like to look back at this book?", '', 'confirm', 'Yes')) {
-            await clubBooksService.setAsActive(id)
+            await clubsService.setAsActive({ activeBookId: id, clubId: route.params.id })
+
           }
         } catch (error) {
           logger.error(error)

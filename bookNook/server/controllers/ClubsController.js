@@ -13,12 +13,10 @@ export class ClubsController extends BaseController {
       .get('', this.getAll)
       .get('/:id', this.getById)
       .post('', this.create)
-      .put('/:id', this.edit)
+      .put('/:id', this.update)
       .delete('/:id', this.remove)
   }
-  async edit(req, res, next) {
 
-  }
 
   async getAll(req, res, next) {
     try {
@@ -54,6 +52,17 @@ export class ClubsController extends BaseController {
       return res.send('delorted')
     }
     catch (error) {
+      next(error)
+    }
+  }
+
+  async update(req, res, next) {
+    try {
+      req.body.id = req.params.id
+      req.body.creatorId = req.userInfo.id
+      const updateActiveBook = await clubsService.update(req.body)
+      return res.send(updateActiveBook)
+    } catch (error) {
       next(error)
     }
   }

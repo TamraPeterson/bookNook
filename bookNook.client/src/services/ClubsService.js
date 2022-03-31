@@ -61,6 +61,13 @@ class ClubsService {
 
     }
 
+    async setAsActive(activeBook) {
+        const bookToActive = await api.put('api/clubs/' + activeBook.clubId, activeBook)
+        logger.log('active book', bookToActive)
+
+
+    }
+
 
 }
 
