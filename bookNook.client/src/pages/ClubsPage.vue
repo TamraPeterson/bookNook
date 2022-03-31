@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid bg-light">
+  <div class="container-fluid">
     <div class="col-6">
       <button class="btn bg-red m-3">
         <i
@@ -136,5 +136,11 @@ export default {
 .texture1 {
   background-color: #ffffff;
   background-image: url("https://www.transparenttextures.com/patterns/french-stucco.png");
+}
+.bg-image1 {
+  background-image: url("https://c.neh.tw/thumb/f/720/ad643eb27d3a4db9b059.jpg");
+  background-size: cover;
+  background-position: bottom;
+  min-height: 91vh;
 }
 </style>

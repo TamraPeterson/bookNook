@@ -56,8 +56,9 @@ export default {
 }
 
 .bg-image1 {
-  background-image: url("https://ak.picdn.net/shutterstock/videos/11373443/thumb/1.jpg");
+  background-image: url("https://c.neh.tw/thumb/f/720/ad643eb27d3a4db9b059.jpg");
   background-size: cover;
+  background-position: bottom;
   min-height: 91vh;
 }
 </style>
