@@ -1,18 +1,28 @@
 <template>
-  <div class="component d-flex flex-column align-items-center">
-    <div class="pages nook-shadow rounded-1"></div>
-    <h5
-      @click="addBookToClub(searchBook)"
-      class="nook-shadow rounded-1 selectable text-start mb-4"
-    >
-      {{ searchBook.title }}
-    </h5>
+  <div class="component d-flex flex-column w-100 border-bottom">
+    <span
+      class="d-inline-block nook-shadow rounded-1 selectable text-start pages"
+      tabindex="0" data-bs-toggle="popover"
+      data-bs-trigger="hover"
+      data-bs-html="true"
+      :title="`<b>${searchBook.title}</b>`"
+      :data-bs-content="`
+        <div class='row px-2'>
+          <div class='col-6'>
+            <img class='row cover-size nook-shadow' src='${searchBook.imageLinks?.thumbnail || 'src/assets/img/BookCoverTest2.jpg'}'>
+          </div>
+          <div class='col-6'>
+            <p class='row px-3'>Written by: ${searchBook.authors}</p>
+          </div>
+        </div>
+      `"
+      data-bs-placement="left"
+      @click="addBookToClub(searchBook)">
+        <span class="p-1 pt-2 clip-text" type="button">{{ searchBook.title }}</span>
+    </span>
   </div>
-  <!-- @click="getById(searchBook.bookId)" -->
 
-<div>
   
-</div>
 </template>
 
 
@@ -41,7 +51,6 @@ export default {
       return new Popover(popoverTriggerEl)
     })
     onMounted(() => {
-      logger.log('popoverList', popoverList)
       popoverList
     })
     return {
@@ -92,10 +101,10 @@ export default {
 </script>
 
 
-<style lang="scss" scoped>
+<style lang="scss">
 .cover-size {
-  height: 300px;
-  width: 200px;
+  height: 200px;
+  width: 133px;
   transition: 0.3s;
 }
 .component:hover {
