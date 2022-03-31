@@ -17,6 +17,7 @@ class BooksService {
         logger.log('active book', AppState.activeBook)
     }
 
+
     async searchBook(query) {
         AppState.searchBooks = []
         const res = await googleApi.get('?q=' + query + '&' + googleKey)

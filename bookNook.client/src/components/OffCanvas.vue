@@ -60,10 +60,10 @@ export default {
       activeBook: computed(() => AppState.activeBook),
       async setAsActive(id) {
         try {
-          if (await Pop.confirm("Are you sure you would like to look back at this book?", '', 'confirm', 'Yes')) {
-            await clubsService.setAsActive({ activeBookId: id, clubId: route.params.id })
 
-          }
+          await clubsService.setAsActive({ activeBookId: id, clubId: route.params.id })
+
+
         } catch (error) {
           logger.error(error)
           Pop.toast(error.message, 'error')

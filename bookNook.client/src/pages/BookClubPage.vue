@@ -58,14 +58,25 @@
         "
       >
         <div class="row">
-          <div class="col-md-8">
+          <div class="col-md-6 p-3">
             <h1 class="title-text text-center text-light">
               {{ activeClub.name }}
             </h1>
             <h5>{{ activeClub.description }}</h5>
           </div>
 
-          <div class="col-md-4 mt-4">
+          <div class="col-md-6 mt-4 text-center" v-if="activeClub.activeBookId">
+            <h4>Book we're reading:</h4>
+
+            <h3>{{ activeClub.clubBook.title }}</h3>
+            <h6>
+              Start Date:
+              {{ new Date(activeClub.clubBook.startDate).toLocaleDateString() }}
+            </h6>
+          </div>
+        </div>
+        <div class="row mt-3 justify-content-center">
+          <div class="col-md-8">
             <button
               @click="joinClub()"
               class="btn bg-blue shadow rounded text-light"
@@ -105,15 +116,20 @@
                 >Comment:</label
               >
               <textarea
+                v-model="state.editable.body"
                 class="form-control"
                 id="exampleFormControlTextarea1"
                 rows="3"
               ></textarea>
             </div>
 
-            <button class="btn bg-blue shadow comment-button m-1">
+            <button
+              class="btn bg-blue shadow comment-button m-1"
+              @click="createComment"
+            >
               Comment
             </button>
+            {{ comments }}
           </div>
         </div>
       </div>
@@ -128,20 +144,27 @@
 
 
 <script>
-import { computed, onMounted, watchEffect } from "@vue/runtime-core";
+import { computed, onMounted, reactive, watchEffect } from "@vue/runtime-core";
 import { clubsService } from "../services/ClubsService";
+import { commentsService } from "../services/CommentsService";
+
 import Pop from "../utils/Pop";
 import { logger } from "../utils/Logger";
 import { AppState } from "../AppState";
 import { useRoute } from "vue-router"
+import { clubBooksService } from '../services/ClubBooksService';
 
 export default {
   setup() {
     const route = useRoute();
-    onMounted(async () => {
+    const state = reactive({
+      editable: {},
+    })
+    watchEffect(async () => {
       try {
         if (route.name == "BookClubPage") {
           await clubsService.getClubById(route.params.id)
+          await commentsService.getCommentsByBook(AppState.activeClub.clubBook.id)
         }
       } catch (error) {
         logger.error(error)
@@ -151,8 +174,18 @@ export default {
 
     return {
       activeClub: computed(() => AppState.activeClub),
-      activeBook: computed(() => AppState.activeBook)
-
+      activeBook: computed(() => AppState.activeBook.data?.clubBook),
+      comments: computed(() => AppState.comments),
+      clubBooks: computed(() => AppState.clubBooks),
+      state,
+      createComment() {
+        let comment = {
+          creatorId: AppState.account.id,
+          body: state.editable.body,
+          clubBookId: AppState.activeClub.clubBook.id
+        }
+        commentsService.newComment(comment)
+      }
     }
   }
 }
@@ -160,9 +193,9 @@ export default {
 
 
 <style lang="scss" scoped>
-.banner {
-  height: 12vh;
-}
+// .banner {
+//   height: 12vh;
+// }
 
 .comment-photo {
   height: 75px;
