@@ -7,6 +7,8 @@
     </h5>
   </div>
 <!-- @click="getById(searchBook.bookId)" -->
+
+
 </template>
 
 
@@ -17,7 +19,6 @@ import { logger } from '../utils/Logger'
 import Pop from '../utils/Pop'
 import { AppState } from '../AppState'
 import { Modal } from 'bootstrap'
-import { router } from '../router'
 import { createPopper } from '@popperjs/core'
 export default {
   props: {
@@ -56,7 +57,7 @@ export default {
         }
       },
     }
-  }
+  },
 }
 </script>
 
