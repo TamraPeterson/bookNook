@@ -5,18 +5,19 @@ $success: #00f867;
 $info: #5d0149;
 $warning: #fbcf33;
 $danger: #ea0606;
-$light: #e9ecef;
+$light: #ffffff;
 $dark: #111927;
 $grey: #cbcbcb;
 
 $blue: #213d44;
-$red: #922F2F;
+$red: #055366;
 $green: #8CA960;
 $pink: #f8eaea;
 $light-pink: #fdf5f5;
-$parchment: #FAF8F4;
+$parchment: #f0f1f1;
 $micks-hat: #E09F3E;
 $micks-other-hat: #478692;
+$royal: #42438d;
 
 $font-sans-serif: Open Sans;
 $font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -40,7 +41,7 @@ $colors: (
   "parchment": $parchment,
   "micks-hat": $micks-hat,
   "micks-other-hat": $micks-other-hat,
-
+  "royal": $royal
 );
 
 $color-ranges: (

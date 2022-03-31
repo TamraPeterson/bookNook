@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-parchment rounded shadow p-3 m-4">
+  <div class="bg-light rounded elevation-2 p-3 m-2">
     <div class="clubs">
       <div class="row">
         <div class="col-4 text-truncate">
@@ -11,7 +11,7 @@
           {{ club.description }}
         </div>
         <div class="col-4 d-flex justify-content-between">
-          <button class="btn bg-micks-other-hat shadow" @click="goTo">
+          <button class="btn bg-micks-other-hat royal shadow" @click="goTo">
             View Club
           </button>
           <i
