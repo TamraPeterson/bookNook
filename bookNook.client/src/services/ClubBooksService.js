@@ -10,6 +10,16 @@ class ClubBooksService {
         logger.log('book for this club', res.data)
 
     }
+
+    async addBookToClub(searchBook, clubId) {
+        logger.log("search book", searchBook, clubId)
+
+        const res = await api.post('api/clubs/' + clubId + '/clubBooks', searchBook)
+        logger.log(res.data)
+        AppState.clubBooks.push(res.data)
+        logger.log(AppState.clubBooks)
+
+    }
     async setAsActive(id) {
 
         const bookToActive = AppState.clubBooks.find(b => b.id == id)

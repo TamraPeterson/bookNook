@@ -1,12 +1,14 @@
 <template>
   <div class="component d-flex flex-column align-items-center">
     <div class="pages nook-shadow rounded-1"></div>
-    <h5 
-        class="nook-shadow rounded-1 selectable text-start mb-4">
-        {{ searchBook.title }}
+    <h5
+      @click="addBookToClub(searchBook)"
+      class="nook-shadow rounded-1 selectable text-start mb-4"
+    >
+      {{ searchBook.title }}
     </h5>
   </div>
-<!-- @click="getById(searchBook.bookId)" -->
+  <!-- @click="getById(searchBook.bookId)" -->
 </template>
 
 
@@ -19,7 +21,10 @@ import { AppState } from '../AppState'
 import { Modal } from 'bootstrap'
 import { router } from '../router'
 import { createPopper } from '@popperjs/core'
+import { clubBooksService } from '../services/ClubBooksService'
+import { useRoute } from 'vue-router'
 export default {
+
   props: {
     searchBook: {
       type: Object,
@@ -27,6 +32,7 @@ export default {
     }
   },
   setup(props) {
+    const route = useRoute()
     return {
       activeBook: computed(() => AppState.activeBook),
       searchBooks: computed(() => AppState.searchBooks),
@@ -55,6 +61,16 @@ export default {
           Pop.toast(error.message, "error")
         }
       },
+      async addBookToClub(searchBook) {
+        try {
+
+          await clubBooksService.addBookToClub(searchBook, route.params.id)
+        } catch (error) {
+          logger.error(error)
+          Pop.toast(error.message, 'error')
+        }
+
+      }
     }
   }
 }
