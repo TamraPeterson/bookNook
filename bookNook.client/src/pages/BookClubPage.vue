@@ -1,5 +1,6 @@
 <template>
   <div class="container-fluid">
+    <!-- button for books -->
     <b
       title="View Club Books"
       class="
@@ -18,6 +19,7 @@
     >
       <i class="mdi mdi-book"></i>
     </b>
+    <!-- button for search books -->
     <b
       title="Add Book"
       class="
@@ -76,7 +78,7 @@
 
       <!-- Member Banner -->
       <div
-        class="col-md-8 m-3 rounded shadow bg-micks-other-hat banner d-flex p-3"
+        class="col-md-9 m-3 p-3 rounded shadow bg-micks-other-hat banner d-flex"
       >
         <h5>Club Members</h5>
         <img
@@ -91,35 +93,27 @@
         />
       </div>
       <!-- Comment section -->
-      <div class="col-md-6 rounded d-flex justify-content-around rounded">
+      <div
+        class="col-md-9 m-3 p-3 rounded d-flex justify-content-around rounded"
+      >
         <!-- dark pink comment container  -->
-        <div
-          class="
-            row
-            container-fluid
-            bg-blue
-            shadow
-            justify-content-around
-            rounded
-          "
-        >
+        <div class="row container-fluid bg-blue justify-content-center rounded">
           <!-- light pink comment form -->
-          <div
-            class="
-              col-md-8
-              bg-micks-other-hat
-              d-flex
-              justify-content-between
-              rounded
-            "
-          >
-            <img
-              class="img-fluid comment-photo"
-              src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
-              alt=""
-            />
+          <div class="col-md-6 bg-micks-other-hat rounded p-2 m-3 shadow">
+            <div class="mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label"
+                >Comment:</label
+              >
+              <textarea
+                class="form-control"
+                id="exampleFormControlTextarea1"
+                rows="3"
+              ></textarea>
+            </div>
 
-            <button class="btn bg-blue shadow comment-button">Comment</button>
+            <button class="btn bg-blue shadow comment-button m-1">
+              Comment
+            </button>
           </div>
         </div>
       </div>
@@ -157,6 +151,7 @@ export default {
 
     return {
       activeClub: computed(() => AppState.activeClub),
+      activeBook: computed(() => AppState.activeBook)
 
     }
   }
