@@ -1,20 +1,21 @@
 <template>
-  <div class="container-fluid bg-light">
-    <div class="row mt-1">
+  <div class="container-fluid bg-image1">
+    <div class="row">
       <div class="col-md-4"></div>
       <div class="col-md-4 mt-2 text-center"><BookSearch /></div>
       <div class="col-md-4"></div>
     </div>
     <div class="row mt-5 p-2 justify-content-around">
-        <div
-          class="col-12 col-sm-5 col-md-2 m-3 d-flex justify-content-center"
-          v-for="b in searchBooks"
-          :key="b.id"
-        >
-          <BookCover :searchBook="b" />
+      <div
+        class="col-12 col-sm-5 col-md-2 m-3 d-flex justify-content-center"
+        v-for="b in searchBooks"
+        :key="b.id"
+      >
+        <BookCover :searchBook="b" />
       </div>
     </div>
   </div>
+
   <!-- 792 - 768 -->
 </template>
 
@@ -52,5 +53,11 @@ export default {
 .cover-size {
   height: 300px;
   width: 200px;
+}
+
+.bg-image1 {
+  background-image: url("https://media.istockphoto.com/photos/old-books-on-green-background-picture-id1175313177?k=20&m=1175313177&s=170667a&w=0&h=7ZmDxQ8re2sFHFLXS3IUiQOlxBM7WQColOo85F0IqLc=");
+  background-size: cover;
+  min-height: 91vh;
 }
 </style>
