@@ -2,6 +2,16 @@ import { dbContext } from "../db/DbContext"
 import { BadRequest, Forbidden } from "../utils/Errors"
 
 class ClubsService {
+  async update(update) {
+    const original = await this.getById(update.id)
+    // if (original.creatorId.toString() != update.creatorId) {
+    //   throw new BadRequest('Unauthorized to edit')
+    // }
+    original.activeBookId = update.activeBookId ? update.activeBookId : original.activeBookId
+    await original.save()
+    return original
+
+  }
   async getAll(query = {}) {
     const clubs = await dbContext.Clubs.find(query)
     return clubs
