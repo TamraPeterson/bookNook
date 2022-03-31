@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid bg-light">
     <div class="col-6">
       <button class="btn bg-red m-3">
         <i
