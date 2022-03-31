@@ -56,7 +56,7 @@ export default {
 }
 
 .bg-image1 {
-  background-image: url("https://media.istockphoto.com/photos/old-books-on-green-background-picture-id1175313177?k=20&m=1175313177&s=170667a&w=0&h=7ZmDxQ8re2sFHFLXS3IUiQOlxBM7WQColOo85F0IqLc=");
+  background-image: url("https://ak.picdn.net/shutterstock/videos/11373443/thumb/1.jpg");
   background-size: cover;
   min-height: 91vh;
 }
