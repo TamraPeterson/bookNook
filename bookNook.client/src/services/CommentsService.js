@@ -7,6 +7,7 @@ class CommentsService {
     async getCommentsByBook(id) {
         const res = await api.get('api/comments?clubBookId=' + id)
         logger.log('comments', res.data)
+        AppState.comments = res.data
     }
     async newComment(comment) {
         const res = await api.post('api/comments', comment)

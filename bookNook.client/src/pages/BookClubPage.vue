@@ -108,9 +108,11 @@
         class="col-md-9 m-3 p-3 rounded d-flex justify-content-around rounded"
       >
         <!-- dark pink comment container  -->
-        <div class="row container-fluid bg-blue justify-content-center rounded">
-          <!-- light pink comment form -->
-          <div class="col-md-6 bg-micks-other-hat rounded p-2 m-3 shadow">
+        <div
+          class="row container-fluid bg-blue justify-content-center rounded p-3"
+        >
+          <!--  comment form -->
+          <div class="col-md-6 bg-micks-other-hat rounded px-4 py-2 m-3 shadow">
             <div class="mb-3">
               <label for="exampleFormControlTextarea1" class="form-label"
                 >Comment:</label
@@ -129,7 +131,23 @@
             >
               Comment
             </button>
-            {{ comments }}
+          </div>
+          <!-- iterate over comments -->
+          <div
+            class="row bg-micks-other-hat rounded p-2 m-2"
+            v-for="c in comments"
+            :key="c.id"
+          >
+            <div class="col-md-2">
+              <img
+                class="comment-photo m-2"
+                :src="c.creator.picture"
+                title=""
+                alt=""
+              />
+            </div>
+
+            <div class="col-md-10 p-3">{{ c.body }}</div>
           </div>
         </div>
       </div>
