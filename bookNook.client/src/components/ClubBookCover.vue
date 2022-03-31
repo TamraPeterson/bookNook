@@ -19,7 +19,6 @@ import { logger } from '../utils/Logger'
 import Pop from '../utils/Pop'
 import { AppState } from '../AppState'
 import { Modal } from 'bootstrap'
-import { router } from '../router'
 import { createPopper } from '@popperjs/core'
 import { clubBooksService } from '../services/ClubBooksService'
 import { useRoute } from 'vue-router'
@@ -72,7 +71,7 @@ export default {
 
       }
     }
-  }
+  },
 }
 </script>
 
