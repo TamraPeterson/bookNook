@@ -65,10 +65,13 @@ class ClubsService {
         logger.log('active book', bookToActive)
         AppState.activeBook = bookToActive
         logger.log("active book from appstate", AppState.activeBook)
-
-
     }
 
+    async getMemberships(id) {
+        const res = await api.get('api/clubs/' + id + '/memberships')
+        logger.log('getting memberships', res.data)
+        AppState.memberships = res.data
+    }
 
 }
 

@@ -10,7 +10,9 @@ export class MembershipController extends BaseController {
       .use(Auth0Provider.getAuthorizedUserInfo)
       .delete('/:id', this.deleteMembership)
       .post('', this.createMembership)
+
   }
+
 
   async createMembership(req, res, next) {
     try {
