@@ -61,8 +61,8 @@ export default {
   background-position: bottom;
   background-attachment: fixed;
   min-height: 91vh;
-  // filter: blur(8px);
-  // -webkit-filter: blur(8px);
+  left: 0%;
+  top: 0%;
 }
 
 .all-stuff {
