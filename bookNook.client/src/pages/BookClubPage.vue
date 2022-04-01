@@ -78,7 +78,7 @@
         <div class="row mt-3 justify-content-center">
           <div class="col-md-8">
             <button
-              @click="joinClub()"
+              @click="createMembership()"
               class="btn bg-blue shadow rounded text-light"
             >
               Join this Club
@@ -92,16 +92,14 @@
         class="col-md-9 m-3 p-3 rounded shadow bg-micks-other-hat banner d-flex"
       >
         <h5>Club Members</h5>
-        <img
-          class="img-fluid comment-photo m-2"
-          src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
-          alt=""
-        />
-        <img
-          class="img-fluid comment-photo m-2"
-          src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
-          alt=""
-        />
+        <div v-for="m in memberships" :key="m.accountId">
+          <img
+            class="img-fluid comment-photo m-2"
+            :src="m.picture"
+            :title="m.name"
+            alt=""
+          />
+        </div>
       </div>
       <!-- Comment section -->
       <div
@@ -114,14 +112,15 @@
           <!--  comment form -->
           <div class="col-md-6 bg-micks-other-hat rounded px-4 py-2 m-3 shadow">
             <div class="mb-3">
-              <label for="exampleFormControlTextarea1" class="form-label"
-                >Comment:</label
-              >
+              <label
+                for="exampleFormControlTextarea1"
+                class="form-label"
+              ></label>
               <textarea
                 v-model="state.editable.body"
                 class="form-control"
                 id="exampleFormControlTextarea1"
-                rows="3"
+                rows="2"
               ></textarea>
             </div>
 
@@ -179,6 +178,7 @@ import { logger } from "../utils/Logger";
 import { AppState } from "../AppState";
 import { useRoute } from "vue-router"
 import { clubBooksService } from '../services/ClubBooksService';
+import { membershipsService } from "../services/MembershipsService";
 
 export default {
   setup() {
@@ -191,10 +191,8 @@ export default {
         if (route.name == "BookClubPage") {
           await clubsService.getClubById(route.params.id)
           logger.log(AppState.activeClub, 'active club')
-          // if (AppState.activeClub.clubBook) {
+          await clubsService.getMemberships(route.params.id)
           await commentsService.getCommentsByBook(AppState.activeClub.clubBook.id)
-          // }
-
         }
       } catch (error) {
         logger.error(error)
@@ -207,6 +205,7 @@ export default {
       activeBook: computed(() => AppState.activeBook.data?.clubBook),
       comments: computed(() => AppState.comments),
       clubBooks: computed(() => AppState.clubBooks),
+      memberships: computed(() => AppState.memberships),
       state,
       createComment() {
         let comment = {
@@ -217,8 +216,19 @@ export default {
         commentsService.newComment(comment)
       },
       async deleteComment(id) {
-        logger.log('comment id', id)
-        await commentsService.deleteComment(id)
+        if (await Pop.confirm('Are you sure?')) {
+          logger.log('comment id', id)
+          await commentsService.deleteComment(id)
+        }
+
+      },
+      async createMembership() {
+        let newMembership = {
+          accountId: AppState.account.id,
+          clubId: route.params.id
+
+        };
+        await membershipsService.createMembership(newMembership, route.params.id)
       }
     }
   }

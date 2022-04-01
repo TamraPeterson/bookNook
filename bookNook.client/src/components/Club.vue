@@ -1,13 +1,11 @@
 <template>
-  <div class="selectable component" @click="goTo">
+  <div class="component">
     <div class="bg-club rounded elevation-2 p-3 m-2">
       <div class="clubs">
-        <div class="f-name">
-          <br />
+        <div class="f-name selectable" @click="goTo">
           {{ club.name }}
         </div>
         <div class="f-desc">
-          <br />
           {{ club.description }}
         </div>
         <i

@@ -29,11 +29,14 @@
             >Club Name:</label
           >
           <input
+            required
             v-model="editable.name"
             type="text"
             class="form-control"
             id="exampleFormControlInput1"
             placeholder="name your new book club"
+            minlength="5"
+            maxlength="25"
           />
         </div>
         <div class="mb-3">
@@ -45,6 +48,7 @@
             class="form-control"
             id="exampleFormControlTextarea1"
             rows="3"
+            maxlength="150"
           ></textarea>
         </div>
       </div>
@@ -134,8 +138,10 @@ export default {
   background-image: url("https://www.transparenttextures.com/patterns/french-stucco.png");
 }
 .bg-image2 {
-  background-image: url("https://images.unsplash.com/photo-1588801143490-eed95059adfa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fGRhcmslMjBncmVlbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60");
+  background-image: url("https://images.unsplash.com/photo-1457369804613-52c61a468e7d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
   background-position: 100%;
   min-height: 91vh;
+  background-size: cover;
+  background-attachment: fixed;
 }
 </style>
