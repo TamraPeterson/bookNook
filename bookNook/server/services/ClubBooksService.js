@@ -26,11 +26,11 @@ class ClubBooksService {
 
   async edit(updateBook) {
     const club = await clubsService.getById(updateBook.clubId)
-    if (club.creatorId.toString() !== updateBook.creatorId) {
-      throw new Forbidden('Not your, friggin thing man')
-    }
+    // if (club.creatorId.toString() !== updateBook.creatorId) {
+    //   throw new Forbidden('Not your, friggin thing man')
+    // }
     const original = await this.getById(updateBook.id)
-    original.isActive = !original.isActive
+    // original.isActive = !original.isActive
     original.save()
     return original
 

@@ -147,7 +147,15 @@
               />
             </div>
 
-            <div class="col-md-10 p-3">{{ c.body }}</div>
+            <div class="col-md-9 p-3">{{ c.body }}</div>
+            <div class="col-1">
+              <h3>
+                <i
+                  class="mdi mdi-alpha-x-circle-outline p-4 selectable"
+                  @click="deleteComment(c.id)"
+                ></i>
+              </h3>
+            </div>
           </div>
         </div>
       </div>
@@ -182,7 +190,11 @@ export default {
       try {
         if (route.name == "BookClubPage") {
           await clubsService.getClubById(route.params.id)
+          logger.log(AppState.activeClub, 'active club')
+          // if (AppState.activeClub.clubBook) {
           await commentsService.getCommentsByBook(AppState.activeClub.clubBook.id)
+          // }
+
         }
       } catch (error) {
         logger.error(error)
@@ -203,6 +215,10 @@ export default {
           clubBookId: AppState.activeClub.clubBook.id
         }
         commentsService.newComment(comment)
+      },
+      async deleteComment(id) {
+        logger.log('comment id', id)
+        await commentsService.deleteComment(id)
       }
     }
   }
