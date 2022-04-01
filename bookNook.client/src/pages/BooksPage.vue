@@ -56,7 +56,8 @@ export default {
 }
 
 .bg-image1 {
-  background-image: url("https://images2.alphacoders.com/261/thumb-1920-26102.jpg");
+  background-image: url("src/assets/img/BookShelf.jpg");
+  // background-image: url("https://images2.alphacoders.com/261/thumb-1920-26102.jpg");
   background-size: cover;
   background-position: bottom;
   background-attachment: fixed;
