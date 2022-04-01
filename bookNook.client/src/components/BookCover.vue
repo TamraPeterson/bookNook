@@ -20,7 +20,7 @@
  
   
 
-  <Modal v-if="activeBook.title" id="bookDetails-modal">
+  <Modal v-if="activeBook.title" :id="'bookDetails-modal' + searchBook.bookId">
     <template #modal-title>
       <h3>{{ activeBook.title }}</h3>
       {{ activeBook.subtitle }}</template
@@ -47,16 +47,20 @@
       </div>
       <div class="row justify-content-center">
         <div class="col-md-4 d-flex">
-          <button class="btn bg-blue mt-3 shadow">
-            <h3>
-              <i @click="addToShelf()" class="mdi mdi-heart">
-                <h6>add to shelf</h6></i
-              >
-            </h3>
-          </button>
+
+          <div>
+            <button :disabled="onMyShelf" class="btn bg-blue mt-3 shadow">
+              <h3>
+                <i @click="addToShelf(searchBook.bookId)" class="mdi mdi-heart">
+                  <h6>Add To Shelf</h6></i
+                >
+              </h3>
+            </button>
+          </div>
+
         </div>
         <div class="col-md-4 d-flex">
-          <button @click="goToClubs()" class="btn bg-blue mt-3 shadow ms-5">
+          <button @click="goToClubs(searchBook.bookId)" class="btn bg-blue mt-3 shadow ms-5">
             <h3>
               <i class="mdi mdi-account-group"> <h6>NookClub</h6></i>
             </h3>
@@ -90,10 +94,10 @@ export default {
       myShelfBooks: computed(() => AppState.myShelfBooks),
       onMyShelf: computed(() => AppState.myShelfBooks.find(b => b.bookId === props.searchBook.bookId)),
 
-      async addToShelf() {
+      async addToShelf(id) {
         try {
           await booksService.addToShelf()
-          Modal.getOrCreateInstance(document.getElementById("bookDetails-modal")).hide();
+          Modal.getOrCreateInstance(document.getElementById("bookDetails-modal" + id)).hide();
         } catch (error) {
           logger.error(error)
           Pop.toast(error.message, 'error')
@@ -105,7 +109,7 @@ export default {
           logger.log('the shelf book id', id)
           await booksService.getBookById(id)
           Modal.getOrCreateInstance(
-            document.getElementById("bookDetails-modal")
+            document.getElementById("bookDetails-modal" + id)
           ).show();
         } catch (error) {
           logger.log(error)
@@ -113,10 +117,10 @@ export default {
         }
       },
 
-      async goToClubs() {
+      async goToClubs(id) {
         try {
           router.push({ name: "Clubs", query: { activeBookId: props.searchBook.bookId } })
-          Modal.getOrCreateInstance(document.getElementById("bookDetails-modal")).hide();
+          Modal.getOrCreateInstance(document.getElementById("bookDetails-modal" + id)).hide();
         } catch (error) {
           logger.log(error)
         }
