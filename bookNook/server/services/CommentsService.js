@@ -9,7 +9,7 @@ class CommentsService {
   }
 
   async getAll(query = {}) {
-    const comment = await dbContext.Comments.find(query).populate('creator', 'name picture')
+    const comment = await dbContext.Comments.find(query).populate('creator', 'name picture').sort('-createdAt')
     return comment
   }
 

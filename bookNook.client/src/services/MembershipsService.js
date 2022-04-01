@@ -5,11 +5,11 @@ import { api } from "./AxiosService"
 class MembershipsService {
 
 
-    async createMembership(newMembership) {
-        const res = await api.post('api/membership', newMembership)
+    async createMembership(membershipData, clubId) {
+        const res = await api.post('api/clubs/' + clubId + '/memberships', membershipData)
         logger.log('creating membership', res.data)
-        AppState.memberships.push(newMembership)
-        AppState.myMemberships.push(newMembership)
+        AppState.memberships.push(res.data)
+
     }
 
 }
