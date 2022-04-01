@@ -66,7 +66,7 @@ export default {
   top: 0%;
   // filter: blur(8px);
   // -webkit-filter: blur(8px);
-  backdrop-filter: blur(90px);
+  
 }
 
 .all-stuff {
