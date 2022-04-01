@@ -25,7 +25,7 @@
           rounded-pill
           fw-bold
           p-2
-          pt-3
+          pt-2
           px-4
           mt-2
           button-center
@@ -40,10 +40,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Acme&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap"
     rel="stylesheet"
   />
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -95,10 +94,10 @@ export default {
 
 .quote-text {
   background-color: #111927;
-  background-color: rgba(17, 25, 39, 0.4);
+  background-color: rgba(17, 25, 39, 0.678);
   color: #e9ecef;
   font-weight: bold;
-  border: 3px solid #e9ecef;
+  // border: 3px solid #e9ecef;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -115,12 +114,11 @@ export default {
 .button-center {
   font-weight: bold;
   position: absolute;
-  top: 66%;
+  top: 63%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
   width: 20%;
-  padding: 2rem;
   text-align: center;
 }
 
@@ -134,21 +132,22 @@ export default {
 }
 
 .font-home {
-  font-family: "Acme", sans-serif;
+  font-family: "Playfair Display", serif;
   font-size: 25px;
 }
 
 .font-start {
   font-family: "BIZ UDMincho", serif;
-  font-size: 25px;
+  font-size: 21px;
 }
 
 @media screen and (max-width: 1286px) {
   .quote-text {
     width: 65%;
+    padding-bottom: 90px;
   }
   .button-center {
-    width: 25%;
+    width: 90%;
     top: 70%;
   }
 }

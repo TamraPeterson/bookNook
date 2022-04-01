@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid bg-light">
+  <div class="container-fluid bg-image2 bg-light">
     <div class="col-6">
       <button class="btn bg-red m-3">
         <i
@@ -12,19 +12,15 @@
       </button>
     </div>
     <ClubSearch />
-  </div>
-  <div class="container-fluid bg-light">
-    <div class="row justify-content-center">
-      <div class="col-10 texture1 elevation-1 p-4 rounded bg-micks-hat">
-        <div class="row">
-          <div v-for="c in clubs" :key="c.id" class="col-12">
-            <Club :club="c" />
-          </div>
+
+    <div class="justify-content-center">
+      <div class="row">
+        <div v-for="c in clubs" :key="c.id" class="col-6">
+          <Club :club="c" />
         </div>
       </div>
     </div>
   </div>
-
   <Modal id="club-modal">
     <template #modal-title>
       <div class="row">
@@ -137,10 +133,9 @@ export default {
   background-color: #ffffff;
   background-image: url("https://www.transparenttextures.com/patterns/french-stucco.png");
 }
-.bg-image1 {
-  background-image: url("https://c.neh.tw/thumb/f/720/ad643eb27d3a4db9b059.jpg");
-  background-size: cover;
-  background-position: bottom;
+.bg-image2 {
+  background-image: url("https://images.unsplash.com/photo-1588801143490-eed95059adfa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fGRhcmslMjBncmVlbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60");
+  background-position: 100%;
   min-height: 91vh;
 }
 </style>
