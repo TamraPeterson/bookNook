@@ -2,7 +2,7 @@
   <div class="component d-flex flex-column align-items-center">
     <div class="pages nook-shadow rounded-1"></div>
     <div v-if="onMyShelf">
-      <img src="src/assets/img/BookMarkLogo.png" class="book-mark">
+      <img src="src/assets/img/BookNook BookMarks/BookMark1.png" class="book-mark">
     </div>
 
     <img
@@ -155,7 +155,7 @@ export default {
 .book-mark {
   position: absolute;
   z-index: 1;
-  transform: translateX(-320%) translateY(-5%);
+  transform: translateX(-280%) translateY(-10%);
 }
 
 .frosted-bg {
