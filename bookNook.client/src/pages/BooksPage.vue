@@ -56,13 +56,16 @@ export default {
 }
 
 .bg-image1 {
-  background-image: url("https://c.neh.tw/thumb/f/720/ad643eb27d3a4db9b059.jpg");
+  background-image: url("https://images2.alphacoders.com/261/thumb-1920-26102.jpg");
   background-size: cover;
   background-position: bottom;
   background-attachment: fixed;
   min-height: 91vh;
   left: 0%;
   top: 0%;
+  // filter: blur(8px);
+  // -webkit-filter: blur(8px);
+  backdrop-filter: blur(90px);
 }
 
 .all-stuff {
