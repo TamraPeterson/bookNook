@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid bg-image1">
-    <div class="row">
+    <div class="row all-stuff">
       <div class="col-md-4"></div>
       <div class="col-md-4 mt-2 text-center"><BookSearch /></div>
       <div class="col-md-4"></div>
@@ -59,6 +59,14 @@ export default {
   background-image: url("https://c.neh.tw/thumb/f/720/ad643eb27d3a4db9b059.jpg");
   background-size: cover;
   background-position: bottom;
+  background-attachment: fixed;
   min-height: 91vh;
+  left: 0%;
+  top: 0%;
 }
+
+.all-stuff {
+  z-index: 1;
+}
+
 </style>
