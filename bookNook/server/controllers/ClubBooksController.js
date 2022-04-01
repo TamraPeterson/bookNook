@@ -55,7 +55,7 @@ export class ClubBooksController extends BaseController {
     try {
       req.body.clubId = req.params.clubId
       req.body.id = req.params.id
-      req.body.creatorId = req.userInfo.id
+      // req.body.creatorId = req.userInfo.id
       const updateBook = await clubBooksService.edit(req.body)
       return res.send(updateBook)
     } catch (error) {
