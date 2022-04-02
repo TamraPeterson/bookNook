@@ -136,14 +136,10 @@
           "
         >
           <!--  comment form -->
-<<<<<<< HEAD
           <div
             v-if="isMember"
             class="col-md-6 bg-micks-other-hat rounded px-4 py-2 m-3 shadow"
           >
-=======
-          <div class="col-md-6 bg-club3 rounded px-4 py-2 m-3 shadow">
->>>>>>> 9d4dc6e2a6d5aef44aed5f204ad679ce4f905746
             <div class="mb-3">
               <label
                 for="exampleFormControlTextarea1"
