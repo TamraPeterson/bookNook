@@ -55,8 +55,8 @@
     </template>
 
     <template #modal-body>
-      <form class="row d-flex flex-column bg-dark p-3">
-        <button type="button" class="btn btn-info" @click="createClub">
+      <form class="row d-flex flex-column bg-blue rounded p-3">
+        <button type="button" class="btn bg-blue" @click="createClub">
           Submit
         </button>
       </form>
