@@ -14,7 +14,7 @@ class MembershipsService {
     }
 
     async deleteMembership(theAccountId, theClubId) {
-        debugger
+
         const membership = AppState.memberships.find(m => m.id == theAccountId)
         const res = await api.delete('api/clubs/' + theClubId + '/memberships/' + membership.memberId)
         logger.log('deleting membership', res.data)
