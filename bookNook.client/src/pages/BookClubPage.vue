@@ -6,7 +6,7 @@
       class="
         projects-btn
         btn
-        bg-micks-other-hat
+        bg-club4
         text-white
         rounded-pill
         shadow
@@ -25,7 +25,7 @@
       class="
         join-btn
         btn
-        bg-micks-other-hat
+        bg-club4
         text-white
         rounded-pill
         shadow

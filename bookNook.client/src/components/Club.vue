@@ -2,17 +2,19 @@
   <div class="component">
     <div class="bg-club rounded elevation-2 p-3 m-2">
       <div class="clubs">
-        <div class="f-name selectable" @click="goTo">
-          {{ club.name }}
+        <div class="d-flex position-relative">
+          <div class="f-name px-2 rounded selectable" @click="goTo">
+            {{ club.name }}
+          </div>
+          <i
+            @click="deleteClub"
+            v-if="account.id == club.creatorId"
+            class="mdi mdi-close selectable del-b"
+          ></i>
         </div>
         <div class="f-desc">
           {{ club.description }}
         </div>
-        <i
-          @click="deleteClub"
-          v-if="account.id == club.creatorId"
-          class="mdi mdi-close selectable"
-        ></i>
       </div>
     </div>
   </div>
@@ -76,5 +78,10 @@ export default {
 .f-name {
   font-family: "Bebas Neue", cursive;
   font-size: larger;
+}
+.del-b {
+  position: absolute;
+  top: -15px;
+  right: -10px;
 }
 </style>
