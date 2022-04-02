@@ -61,10 +61,10 @@ class ClubsService {
     }
 
     async setAsActive(activeBook) {
-        const bookToActive = await api.put('api/clubs/' + activeBook.clubId, activeBook)
-        logger.log('active book', bookToActive)
-        AppState.activeBook = bookToActive
-        logger.log("active book from appstate", AppState.activeBook)
+        const res = await api.put('api/clubs/' + activeBook.clubId, activeBook)
+        logger.log('active book', res.data)
+        AppState.activeClub = res.data
+
     }
 
     async getMemberships(id) {

@@ -29,10 +29,8 @@ export class MembershipController extends BaseController {
   async deleteMembership(req, res, next) {
     try {
       const accountId = req.userInfo.id
-      const membershipId = req.params.id
-      req.body.clubId = req.params.clubId
-      await membershipService.deleteMembership(accountId, membershipId, req.body)
-      return res.send('dis membership delorted')
+      await membershipService.deleteMembership(accountId, req.params.id)
+      return res.send('Membership deleted')
     } catch (error) {
       next(error)
     }

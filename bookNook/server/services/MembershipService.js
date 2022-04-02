@@ -1,5 +1,5 @@
 import { dbContext } from "../db/DbContext"
-import { BadRequest } from "../utils/Errors"
+import { BadRequest, Forbidden } from "../utils/Errors"
 
 class MembershipService {
   async getMemberships(clubId) {
@@ -8,7 +8,7 @@ class MembershipService {
       const member = mongooseDocument.toJSON()
       return {
         clubId: member.clubId,
-        accountId: member.id,
+        memberId: member.id,
         ...member.account
       }
     })
@@ -16,14 +16,16 @@ class MembershipService {
 
   async createMembership(membership) {
     const newMembership = await dbContext.Memberships.create(membership)
-    newMembership.populate('club')
+    await newMembership.populate('account', 'name picture')
     return newMembership
   }
-  async deleteMembership(accountId, membershipId, membershipBody) {
-    if (accountId == membershipBody.accountId) {
-      throw new BadRequest('dis not your membership dawg')
+  async deleteMembership(accountId, id) {
+    const membership = await dbContext.Memberships.findById(id)
+    if (membership.accountId.toString() !== accountId) {
+      throw new Forbidden('Not yours to delete')
     }
-    await dbContext.Memberships.findByIdAndDelete(membershipId)
+    await membership.delete()
+
   }
 
 }

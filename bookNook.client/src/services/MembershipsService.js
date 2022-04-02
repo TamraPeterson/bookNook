@@ -8,15 +8,19 @@ class MembershipsService {
     async createMembership(membershipData, clubId) {
         const res = await api.post('api/clubs/' + clubId + '/memberships', membershipData)
         logger.log('creating membership', res.data)
-        AppState.memberships.push(res.data)
+        res.data.account.memberId = res.data.id
+        AppState.memberships.push(res.data.account)
 
     }
 
     async deleteMembership(theAccountId, theClubId) {
-        const res = await api.delete('api/clubs/' + theClubId + '/memberships/' + theAccountId)
+        debugger
+        const membership = AppState.memberships.find(m => m.id == theAccountId)
+        const res = await api.delete('api/clubs/' + theClubId + '/memberships/' + membership.memberId)
         logger.log('deleting membership', res.data)
-        const membership = AppState.memberships.find(m => m.accountId == theAccountId && m.clubId == theClubId)
-        logger.log('membership to delete', membership)
+        AppState.memberships = AppState.memberships.filter(m => m.memberId !== membership.memberId)
+
+
     }
 
 }

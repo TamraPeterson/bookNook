@@ -262,7 +262,12 @@ export default {
         await membershipsService.createMembership(newMembership, route.params.id)
       },
       async deleteMembership() {
-        await membershipsService.deleteMembership(AppState.account.id, route.params.id)
+        try {
+          await membershipsService.deleteMembership(AppState.account.id, route.params.id)
+        } catch (error) {
+          logger.error(error)
+          Pop.toast(error.message, 'error')
+        }
       }
     }
   }
