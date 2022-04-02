@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap"
+    href="https://fonts.googleapis.com/css2?family=BIZ+UDMincho&family=Bebas+Neue&family=Playfair+Display&display=swap"
     rel="stylesheet"
   />
 </template>
@@ -57,8 +57,8 @@ export default {
 }
 
 .font-search {
-  font-family: "Nanum Pen Script", cursive;
-  font-size: 25px;
+  font-family: "BIZ UDMincho", serif;
+  font-size: 18px;
   color: black;
 }
 </style>

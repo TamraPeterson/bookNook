@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid bg-image3">
     <!-- button for books -->
     <b
       title="View Club Books"
@@ -49,8 +49,9 @@
           col-md-9
           rounded
           shadow
-          bg-micks-hat
+          bg-club2
           m-3
+          border
           justify-content-around
           align-items-center
           pt-3
@@ -89,7 +90,17 @@
 
       <!-- Member Banner -->
       <div
-        class="col-md-9 m-3 p-3 rounded shadow bg-micks-other-hat banner d-flex"
+        class="
+          col-md-9
+          m-3
+          p-3
+          shadow
+          bg-club3
+          text-light
+          border-top border-bottom
+          banner
+          d-flex
+        "
       >
         <h5>Club Members</h5>
         <div v-for="m in memberships" :key="m.accountId">
@@ -107,10 +118,17 @@
       >
         <!-- dark pink comment container  -->
         <div
-          class="row container-fluid bg-blue justify-content-center rounded p-3"
+          class="
+            row
+            container-fluid
+            bg-club2
+            justify-content-center
+            rounded
+            p-3
+          "
         >
           <!--  comment form -->
-          <div class="col-md-6 bg-micks-other-hat rounded px-4 py-2 m-3 shadow">
+          <div class="col-md-6 bg-club3 rounded px-4 py-2 m-3 shadow">
             <div class="mb-3">
               <label
                 for="exampleFormControlTextarea1"
@@ -125,7 +143,7 @@
             </div>
 
             <button
-              class="btn bg-blue shadow comment-button m-1"
+              class="btn bg-club shadow comment-button m-1"
               @click="createComment"
             >
               Comment
@@ -133,7 +151,7 @@
           </div>
           <!-- iterate over comments -->
           <div
-            class="row bg-micks-other-hat rounded p-2 m-2"
+            class="row bg-club3 rounded border p-2 m-2"
             v-for="c in comments"
             :key="c.id"
           >
@@ -266,5 +284,12 @@ export default {
   position: fixed;
   top: 12vh;
   right: 5vh;
+}
+.bg-image3 {
+  background-image: url("https://images.unsplash.com/photo-1525307932909-fd14b501d8d3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
+  background-position: 100%;
+  min-height: 91vh;
+  background-size: cover;
+  background-attachment: fixed;
 }
 </style> 
