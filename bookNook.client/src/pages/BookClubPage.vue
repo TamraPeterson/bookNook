@@ -6,7 +6,7 @@
       class="
         projects-btn
         btn
-        bg-micks-other-hat
+        bg-club4
         text-white
         rounded-pill
         shadow
@@ -25,7 +25,7 @@
       class="
         join-btn
         btn
-        bg-micks-other-hat
+        bg-club4
         text-white
         rounded-pill
         shadow
@@ -138,7 +138,7 @@
           <!--  comment form -->
           <div
             v-if="isMember"
-            class="col-md-6 bg-micks-other-hat rounded px-4 py-2 m-3 shadow"
+            class="col-md-6 bg-club3 rounded px-4 py-2 m-3 shadow"
           >
             <div class="mb-3">
               <label
