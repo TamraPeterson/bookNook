@@ -78,10 +78,18 @@
         <div class="row mt-3 justify-content-center">
           <div class="col-md-8">
             <button
+              v-if="!isMember"
               @click="createMembership()"
               class="btn bg-blue shadow rounded text-light"
             >
               Join this Club
+            </button>
+            <button
+              v-else
+              @click="deleteMembership()"
+              class="btn bg-blue shadow rounded text-light"
+            >
+              Leave this club
             </button>
           </div>
         </div>
@@ -110,7 +118,10 @@
           class="row container-fluid bg-blue justify-content-center rounded p-3"
         >
           <!--  comment form -->
-          <div class="col-md-6 bg-micks-other-hat rounded px-4 py-2 m-3 shadow">
+          <div
+            v-if="isMember"
+            class="col-md-6 bg-micks-other-hat rounded px-4 py-2 m-3 shadow"
+          >
             <div class="mb-3">
               <label
                 for="exampleFormControlTextarea1"
@@ -193,6 +204,7 @@ export default {
           logger.log(AppState.activeClub, 'active club')
           await clubsService.getMemberships(route.params.id)
           await commentsService.getCommentsByBook(AppState.activeClub.clubBook.id)
+
         }
       } catch (error) {
         logger.error(error)
@@ -207,6 +219,7 @@ export default {
       clubBooks: computed(() => AppState.clubBooks),
       memberships: computed(() => AppState.memberships),
       state,
+      isMember: computed(() => AppState.memberships.find((m) => m.id == AppState.account.id)),
       createComment() {
         let comment = {
           creatorId: AppState.account.id,
@@ -229,6 +242,9 @@ export default {
 
         };
         await membershipsService.createMembership(newMembership, route.params.id)
+      },
+      async deleteMembership() {
+        await membershipsService.deleteMembership(AppState.account.id, route.params.id)
       }
     }
   }
