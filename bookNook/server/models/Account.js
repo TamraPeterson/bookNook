@@ -7,7 +7,7 @@ export const AccountSchema = new Schema(
     email: { type: String, lowercase: true, unique: true },
     name: { type: String, required: true },
     picture: { type: String },
-    coverImg: { type: String, default: '//thiscatdoesnotexist.com/' },
+    coverImg: { type: String, default: 'src/assets/img/BookShelf.jpg' },
     color: { type: String, default: 'Blue' },
     // NOTE If you wish to add additional properties do so here
   },
