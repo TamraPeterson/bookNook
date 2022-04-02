@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid text-center">
+  <div class="container-fluid text-center bg-parchment">
     <div class="row justify-content-center bg-blue cover-img mb-3 nook-shadow">
       <div class="col-12 mb-0">
         <div :class="`mt-5 backdrop

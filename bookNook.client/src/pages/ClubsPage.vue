@@ -55,8 +55,8 @@
     </template>
 
     <template #modal-body>
-      <form class="row d-flex flex-column bg-dark p-3">
-        <button type="button" class="btn btn-info" @click="createClub">
+      <form class="row d-flex flex-column bg-blue rounded p-3">
+        <button type="button" class="btn bg-blue" @click="createClub">
           Submit
         </button>
       </form>
@@ -138,7 +138,7 @@ export default {
   background-image: url("https://www.transparenttextures.com/patterns/french-stucco.png");
 }
 .bg-image2 {
-  background-image: url("https://images.unsplash.com/photo-1457369804613-52c61a468e7d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
+  background-image: url("src/assets/img/ClubSearchImg.avif");
   background-position: 100%;
   min-height: 91vh;
   background-size: cover;
