@@ -98,17 +98,7 @@
 
       <!-- Member Banner -->
       <div
-        class="
-          col-md-9
-          m-3
-          p-3
-          shadow
-          bg-club3
-          text-light
-          border-top border-bottom
-          banner
-          d-flex
-        "
+        class="col-md-9 m-3 p-3 shadow bg-club3 text-light border banner d-flex"
       >
         <h5>Club Members</h5>
         <div v-for="m in memberships" :key="m.accountId">
@@ -173,14 +163,16 @@
                 title=""
                 alt=""
               />
+              <p class="ms-md-4">{{ c.creator.name }}</p>
             </div>
 
             <div class="col-md-9 p-3">{{ c.body }}</div>
             <div class="col-1">
               <h3>
                 <i
-                  class="mdi mdi-alpha-x-circle-outline p-4 selectable"
+                  class="mdi mdi-alpha-x-circle-outline p-0 m-3 selectable"
                   @click="deleteComment(c.id)"
+                  v-if="c.creator.id == account?.id"
                 ></i>
               </h3>
             </div>
@@ -236,6 +228,7 @@ export default {
       comments: computed(() => AppState.comments),
       clubBooks: computed(() => AppState.clubBooks),
       memberships: computed(() => AppState.memberships),
+      account: computed(() => AppState.account),
       state,
       isMember: computed(() => AppState.memberships.find((m) => m.id == AppState.account.id)),
       createComment() {
