@@ -1,16 +1,18 @@
 <template>
-  <div><h2 class="text-light">Look for a Book</h2></div>
+  <div><h2 class="text-light bold">Look for a Book</h2></div>
   <form
-    class="row form-group justify-content-between p-3"
+    class="row form-group justify-content-center p-3"
     @submit.prevent="search"
   >
     <input
       type="text"
       v-model="searchTerm"
-      class="col-9 rounded-2 bg-light darken-10 search-shadow font-search"
+      class="col-md-6 rounded-2 bg-light darken-10 search-shadow font-search"
       placeholder="Search..."
     />
-    <button class="btn col-3 bg-red rounded-2 text-light search-shadow">
+    <button
+      class="btn col-6 col-md-2 bg-red rounded-2 text-light search-shadow"
+    >
       Search
     </button>
   </form>
@@ -60,5 +62,9 @@ export default {
   font-family: "cutive";
   font-size: 25px;
   color: black;
+}
+.bold {
+  font-size: 60px;
+  text-shadow: 1px 1px 5px black;
 }
 </style>

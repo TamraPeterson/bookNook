@@ -9,31 +9,29 @@
         />
       </div>
 
-      <div class="quote-text text-light rounded-2 font-home">
-        <h1>
-          "Fill your house with stacks of books,<br />
-          in all the crannies and in all the nooks"
+      <div class="quote-text text-light rounded-2 font-home py-2 px-4">
+        <h1 class="p-2">
+          "Fill your house with stacks of books, in all the crannies and in all
+          the nooks"
         </h1>
         <p>-Dr. Seuss</p>
+
+        <a
+          @click="login"
+          class="
+            text-dark
+            btn
+            bg-micks-hat
+            rounded-pill
+            fw-bold
+            p-2
+            m-2
+            button-center
+            font-start
+          "
+          >Start Your Next Adventure
+        </a>
       </div>
-      <a
-        @click="login"
-        class="
-          text-dark
-          btn
-          bg-micks-hat
-          rounded-pill
-          fw-bold
-          p-2
-          pt-2
-          px-4
-          mt-2
-          button-center
-          nook-shadow
-          font-start
-        "
-        >Start Your Next Adventure
-      </a>
     </div>
   </div>
 
@@ -87,7 +85,9 @@ export default {
 }
 
 .slideshow-container {
-  min-height: 88.4vh;
+  min-height: 75vh;
+  max-height: 90vh;
+
   max-width: 100vw;
   position: relative;
 }
@@ -97,28 +97,19 @@ export default {
   background-color: rgba(17, 25, 39, 0.678);
   color: #e9ecef;
   font-weight: bold;
-  // border: 3px solid #e9ecef;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
   width: 50%;
-  padding-top: 2rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  padding-bottom: 1rem;
+
   text-align: center;
 }
 
 .button-center {
   font-weight: bold;
-  position: absolute;
-  top: 63%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-  width: 20%;
+
   text-align: center;
 }
 
@@ -147,7 +138,7 @@ export default {
     padding-bottom: 90px;
   }
   .button-center {
-    width: 90%;
+    // width: 90%;
     top: 70%;
   }
 }

@@ -3,7 +3,7 @@
     <div class="bg-club rounded elevation-2 p-3 m-2">
       <div class="clubs">
         <div class="d-flex position-relative">
-          <div class="f-name px-2 rounded selectable" @click="goTo">
+          <div class="f-name px-2 rounded">
             {{ club.name }}
           </div>
           <i
@@ -55,10 +55,6 @@ export default {
         await clubsService.deleteClub(props.club.id)
       },
 
-
-      goTo() {
-        router.push({ name: 'BookClubPage', params: { id: props.club.id } })
-      },
       account: computed(() => AppState.account),
       activeBook: computed(() => AppState.activeBook),
 

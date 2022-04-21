@@ -15,7 +15,12 @@
 
     <div class="justify-content-center">
       <div class="row">
-        <div v-for="c in clubs" :key="c.id" class="col-6">
+        <div
+          v-for="c in clubs"
+          :key="c.id"
+          class="col-6 selectable"
+          @click="goTo(c.id)"
+        >
           <Club :club="c" />
         </div>
       </div>
@@ -73,6 +78,7 @@ import { clubsService } from '../services/ClubsService'
 import { Modal } from 'bootstrap'
 import { useRoute, useRouter } from 'vue-router'
 import { watchEffect } from '@vue/runtime-core'
+import { router } from "../router"
 export default {
   name: 'ClubsPage',
   setup() {
@@ -102,6 +108,9 @@ export default {
           logger.log(error)
           Pop.toast(error.message, 'error')
         }
+      },
+      goTo(id) {
+        router.push({ name: 'BookClubPage', params: { id: id } })
       },
       clubs: computed(() => AppState.clubs),
       searchClubs: computed(() => AppState.searchClubs),

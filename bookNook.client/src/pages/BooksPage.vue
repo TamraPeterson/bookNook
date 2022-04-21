@@ -1,9 +1,9 @@
 <template>
   <div class="container-fluid bg-image1">
     <div class="row all-stuff">
-      <div class="col-md-4"></div>
-      <div class="col-md-4 mt-2 text-center"><BookSearch /></div>
-      <div class="col-md-4"></div>
+      <div class="col-md-3"></div>
+      <div class="col-md-6 mt-2 text-center"><BookSearch /></div>
+      <div class="col-md-3"></div>
     </div>
     <div class="row mt-5 p-2 justify-content-around">
       <div
@@ -15,8 +15,6 @@
       </div>
     </div>
   </div>
-
-  <!-- 792 - 768 -->
 </template>
 
 <script>
@@ -57,20 +55,15 @@ export default {
 
 .bg-image1 {
   background-image: url("src/assets/img/BookSearchImgEdit.jpg");
-  // background-image: url("https://images2.alphacoders.com/261/thumb-1920-26102.jpg");
   background-size: cover;
   background-position: bottom;
   background-attachment: fixed;
   min-height: 91vh;
   left: 0%;
   top: 0%;
-  // filter: blur(8px);
-  // -webkit-filter: blur(8px);
-  
 }
 
 .all-stuff {
   z-index: 1;
 }
-
 </style>
