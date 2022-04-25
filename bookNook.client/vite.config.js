@@ -5,7 +5,7 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   plugins: [vue()],
   build: {
-    outDir: 'docs',
+    outDir: 'https://booknook-tam.herokuapp.com/client',
     sourcemap: false
   },
   server: {
