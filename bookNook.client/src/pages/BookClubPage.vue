@@ -69,10 +69,12 @@
           <div class="col-md-6 mt-4 text-center" v-if="activeClub.activeBookId">
             <h4>Book we're reading:</h4>
 
-            <h3>{{ activeClub.clubBook.title }}</h3>
+            <h3>{{ activeClub.clubBook?.title }}</h3>
             <h6>
               Start Date:
-              {{ new Date(activeClub.clubBook.startDate).toLocaleDateString() }}
+              {{
+                new Date(activeClub.clubBook?.startDate).toLocaleDateString()
+              }}
             </h6>
           </div>
         </div>
@@ -210,7 +212,8 @@ export default {
     watchEffect(async () => {
       try {
         if (route.name == "BookClubPage") {
-          await clubsService.getClubById(route.params.id)
+          debugger
+          await clubsService.getClubById(route.params?.id)
           logger.log(AppState.activeClub, 'active club')
           await clubsService.getMemberships(route.params.id)
           await commentsService.getCommentsByBook(AppState.activeClub.clubBook.id)

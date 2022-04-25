@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid bg-image2 bg-light">
-    <div class="col-6">
+    <div class="col-md-5">
       <button class="btn bg-red m-3">
         <i
           v-if="account.id"
@@ -14,11 +14,11 @@
     <ClubSearch />
 
     <div class="justify-content-center">
-      <div class="row">
+      <div class="row justify-content-center">
         <div
           v-for="c in clubs"
           :key="c.id"
-          class="col-6 selectable"
+          class="col-md-5 selectable"
           @click="goTo(c.id)"
         >
           <Club :club="c" />

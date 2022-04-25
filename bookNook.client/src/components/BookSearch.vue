@@ -7,7 +7,7 @@
     <input
       type="text"
       v-model="searchTerm"
-      class="col-md-6 rounded-2 bg-light darken-10 search-shadow font-search"
+      class="col-md-7 rounded-2 bg-light darken-10 search-shadow font-search"
       placeholder="Search..."
     />
     <button

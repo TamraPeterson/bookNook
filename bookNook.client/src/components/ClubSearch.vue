@@ -1,6 +1,6 @@
 <template>
   <div class="row justify-content-center">
-    <div class="col-5">
+    <div class="col-md-5">
       <form
         class="row form-group justify-content-between p-3"
         @submit.prevent="search"
