@@ -2,7 +2,10 @@
   <div class="component d-flex flex-column align-items-center">
     <div class="pages nook-shadow rounded-1"></div>
     <div v-if="onMyShelf">
-      <img src="src/assets/img/BookNook BookMarks/BookMark1.png" class="book-mark">
+      <img
+        src="src/assets/img/BookNookBookMarks/BookMark1.png"
+        class="book-mark"
+      />
     </div>
 
     <img
@@ -17,8 +20,6 @@
       <small>{{ searchBook.title }}</small>
     </p>
   </div>
- 
-  
 
   <Modal v-if="activeBook.title" :id="'bookDetails-modal' + searchBook.bookId">
     <template #modal-title>
@@ -47,7 +48,6 @@
       </div>
       <div class="row justify-content-center">
         <div class="col-md-4 d-flex">
-
           <div>
             <button :disabled="onMyShelf" class="btn bg-blue mt-3 shadow">
               <h3>
@@ -57,10 +57,12 @@
               </h3>
             </button>
           </div>
-
         </div>
         <div class="col-md-4 d-flex">
-          <button @click="goToClubs(searchBook.bookId)" class="btn bg-blue mt-3 shadow ms-5">
+          <button
+            @click="goToClubs(searchBook.bookId)"
+            class="btn bg-blue mt-3 shadow ms-5"
+          >
             <h3>
               <i class="mdi mdi-account-group"> <h6>NookClub</h6></i>
             </h3>
