@@ -3,7 +3,7 @@
     <div class="slideshow-container">
       <div class="">
         <img
-          src="src/assets/img/Ladder.jpg"
+          src="../assets/img/Ladder.jpg"
           style="width: 100%"
           class="landing-img"
         />

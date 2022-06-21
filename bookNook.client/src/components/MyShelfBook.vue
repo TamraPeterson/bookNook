@@ -7,7 +7,7 @@
       class="nook-shadow cover-size rounded-1 selectable"
       :src="
         myShelfBook.imageLinks[0]?.thumbnail ||
-        'src/assets/img/BookCoverTest2.jpg'
+        '../assets/img/BookCoverTest2.jpg'
       "
       alt=""
     />

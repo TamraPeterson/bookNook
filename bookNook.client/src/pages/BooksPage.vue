@@ -54,7 +54,7 @@ export default {
 }
 
 .bg-image1 {
-  background-image: url("src/assets/img/BookSearchImgEdit.jpg");
+  background-image: url("../assets/img/BookSearchImgEdit.jpg");
   background-size: cover;
   background-position: bottom;
   background-attachment: fixed;

@@ -9,7 +9,7 @@
       :data-bs-content="`
         <div class='row px-2'>
           <div class='col-6'>
-            <img class='row cover-size nook-shadow' src='${searchBook.imageLinks?.thumbnail || 'src/assets/img/BookCoverTest2.jpg'}'>
+            <img class='row cover-size nook-shadow' src='${searchBook.imageLinks?.thumbnail || '../assets/img/BookCoverTest2.jpg'}'>
           </div>
           <div class='col-6'>
             <p class='row px-3'>Written by: ${searchBook.authors}</p>

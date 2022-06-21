@@ -4,7 +4,7 @@
       <div class="dropdown-toggle selectable" data-bs-toggle="dropdown" aria-expanded="false" id="bDropdown">
         <div>
             <span class="mx-3 lighten-30">
-                <img src="src/assets/img/BLogo.png" class="img-height" />
+                <img src="../assets/img/BLogo.png" class="img-height" />
             </span>
         </div>
       </div>

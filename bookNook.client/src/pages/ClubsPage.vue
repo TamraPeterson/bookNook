@@ -147,7 +147,7 @@ export default {
   background-image: url("https://www.transparenttextures.com/patterns/french-stucco.png");
 }
 .bg-image2 {
-  background-image: url("src/assets/img/ClubSearchImg.avif");
+  background-image: url("../assets/img/ClubSearchImg.avif");
   background-position: 100%;
   min-height: 91vh;
   background-size: cover;

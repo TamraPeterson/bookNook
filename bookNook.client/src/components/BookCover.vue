@@ -3,7 +3,7 @@
     <div class="pages nook-shadow rounded-1"></div>
     <div v-if="onMyShelf">
       <img
-        src="src/assets/img/BookNookBookMarks/BookMark1.png"
+        src="../assets/img/BookNookBookMarks/BookMark1.png"
         class="book-mark"
       />
     </div>
@@ -12,7 +12,7 @@
       @click="getById(searchBook.bookId)"
       class="nook-shadow cover-size rounded-1 selectable"
       :src="
-        searchBook.imageLinks?.thumbnail || 'src/assets/img/BookCoverTest2.jpg'
+        searchBook.imageLinks?.thumbnail || '../assets/img/BookCoverTest2.jpg'
       "
       alt=""
     />
@@ -38,7 +38,7 @@
             class="thumbnail img-fluid"
             :src="
               activeBook.imageLinks?.smallThumbnail ||
-              'src/assets/img/BookCoverTest2.jpg'
+              '../assets/img/BookCoverTest2.jpg'
             "
             alt=""
           />
