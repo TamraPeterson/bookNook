@@ -2,6 +2,7 @@ import { Auth0Provider } from '@bcwdev/auth0provider'
 import { accountService } from '../services/AccountService'
 import BaseController from '../utils/BaseController'
 
+// hello
 export class AccountController extends BaseController {
   constructor() {
     super('account')
@@ -32,10 +33,10 @@ export class AccountController extends BaseController {
 
   async edit(req, res, next) {
     try {
-        const updated = await accountService.updateAccount(req.userInfo, req.body)
-        return res.send(updated)
+      const updated = await accountService.updateAccount(req.userInfo, req.body)
+      return res.send(updated)
     } catch (error) {
-        next(error)
+      next(error)
     }
-}
+  }
 }
