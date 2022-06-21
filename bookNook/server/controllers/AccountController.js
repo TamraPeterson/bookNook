@@ -2,7 +2,7 @@ import { Auth0Provider } from '@bcwdev/auth0provider'
 import { accountService } from '../services/AccountService'
 import BaseController from '../utils/BaseController'
 
-// hello
+// hello again
 export class AccountController extends BaseController {
   constructor() {
     super('account')
