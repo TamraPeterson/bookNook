@@ -1,6 +1,6 @@
 export const dev = window.location.origin.includes('localhost')
-export const baseURL = dev ? 'http://localhost:3000' : ''
+export const baseURL = dev ? 'https://localhost:3000' : ''
 export const useSockets = false
-export const domain = 'dev-sn0b0mv9.us.auth0.com'
-export const clientId = 'wVXD6BIwqeVgPVt9OzuE5bgGuda38jpf'
-export const audience = 'https://tam-dev.com'
+export const domain = 'dev-8ai94rar.us.auth0.com'
+export const clientId = 'yuh9AI8Grse8fNFs5ucL1o1lcqvrbwqO'
+export const audience = 'http://Ty-Dev.com'
